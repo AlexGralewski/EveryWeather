@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  display: none
+}
+
+.weather-app {
+  height: 100vh;
+  background-color: rgb(221, 221, 221);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  background-color: rgb(172, 172, 172);
+}
