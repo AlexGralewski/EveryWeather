@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white
 }
 
 code {
@@ -12,19 +13,27 @@ code {
     monospace;
 }
 
-header {
-  display: none
-}
+
 
 .weather-app {
   height: 100vh;
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(78, 135, 189);
+  
+  .city-form, .lat-long-form {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+  }
 }
 
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2rem;
-  background-color: rgb(172, 172, 172);
+  height: 3rem;
+  background-color: rgb(57, 83, 117);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

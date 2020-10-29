@@ -3,7 +3,7 @@ import React from "react"
 function Footer() {
   return (
     <footer>
-      Footer
+      Developed by Aleksander Gralewski, 2020
     </footer>
   )
 }
