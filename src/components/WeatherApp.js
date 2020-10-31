@@ -1,5 +1,6 @@
 import React from "react"
 import timestampToTime from "../data/timestampManagement"
+import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
 
 console.log(timestampToTime(1603949182))
 
@@ -46,72 +47,79 @@ class WeatherApp extends React.Component {
 
   render() {
     const {city, lat, long, data} = this.state
-    let currentWeather = {}
+    let current = {}
     if (data !== undefined) {
       //set current temperature
-      currentWeather.temp = Math.floor(data.current.temp - 273.15)
+      current.temp = Math.floor(data.current.temp - 273.15)
       //set current sunrise and sunset
-      currentWeather.sunrise = timestampToTime(data.current.sunrise)
-      currentWeather.sunset = timestampToTime(data.current.sunset)
+      current.sunrise = timestampToTime(data.current.sunrise)
+      current.sunset = timestampToTime(data.current.sunset)
       //set current weather
-      currentWeather.weather = data.current.weather[0].main
+      current.weather = data.current.weather[0].main
+      current.description = data.current.weather[0].description
+      current.iconId = data.current.weather[0].icon
     } 
-    console.log(currentWeather)
+    console.log(current)
     
     return (
       <div className="weather-app">
-        <div className="city-form">
-          <form onSubmit={this.handleSubmit}>
-           <label>
-             Enter your city:
-            <input 
-              type="text"
-              name="city"
-              value = {city}
-              placeholder = "City"
-              onChange={this.handleChange}/> 
-           </label>
-           <button>Submit</button>
-         </form>
-        </div>
-        
-        <div className="lat-long-form">
-          <form onSubmit={this.handleSubmit}>
+        <div className="forms">
+          <div className="city-form">
+            <form onSubmit={this.handleSubmit}>
             <label>
-              Enter your latitude:
+              Enter your city:
+              <br />
               <input 
                 type="text"
-                name="lat"
-                value = {lat}
-                placeholder = "Latitude"
-                onChange={this.handleChange}/> 
-            </label>
-            <br />
-            <label>
-              Enter your longitude:
-              <input 
-                type="text"
-                name="long"
-                value = {long}
-                placeholder = "Longitude"
+                name="city"
+                value = {city}
+                placeholder = "City"
                 onChange={this.handleChange}/> 
             </label>
             <button>Submit</button>
           </form>
+          </div>
+          <h1>OR</h1>
+          <div className="lat-long-form">
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Enter your latitude:<br />
+                <input 
+                  type="text"
+                  name="lat"
+                  value = {lat}
+                  placeholder = "Latitude"
+                  onChange={this.handleChange}/> 
+              </label>
+              <label>
+                Enter your longitude: <br />
+                <input 
+                  type="text"
+                  name="long"
+                  value = {long}
+                  placeholder = "Longitude"
+                  onChange={this.handleChange}/> 
+              </label>
+              <button>Submit</button>
+            </form>
+          </div>
+          <h1>OR</h1>
+          <div className="this-location-form">
+            <button>Get weather from your location</button>          
+          </div>
         </div>
 
-        <div className="data-display">
-          <h1>{city}</h1>
-          <h1>{lat}</h1>
-          <h1>{long}</h1>
-          <p>Current temperature: {currentWeather.temp}°C</p>
-          <p>Current weather: {currentWeather.weather}</p>
-          <p>Sunrise: {currentWeather.sunrise}</p>
-          <p>Sunset: {currentWeather.sunset}</p>
-          <p></p>
-          <p></p>
-        </div>
-
+        <CurrentWeatherDisplay 
+          city={city}
+          lat={lat}
+          long={long}
+          currentTemp = {current.temp}
+          currentWeather = {current.weather}
+          currentDescription = {current.description}
+          currentIconId = {current.iconId}
+          currentSunrise = {current.sunrise}
+          currentSunset = {current.sunset}
+          />
       </div>
     )
   }

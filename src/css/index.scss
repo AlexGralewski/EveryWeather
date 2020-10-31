@@ -1,3 +1,11 @@
+//color scheme
+$bright1: #FCFCFC;
+$bright2: #b3f4f7;
+$bright3: #F45B69;
+$dark1: #114B5F;
+$dark2: #028090;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: white
+  
 }
 
 code {
@@ -13,22 +21,123 @@ code {
     monospace;
 }
 
+.weather-app, .forms, form, label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 
 
 .weather-app {
+  flex-direction: row;
   height: 100vh;
-  background-color: rgb(78, 135, 189);
-  
-  .city-form, .lat-long-form {
+  background-color: $bright2;
+  background: $bright2;
+  background: linear-gradient(90deg, $bright2 0%, rgba(0,212,255,1) 100%);
+  .forms {
+    padding: 2rem 0;
+    margin: 1rem;
+    width: 40%;
+    background-color: #114B5F;
+    color: $bright1;
+    border-radius: 1rem;
+  }
+
+
+
+  label {
+    font-size: 1.5rem;
+    font-weight: 200;
+  }
+  input {
+    width: 100%;
+    background-color: $dark2;
+    color: inherit;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+  }
+  input:hover {
+    background-color: $bright2;
+    color: $dark1;
+  }
+
+  button {
+    background-color: $bright3;
+    color: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+    padding: 0.5rem 1rem;
+    border:none; 
+    border-radius: 0.5rem;
+  }
+
+  button:hover {
+    background: linear-gradient(145deg, #dd5a67, #ff6b7a);
+  }
+
+  button:active {
+    border-radius: 0.5rem;
+    background: #F45B69;
+    box-shadow: inset 10px 10px 20px #cf4d59, 
+                inset -10px -10px 20px #ff6979;
+  }
+
+}
+
+.current-weather-display {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  background-color: $dark1;
+  color: $bright1;
+  width: 40%;
+  border-radius: 1rem;
+
+  .current-title {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .current-temp {
+    font-size: 8rem;
+  }
+
+  .current-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+      .current-weather {
+        text-transform: capitalize;
+
+        .current-icon {
+          display: flex;
+          justify-content: center;
+        }
+      }
+  }
+
+  .current-place {
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
+
+    .current-city {
+      text-transform: capitalize;
+    }
   }
+
 }
+
 
 footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0%;
   width: 100%;
   height: 3rem;
   background-color: rgb(57, 83, 117);
@@ -36,4 +145,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1500px) {
+  .weather-app > .forms, .current-weather-display {
+    width: 70%; 
+  }
 }
