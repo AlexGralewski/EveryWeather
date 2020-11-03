@@ -1,12 +1,13 @@
 import React from "react"
 import getWeatherIcon from "../data/weatherIcons"
+import cities from "../data/cities"
 
 function CurrentWeatherDisplay(props) {
   const {city, lat, long, currentTemp, currentWeather, currentDescription, currentIconId, currentSunrise, currentSunset} = props
   let currentWeatherIcon = getWeatherIcon(currentIconId)
   
   return (
-    <div className="current-weather-display">
+    <div className="current-weather-display"> 
       <div className="current-title">Current weather:</div>
       <div className="current-main">
         <div className="current-temp">{currentTemp}°C</div>
@@ -19,8 +20,7 @@ function CurrentWeatherDisplay(props) {
       </div>
 
       <div className="current-place">
-        <div className="current-lat">Latitude: {lat}</div>
-        <div className="current-long">Longitude: {long}</div>  
+        <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
         <div className="current-city">{city}</div>
       </div>
 

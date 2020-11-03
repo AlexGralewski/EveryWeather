@@ -1,6 +1,7 @@
 import React from "react"
-import timestampToTime from "../data/timestampManagement"
+import timestampToTime from "../data/timestampToTime"
 import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
+import cities from "../data/cities"
 
 console.log(timestampToTime(1603949182))
 
@@ -8,21 +9,31 @@ class WeatherApp extends React.Component {
   constructor() {
     super()
     this.state = {
-      lat: 52.24, //latitude
-      long: 21.02, //longitude
-      city: "warsaw", //city of choice
+      lat: "52.24", //latitude
+      long: "21.02", //longitude
+      city: "", //city of choice
       part: "minutely,hourly", //Excludes parts of weather data. Available values: "current", "minutely", "hourly", "daily", "alerts". Seperated by comma without spaces
       apiKey: "692d3bd12adf77c08728b7324d9f2b14", //APIkey for OpenWeatherMapAPI
       data: undefined, //data pulled from API
-      
     }
     this.handleChange = this.handleChange.bind(this)
-
+    this.handleLatLongSubmit = this.handleLatLongSubmit.bind(this)
+    this.handleCitySubmit = this.handleCitySubmit.bind(this)
+    this.handleLocationSubmit = this.handleLocationSubmit.bind(this)
   }
 
-  componentDidMount() {
-    const {lat, long, part, apiKey} = this.state
-    const apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=" + part + "&appid=" + apiKey
+
+  handleChange(event) {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })
+    console.log(this.state)
+  }
+
+  handleLatLongSubmit(event) {
+    event.preventDefault();
+    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.apiKey
     console.log(apiURL)
     fetch(apiURL)
       .then(response => response.json())
@@ -32,17 +43,38 @@ class WeatherApp extends React.Component {
       .catch(err => {
         console.log(err);
       });
-        }
-
-  handleChange(event) {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
+    console.log(this.state.data)
   }
 
-  handleSubmit(event) {
-    const {name, value} = event.target
+  handleCitySubmit(event) {
+    event.preventDefault();
+    let cityIndex
+    for (cityIndex = 0; cityIndex < cities.length; cityIndex++) {
+      if (cities[cityIndex].city === "warsaw") {
+        this.setState({
+          lat: cities[cityIndex].lat,
+          long: cities[cityIndex].long
+        })
+      }
+    }
+
+    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.apiKey
+    console.log(apiURL)
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({data: res});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    console.log("handleCitySubmit")    
+  }
+
+  handleLocationSubmit(event) {
+    event.preventDefault();
+    
+    console.log("handleLocationSubmit")
   }
 
   render() {
@@ -64,8 +96,30 @@ class WeatherApp extends React.Component {
     return (
       <div className="weather-app">
         <div className="forms">
+          <div className="lat-long-form">
+            <form onSubmit={this.handleLatLongSubmit}>
+              <label>
+                Enter latitude:<br />
+                <input 
+                  type="text"
+                  name="lat"
+                  value={lat}
+                  onChange={this.handleChange}/> 
+              </label>
+              <label>
+                Enter longitude: <br />
+                <input 
+                  type="text"
+                  name="long"
+                  value={long}
+                  onChange={this.handleChange}/> 
+              </label>
+              <button>Submit</button>
+            </form>
+          </div>
+          <h1>OR</h1>
           <div className="city-form">
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleCitySubmit}>
             <label>
               Enter your city:
               <br />
@@ -73,39 +127,14 @@ class WeatherApp extends React.Component {
                 type="text"
                 name="city"
                 value = {city}
-                placeholder = "City"
                 onChange={this.handleChange}/> 
             </label>
             <button>Submit</button>
           </form>
           </div>
           <h1>OR</h1>
-          <div className="lat-long-form">
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Enter your latitude:<br />
-                <input 
-                  type="text"
-                  name="lat"
-                  value = {lat}
-                  placeholder = "Latitude"
-                  onChange={this.handleChange}/> 
-              </label>
-              <label>
-                Enter your longitude: <br />
-                <input 
-                  type="text"
-                  name="long"
-                  value = {long}
-                  placeholder = "Longitude"
-                  onChange={this.handleChange}/> 
-              </label>
-              <button>Submit</button>
-            </form>
-          </div>
-          <h1>OR</h1>
           <div className="this-location-form">
-            <button>Get weather from your location</button>          
+            <button onClick={this.handleLocationSubmit}>Get weather from your location</button>          
           </div>
         </div>
 

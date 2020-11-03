@@ -28,14 +28,13 @@ code {
 }
 
 
-
-
 .weather-app {
   flex-direction: row;
-  height: 100vh;
+  min-height: 95vh;
   background-color: $bright2;
   background: $bright2;
   background: linear-gradient(90deg, $bright2 0%, rgba(0,212,255,1) 100%);
+  
   .forms {
     padding: 2rem 0;
     margin: 1rem;
@@ -43,7 +42,11 @@ code {
     background-color: #114B5F;
     color: $bright1;
     border-radius: 1rem;
+    -webkit-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
+    -moz-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
+    box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
   }
+
 
 
 
@@ -60,7 +63,10 @@ code {
     border-radius: 0.5rem;
     border: none;
     font-size: 1rem;
+    
   }
+
+  
   input:hover {
     background-color: $bright2;
     color: $dark1;
@@ -129,6 +135,7 @@ code {
 
     .current-city {
       text-transform: capitalize;
+      display: none
     }
   }
 
@@ -136,19 +143,23 @@ code {
 
 
 footer {
-  position: absolute;
-  bottom: 0%;
   width: 100%;
-  height: 3rem;
-  background-color: rgb(57, 83, 117);
+  height: 5vh;
+  background-color: $dark2;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 @media screen and (max-width: 1500px) {
   .weather-app > .forms, .current-weather-display {
     width: 70%; 
+  }
+}
+@media screen and (max-height: 600px) {
+  footer {
+    height: 10vh;
   }
 }
