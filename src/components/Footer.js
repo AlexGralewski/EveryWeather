@@ -3,9 +3,13 @@ import React from "react"
 function Footer() {
   return (
     <footer>
-      Developed by Aleksander Gralewski, 2020
-      <i class="fab fa-github"></i>
-      <i class="fab fa-linkedin-in"></i>
+      <div>
+        Developed by Aleksander Gralewski, 2020
+      </div>
+      <div className="social-icons">
+        <a href="#"><i className="fab fa-github"></i></a>
+        <i className="fab fa-linkedin-in"></i>
+      </div>
     </footer>
   )
 }

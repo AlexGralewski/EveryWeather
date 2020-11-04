@@ -36,7 +36,7 @@ code {
   background: linear-gradient(90deg, $bright2 0%, rgba(0,212,255,1) 100%);
   
   .forms {
-    padding: 2rem 0;
+    padding: 2rem;
     margin: 1rem;
     width: 40%;
     background-color: #114B5F;
@@ -45,54 +45,68 @@ code {
     -webkit-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
     -moz-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
     box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
-  }
-
-
-
-
-  label {
-    font-size: 1.5rem;
-    font-weight: 200;
-  }
-  input {
-    width: 100%;
-    background-color: $dark2;
-    color: inherit;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    font-size: 1rem;
     
-  }
+    label {
+      font-size: 1.5rem;
+      font-weight: 200;
+    }
+    
+    input, select {
+      width: 100%;
+      background-color: $dark2;
+      color: inherit;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-size: 1rem;
+      
+    }
+    
+    
+    input:hover, select:hover {
+      background-color: $bright2;
+      color: $dark1;
+    }
+    
+    button {
+      background-color: $bright3;
+      color: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+      padding: 0.5rem 1rem;
+      border:none; 
+      border-radius: 0.5rem;
+      
+    }
+    
+    button:hover {
+      background: linear-gradient(145deg, #dd5a67, #ff6b7a);
+    }
+    
+    button:active {
+      border-radius: 0.5rem;
+      background: #F45B69;
+      box-shadow: inset 10px 10px 20px #cf4d59, 
+      inset -10px -10px 20px #ff6979;
+    }
 
-  
-  input:hover {
-    background-color: $bright2;
-    color: $dark1;
+    .city-country-inputs {
+      display: flex;
+      align-items: center;
+      input {
+        width: 50%;
+        margin: 1rem 0.5rem;
+      }
+      select {
+        padding: 0 0 0 1rem;
+        margin: 1rem 0.5rem;
+        height: 3rem;
+        width: 30%;
+      }
+    }
   }
-
-  button {
-    background-color: $bright3;
-    color: inherit;
-    font-size: 0.8rem;
-    letter-spacing: 0.05rem;
-    padding: 0.5rem 1rem;
-    border:none; 
-    border-radius: 0.5rem;
-  }
-
-  button:hover {
-    background: linear-gradient(145deg, #dd5a67, #ff6b7a);
-  }
-
-  button:active {
-    border-radius: 0.5rem;
-    background: #F45B69;
-    box-shadow: inset 10px 10px 20px #cf4d59, 
-                inset -10px -10px 20px #ff6979;
-  }
-
 }
 
 .current-weather-display {
@@ -135,22 +149,28 @@ code {
 
     .current-city {
       text-transform: capitalize;
-      display: none
     }
   }
-
 }
 
 
 footer {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: 5vh;
+  font-size: 1.2rem;
   background-color: $dark2;
-  color: white;
+  color: $bright1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
+  a {
+    text-decoration: none;
+    color: $bright1;
+  }
+  i {
+    margin: 0.5rem;
+  }
 }
 
 @media screen and (max-width: 1500px) {
@@ -158,8 +178,16 @@ footer {
     width: 70%; 
   }
 }
-@media screen and (max-height: 600px) {
+
+
+@media screen and (max-height: 1000px) {
   footer {
-    height: 10vh;
+    height: 7vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  footer {
+    height: 15vh;
   }
 }

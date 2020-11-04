@@ -35,7 +35,7 @@ code {
 }
 
 .weather-app .forms {
-  padding: 2rem 0;
+  padding: 2rem;
   margin: 1rem;
   width: 40%;
   background-color: #114B5F;
@@ -45,12 +45,12 @@ code {
   box-shadow: 15px 15px 40px 6px #114b5f;
 }
 
-.weather-app label {
+.weather-app .forms label {
   font-size: 1.5rem;
   font-weight: 200;
 }
 
-.weather-app input {
+.weather-app .forms input, .weather-app .forms select {
   width: 100%;
   background-color: #028090;
   color: inherit;
@@ -61,30 +61,52 @@ code {
   font-size: 1rem;
 }
 
-.weather-app input:hover {
+.weather-app .forms input:hover, .weather-app .forms select:hover {
   background-color: #b3f4f7;
   color: #114B5F;
 }
 
-.weather-app button {
+.weather-app .forms button {
   background-color: #F45B69;
   color: inherit;
   font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.05rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
 }
 
-.weather-app button:hover {
+.weather-app .forms button:hover {
   background: linear-gradient(145deg, #dd5a67, #ff6b7a);
 }
 
-.weather-app button:active {
+.weather-app .forms button:active {
   border-radius: 0.5rem;
   background: #F45B69;
   -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
           box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
+}
+
+.weather-app .forms .city-country-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather-app .forms .city-country-inputs input {
+  width: 50%;
+  margin: 1rem 0.5rem;
+}
+
+.weather-app .forms .city-country-inputs select {
+  padding: 0 0 0 1rem;
+  margin: 1rem 0.5rem;
+  height: 3rem;
+  width: 30%;
 }
 
 .current-weather-display {
@@ -151,23 +173,32 @@ code {
 
 .current-weather-display .current-place .current-city {
   text-transform: capitalize;
-  display: none;
 }
 
 footer {
-  width: 100%;
-  height: 5vh;
-  background-color: #028090;
-  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  height: 5vh;
+  font-size: 1.2rem;
+  background-color: #028090;
+  color: #FCFCFC;
+  display: flex;
+}
+
+footer a {
+  text-decoration: none;
+  color: #FCFCFC;
+}
+
+footer i {
+  margin: 0.5rem;
 }
 
 @media screen and (max-width: 1500px) {
@@ -176,9 +207,15 @@ footer {
   }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 1000px) {
   footer {
-    height: 10vh;
+    height: 7vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  footer {
+    height: 15vh;
   }
 }
 /*# sourceMappingURL=index.css.map */
