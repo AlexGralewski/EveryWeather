@@ -3,11 +3,11 @@ import getWeatherIcon from "../data/weatherIcons"
 
 
 function CurrentWeatherDisplay(props) {
-  const {city, lat, long, currentTemp, currentDescription, currentIconId, currentSunrise, currentSunset} = props
+  const {city, lat, long, currentTemp, currentDescription, currentIconId, currentSunrise, currentSunset, currentDisplay} = props
   let currentWeatherIcon = getWeatherIcon(currentIconId)
   
   return (
-    <div className="current-weather-display"> 
+    <div className="current-weather-display" style={{display:currentDisplay}}> 
       <div className="current-title">Current weather:</div>
       <div className="current-main">
         <div className="current-temp">{currentTemp}°C</div>
@@ -18,7 +18,7 @@ function CurrentWeatherDisplay(props) {
           <div className="current-sunset">Sunset: {currentSunset}</div>
         </div>
       </div>
-
+      <button>Go Back</button>
       <div className="current-place">
         <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
         <div className="current-city">{city}</div>

@@ -30,6 +30,7 @@ code {
 
 .weather-app {
   flex-direction: row;
+  justify-content: space-around;
   min-height: 95vh;
   background-color: $bright2;
   background: $bright2;
@@ -69,28 +70,7 @@ code {
       color: $dark1;
     }
     
-    button {
-      background-color: $bright3;
-      color: inherit;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.05rem;
-      padding: 0.5rem 1rem;
-      border:none; 
-      border-radius: 0.5rem;
-      
-    }
-    
-    button:hover {
-      background: linear-gradient(145deg, #dd5a67, #ff6b7a);
-    }
-    
-    button:active {
-      border-radius: 0.5rem;
-      background: #F45B69;
-      box-shadow: inset 10px 10px 20px #cf4d59, 
-      inset -10px -10px 20px #ff6979;
-    }
+
 
     .city-country-inputs {
       display: flex;
@@ -118,6 +98,7 @@ code {
   width: 40%;
   border-radius: 1rem;
 
+
   .current-title {
     display: flex;
     justify-content: center;
@@ -143,6 +124,13 @@ code {
       }
   }
 
+  button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 5rem;
+  }
+
   .current-place {
     display: flex;
     justify-content: space-around;
@@ -153,6 +141,28 @@ code {
   }
 }
 
+button {
+  background-color: $bright3;
+  color: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  padding: 0.5rem 1rem;
+  border:none; 
+  border-radius: 0.5rem;
+  
+}
+
+button:hover {
+  background: linear-gradient(145deg, #dd5a67, #ff6b7a);
+}
+
+button:active {
+  border-radius: 0.5rem;
+  background: #F45B69;
+  box-shadow: inset 10px 10px 20px #cf4d59, 
+  inset -10px -10px 20px #ff6979;
+}
 
 footer {
   display:flex;

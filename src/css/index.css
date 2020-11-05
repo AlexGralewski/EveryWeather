@@ -27,6 +27,8 @@ code {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   min-height: 95vh;
   background-color: #b3f4f7;
   background: #b3f4f7;
@@ -64,28 +66,6 @@ code {
 .weather-app .forms input:hover, .weather-app .forms select:hover {
   background-color: #b3f4f7;
   color: #114B5F;
-}
-
-.weather-app .forms button {
-  background-color: #F45B69;
-  color: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.weather-app .forms button:hover {
-  background: linear-gradient(145deg, #dd5a67, #ff6b7a);
-}
-
-.weather-app .forms button:active {
-  border-radius: 0.5rem;
-  background: #F45B69;
-  -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
-          box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
 }
 
 .weather-app .forms .city-country-inputs {
@@ -163,6 +143,13 @@ code {
           justify-content: center;
 }
 
+.current-weather-display button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 5rem;
+}
+
 .current-weather-display .current-place {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -173,6 +160,28 @@ code {
 
 .current-weather-display .current-place .current-city {
   text-transform: capitalize;
+}
+
+button {
+  background-color: #F45B69;
+  color: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+button:hover {
+  background: linear-gradient(145deg, #dd5a67, #ff6b7a);
+}
+
+button:active {
+  border-radius: 0.5rem;
+  background: #F45B69;
+  -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
+          box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
 }
 
 footer {
