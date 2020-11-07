@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .weather-app, .forms, form, label {
@@ -29,7 +29,7 @@ code {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  min-height: 95vh;
+  min-height: 93vh;
   background-color: #b3f4f7;
   background: #b3f4f7;
   background: -webkit-gradient(linear, left top, right top, from(#b3f4f7), to(#00d4ff));
@@ -143,13 +143,6 @@ code {
           justify-content: center;
 }
 
-.current-weather-display button {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 5rem;
-}
-
 .current-weather-display .current-place {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,8 +173,29 @@ button:hover {
 button:active {
   border-radius: 0.5rem;
   background: #F45B69;
-  -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
-          box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
+  -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
+          box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
+}
+
+.return-button {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 3rem;
+  top: 5rem;
+  left: 5rem;
+  padding: 1rem;
+}
+
+.return-button p {
+  margin: 1rem 0;
 }
 
 footer {

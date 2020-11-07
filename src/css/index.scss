@@ -31,7 +31,7 @@ code {
 .weather-app {
   flex-direction: row;
   justify-content: space-around;
-  min-height: 95vh;
+  min-height: 93vh;
   background-color: $bright2;
   background: $bright2;
   background: linear-gradient(90deg, $bright2 0%, rgba(0,212,255,1) 100%);
@@ -124,13 +124,6 @@ code {
       }
   }
 
-  button {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 5rem;
-  }
-
   .current-place {
     display: flex;
     justify-content: space-around;
@@ -162,6 +155,20 @@ button:active {
   background: #F45B69;
   box-shadow: inset 10px 10px 20px #cf4d59, 
   inset -10px -10px 20px #ff6979;
+}
+
+.return-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  top: 5rem;
+  left: 5rem;
+  padding: 1rem;
+  p {
+    margin: 1rem 0
+  }
 }
 
 footer {

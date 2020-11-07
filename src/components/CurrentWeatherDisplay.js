@@ -18,11 +18,11 @@ function CurrentWeatherDisplay(props) {
           <div className="current-sunset">Sunset: {currentSunset}</div>
         </div>
       </div>
-      <button>Go Back</button>
       <div className="current-place">
         <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
         <div className="current-city">{city}</div>
       </div>
+  
 
     </div>
   )

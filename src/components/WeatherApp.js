@@ -7,8 +7,8 @@ class WeatherApp extends React.Component {
   constructor() {
     super()
     this.state = {
-      lat: "52.24", //latitude
-      long: "21.02", //longitude
+      lat: "0", //latitude
+      long: "0", //longitude
       city: "", //city of choice
       country: "",
       part: "minutely,hourly", //Excludes parts of weather data. Available values: "current", "minutely", "hourly", "daily", "alerts". Seperated by comma without spaces
@@ -23,7 +23,7 @@ class WeatherApp extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleLatLongSubmit = this.handleLatLongSubmit.bind(this)
     this.handleCitySubmit = this.handleCitySubmit.bind(this)
-    this.handleLocationSubmit = this.handleLocationSubmit.bind(this)
+    this.handlePositionSubmit = this.handlePositionSubmit.bind(this)
     this.handleReturnButton = this.handleReturnButton.bind(this)
   }
 
@@ -61,9 +61,12 @@ class WeatherApp extends React.Component {
       .catch(err => {
         console.log(err)
       })      
+
+    console.log(this.state.locationData)
     this.setState({
       currentDisplay: "flex",
-      formsDisplay: "none"
+      formsDisplay: "none",
+      returnButtonDisplay: "flex"
     })
   }
 
@@ -83,7 +86,7 @@ class WeatherApp extends React.Component {
     }
 
     //URL string for weather API
-    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey
+    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 90) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey
     console.log(apiURL)
 
     //fetch API
@@ -97,26 +100,41 @@ class WeatherApp extends React.Component {
       });   
   }
 
-  handleLocationSubmit(event) {
-    event.preventDefault()
+  handlePositionSubmit() {
 
-
-    const position = navigator.geolocation.getCurrentPosition(position => {
-      console.log(position.coords.latitude)
-      console.log(position.coords.longitude)
-      return ([position.coords.latitude])
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: Math.round(position.coords.latitude * 1000) / 1000,
+        long: Math.round(position.coords.longitude *1000) / 1000,
+        formsDisplay: "none",
+        currentDisplay: "block",
+        returnButtonDisplay: "flex"
+      }, this.handlePositionSubmit1)
     })
-
-    console.log(position)
   }
 
-  handleReturnButton() {
-    console.log("buttoned")
+  handlePositionSubmit1() {
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 90) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
+
+    fetch(weatherApiUrl)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({weatherData: res})
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+    console.log(weatherApiUrl)
+  }
+
+  handleReturnButton(event) {
     this.setState({
       formsDisplay: "flex",
       currentDisplay: "none",
       returnButtonDisplay: "none"
     })
+    event.preventDefault()
 
     
   }
@@ -178,6 +196,7 @@ class WeatherApp extends React.Component {
             <form onSubmit={this.handleCitySubmit}>
             <label>
               Enter a name of a city:
+            </label>
               <div className="city-country-inputs">
                 <input 
                   type="text"
@@ -195,13 +214,12 @@ class WeatherApp extends React.Component {
                   <option value="england">England</option>
                 </select>
               </div>
-            </label>
             <button>Get current weather</button>
           </form>
           </div>
           <h1>OR</h1>
           <div className="this-location-form">
-            <button onClick={this.handleLocationSubmit}>Get current weather from your location</button>          
+            <button onClick={this.handlePositionSubmit}>Get current weather for your position</button>          
           </div>
         </div>
 
@@ -216,7 +234,12 @@ class WeatherApp extends React.Component {
           currentSunrise = {current.sunrise}
           currentSunset = {current.sunset}
           />
-        <button onClick={this.handleReturnButton} style={{display: returnButtonDisplay}}>Go Back</button>
+        <button 
+          onClick={this.handleReturnButton} 
+          style={{display:returnButtonDisplay}} 
+          className="return-button">
+            <i class="fas fa-arrow-left"></i><p>Return</p>
+        </button>
       </div>
     )
   }
