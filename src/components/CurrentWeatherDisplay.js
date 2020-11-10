@@ -23,7 +23,7 @@ function CurrentWeatherDisplay(props) {
       </div>
       <div className="current-place">
         <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
-        <div className="current-city">{city}</div>
+        <div className="current-city">City: {city}</div>
       </div>
   
 

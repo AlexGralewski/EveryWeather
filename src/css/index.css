@@ -7,6 +7,7 @@ body {
   background: #b3f7cd;
   background: -webkit-gradient(linear, left top, right top, from(#b3f7cd), to(#0dcff6));
   background: linear-gradient(90deg, #b3f7cd 0%, #0dcff6 100%);
+  overflow-x: hidden;
 }
 
 code {
@@ -38,11 +39,10 @@ code {
 
 .weather-app .background-text {
   position: absolute;
-  margin: 0;
-  padding: 0;
-  font-size: 20rem;
+  font-size: 30rem;
   font-weight: 200;
   letter-spacing: 1rem;
+  line-height: 29rem;
   color: #6ae2d8;
   top: 0%;
   left: 0;
@@ -52,6 +52,7 @@ code {
 
 .weather-app .background-text p {
   margin: 0;
+  padding: 0;
   font-weight: 500;
 }
 
@@ -259,13 +260,13 @@ footer i {
   }
 }
 
-/*
-@media screen and (max-height: 1000px) {
+@media screen and (max-height: 800px) {
   footer {
-    height: 7vh;
+    height: 10vh;
   }
-}*/
-@media screen and (max-height: 700px) {
+}
+
+@media screen and (max-height: 600px) {
   footer {
     height: 15vh;
   }

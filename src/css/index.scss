@@ -17,7 +17,7 @@ body {
   background-color: $bright2;
   background: $bright2;
   background: linear-gradient(90deg, $bright2 0%, $bright4 100%);
-  
+  overflow-x: hidden;
 }
 
 code {
@@ -39,11 +39,10 @@ code {
 
   .background-text{
     position: absolute;
-    margin: 0;
-    padding: 0;
-    font-size: 20rem;
+    font-size: 30rem;
     font-weight: 200;
     letter-spacing: 1rem;
+    line-height: 29rem;
     color: rgb(106, 226, 216);
     top: 0%;
     left: 0;
@@ -51,10 +50,12 @@ code {
     overflow: hidden;
     p{
       margin: 0;
+      padding: 0;
       font-weight: 500;
     }
   }
 
+  //Styles for forms section
   .forms {
     padding: 4rem 1rem;
     margin: 1rem;
@@ -103,14 +104,15 @@ code {
         width: 30%;
       }
     }
-
+    
     .or {
       font-size: 2rem;
       letter-spacing: 0.1rem;
     }
   }
 }
-
+  
+//Styles for current weather display section
 .current-weather-display {
   display: flex;
   flex-direction: column;
@@ -119,19 +121,19 @@ code {
   color: $bright1;
   width: 40%;
   border-radius: 1rem;
-
-
+  
+  
   .current-title {
     display: flex;
     justify-content: center;
     font-size: 2rem;
     letter-spacing: 0.2rem;
   }
-
+  
   .current-temp {
     font-size: 9rem;
   }
-
+  
   .current-main {
     display: flex;
     align-items: center;
@@ -141,7 +143,7 @@ code {
       .current-description{
         text-transform: capitalize;
       }
-
+      
       .current-icon {
         display: flex;
         justify-content: center;
@@ -198,8 +200,10 @@ button:active {
   }
 }
 
+
+//Styles for the footer
 footer {
-  display:flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
@@ -217,20 +221,22 @@ footer {
   }
 }
 
+
+//Responsiveness
 @media screen and (max-width: 1500px) {
   .weather-app > .forms, .current-weather-display {
     width: 70%; 
   }
 }
 
-/*
-@media screen and (max-height: 1000px) {
-  footer {
-    height: 7vh;
-  }
-}*/
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 800px) {
+  footer {
+    height: 10vh;
+  }
+}
+
+@media screen and (max-height: 600px) {
   footer {
     height: 15vh;
   }
