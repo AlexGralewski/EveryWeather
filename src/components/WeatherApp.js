@@ -141,20 +141,25 @@ class WeatherApp extends React.Component {
 
   render() {
     const {city, lat, long, weatherData, locationData, currentDisplay, formsDisplay, returnButtonDisplay} = this.state
-    let current = {}
+    let currentWeather = {}
     
     //assigning weather parameters
     if (weatherData !== undefined) {
-      //set current temperature
-      current.temp = Math.round(weatherData.current.temp - 273.15)
-      //set current sunrise and sunset
-      current.sunrise = timestampToTime(weatherData.current.sunrise)
-      current.sunset = timestampToTime(weatherData.current.sunset)
-      //set current weather
-      current.description = weatherData.current.weather[0].description
-      current.iconId = weatherData.current.weather[0].icon
+      //sets current temperature
+      currentWeather.temp = Math.round(weatherData.current.temp - 273.15)
+      //sets current sunrise and sunset
+      currentWeather.sunrise = timestampToTime(weatherData.current.sunrise)
+      currentWeather.sunset = timestampToTime(weatherData.current.sunset)
+      //sets current weather parameters
+      currentWeather.description = weatherData.current.weather[0].description
+      currentWeather.iconId = weatherData.current.weather[0].icon
+      currentWeather.pressure = weatherData.current.pressure
+      currentWeather.humidity = weatherData.current.humidity
+      currentWeather.wind = [weatherData.current.wind_deg, weatherData.current.wind_speed]
+
+      
     } 
-    console.log(current)
+    console.log(currentWeather)
 
     if (locationData !== undefined) {
         const cityL = locationData.results[0].components.city
@@ -228,11 +233,12 @@ class WeatherApp extends React.Component {
           lat={lat}
           long={long}
           currentDisplay = {currentDisplay}
-          currentTemp = {current.temp}
-          currentDescription = {current.description}
-          currentIconId = {current.iconId}
-          currentSunrise = {current.sunrise}
-          currentSunset = {current.sunset}
+          currentWeather = {currentWeather}
+          currentTemp = {currentWeather.temp}
+          currentDescription = {currentWeather.description}
+          currentIconId = {currentWeather.iconId}
+          currentSunrise = {currentWeather.sunrise}
+          currentSunset = {currentWeather.sunset}
           />
         <button 
           onClick={this.handleReturnButton} 

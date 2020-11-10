@@ -116,7 +116,7 @@ code {
 }
 
 .current-weather-display .current-temp {
-  font-size: 8rem;
+  font-size: 9rem;
 }
 
 .current-weather-display .current-main {
@@ -128,9 +128,10 @@ code {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin: 1rem;
 }
 
-.current-weather-display .current-main .current-weather {
+.current-weather-display .current-main .current-weather .current-description {
   text-transform: capitalize;
 }
 
@@ -189,8 +190,8 @@ button:active {
       -ms-flex-pack: center;
           justify-content: center;
   height: 3rem;
-  top: 5rem;
-  left: 5rem;
+  top: 2%;
+  left: 2%;
   padding: 1rem;
 }
 

@@ -107,21 +107,24 @@ code {
   }
 
   .current-temp {
-    font-size: 8rem;
+    font-size: 9rem;
   }
 
   .current-main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-      .current-weather {
+    margin: 1rem;
+    .current-weather {
+      .current-description{
         text-transform: capitalize;
-
-        .current-icon {
-          display: flex;
-          justify-content: center;
-        }
       }
+
+      .current-icon {
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   .current-place {
@@ -163,8 +166,8 @@ button:active {
   align-items: center;
   justify-content: center;
   height: 3rem;
-  top: 5rem;
-  left: 5rem;
+  top: 2%;
+  left: 2%;
   padding: 1rem;
   p {
     margin: 1rem 0
