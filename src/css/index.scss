@@ -1,9 +1,10 @@
 //color scheme
 $bright1: #FCFCFC;
-$bright2: #b3f4f7;
-$bright3: #F45B69;
-$dark1: #114B5F;
-$dark2: #028090;
+$bright2: #b3f7cd;
+$bright3: #d8535e;
+$bright4: rgb(13, 207, 246);
+$dark1: #11565f;
+$dark2: #029084;
 
 
 body {
@@ -13,6 +14,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $bright2;
+  background: $bright2;
+  background: linear-gradient(90deg, $bright2 0%, $bright4 100%);
   
 }
 
@@ -32,20 +36,35 @@ code {
   flex-direction: row;
   justify-content: space-around;
   min-height: 93vh;
-  background-color: $bright2;
-  background: $bright2;
-  background: linear-gradient(90deg, $bright2 0%, rgba(0,212,255,1) 100%);
-  
+
+  .background-text{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    font-size: 20rem;
+    font-weight: 200;
+    letter-spacing: 1rem;
+    color: rgb(106, 226, 216);
+    top: 0%;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    p{
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+
   .forms {
-    padding: 2rem;
+    padding: 4rem 1rem;
     margin: 1rem;
     width: 40%;
-    background-color: #114B5F;
+    background-color: $dark1;
     color: $bright1;
     border-radius: 1rem;
-    -webkit-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
-    -moz-box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
-    box-shadow: 15px 15px 40px 6px rgba(17,75,95,1);
+    -webkit-box-shadow: 15px 15px 40px 6px $dark1;
+    -moz-box-shadow: 15px 15px 40px 6px $dark1;
+    box-shadow: 15px 15px 40px 6px $dark1;
     
     label {
       font-size: 1.5rem;
@@ -70,8 +89,6 @@ code {
       color: $dark1;
     }
     
-
-
     .city-country-inputs {
       display: flex;
       align-items: center;
@@ -85,6 +102,11 @@ code {
         height: 3rem;
         width: 30%;
       }
+    }
+
+    .or {
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
     }
   }
 }
@@ -139,14 +161,16 @@ code {
 
 button {
   background-color: $bright3;
-  color: inherit;
+  color: $bright1;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.05rem;
   padding: 0.5rem 1rem;
-  border:none; 
+  border: none; 
   border-radius: 0.5rem;
-  
+  p {
+    margin: 0 1rem;
+  }
 }
 
 button:hover {
@@ -179,7 +203,7 @@ footer {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 5vh;
+  height: 7vh;
   font-size: 1.2rem;
   background-color: $dark2;
   color: $bright1;
@@ -199,12 +223,12 @@ footer {
   }
 }
 
-
+/*
 @media screen and (max-height: 1000px) {
   footer {
     height: 7vh;
   }
-}
+}*/
 
 @media screen and (max-height: 700px) {
   footer {

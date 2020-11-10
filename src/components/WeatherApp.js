@@ -161,15 +161,14 @@ class WeatherApp extends React.Component {
     } 
     console.log(currentWeather)
 
-    if (locationData !== undefined) {
-        const cityL = locationData.results[0].components.city
-        const countryL = locationData.results[0].components.country
-
-      }
 
 
     return (
       <div className="weather-app">
+        <div className="background-text">
+          Get Your
+          <p>Weather</p>
+        </div>
         <div className="forms" style={{display:formsDisplay}}>
           <div className="lat-long-form">
             <form onSubmit={this.handleLatLongSubmit}>
@@ -196,7 +195,7 @@ class WeatherApp extends React.Component {
               <button>Get current weather</button>
             </form>
           </div>
-          <h1>OR</h1>
+          <h1 className="or">OR</h1>
           <div className="city-form">
             <form onSubmit={this.handleCitySubmit}>
             <label>
@@ -222,7 +221,7 @@ class WeatherApp extends React.Component {
             <button>Get current weather</button>
           </form>
           </div>
-          <h1>OR</h1>
+          <h1 className="or">OR</h1>
           <div className="this-location-form">
             <button onClick={this.handlePositionSubmit}>Get current weather for your position</button>          
           </div>
