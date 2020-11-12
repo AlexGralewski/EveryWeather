@@ -1,7 +1,7 @@
 import React from "react"
 import timestampToTime from "../data/timestampToTime"
 import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
-import cities from "../data/cities"
+
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -57,7 +57,7 @@ class WeatherApp extends React.Component {
       })}
     
   handleLatLongSubmit2() {
-    //URL string for location API
+    //URL string for reverse location API
     let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + (this.state.lat % 180) + "+" + (this.state.long % 180) + "&key="  + this.state.locationApiKey  
 
     console.log(locationApiUrl)
@@ -109,34 +109,51 @@ class WeatherApp extends React.Component {
 
   handleCitySubmit(event) {
     event.preventDefault()
-    
-    let cityIndex
-    for (cityIndex = 0; cityIndex < cities.length; cityIndex++) {
-      if (cities[cityIndex].city === "warsaw") {
-        this.setState({
-          lat: cities[cityIndex].lat,
-          long: cities[cityIndex].long
-        })
-      }
-    }
 
+    //URL string for forward location API
+    let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
+    console.log(locationApiUrl)
+    fetch(locationApiUrl)
+      .then(response => response.json())
+      .then(res => {this.setState({
+        locationData: res
+      }, this.handleCitySubmit2)})
+
+  }
+
+  handleCitySubmit2() {
+    this.setState({
+      lat: this.state.locationData.results[0].geometry.lat,
+      long: this.state.locationData.results[0].geometry.lng,
+      city: this.state.locationData.results[0].components.city,
+      country: this.state.locationData.results[0].components.country
+    }, this.handleCitySubmit3)
+  }
+
+  handleCitySubmit3() {
     //URL string for weather API
-    let apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 90) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey
-    console.log(apiURL)
-
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
+    console.log(weatherApiUrl)
+    
     //fetch weather API
-    fetch(apiURL)
+    fetch(weatherApiUrl)
       .then(response => response.json())
       .then(res => {
         this.setState({
-          data: res
-        });
+          weatherData: res,
+          currentDisplay: "flex",
+          formsDisplay: "none",
+          returnButtonDisplay: "flex"
+        }, this.assignCurrentWeatherParameters 
+        )
       })
-      .catch(err => {
-        console.log(err);
-      });   
+      .catch(error => {
+        console.log(error)
+      })
   }
 
+
+  //
   handlePositionSubmit() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
@@ -175,17 +192,13 @@ class WeatherApp extends React.Component {
 
   render() {
     const {city, lat, long, weatherData, locationData, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather} = this.state
-
-    
-    
+   
     /*assigning location parameters
     if (locationData !== undefined) {
 
       console.log(locationData.results[0].components.city)
       console.log(locationData.results[0].components.country)
     } */
-
-
 
     return (
       <div className="weather-app">
@@ -236,7 +249,7 @@ class WeatherApp extends React.Component {
                   value={this.state.country}
                   name="country"
                   onChange = {this.handleChange}
-                  required>
+                  >
                   <option value="">Country</option>
                   <option value="poland">Poland</option>
                   <option value="england">England</option>

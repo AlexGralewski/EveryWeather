@@ -4,16 +4,15 @@ import getWeatherIcon from "../data/weatherIcons"
 
 function CurrentWeatherDisplay(props) {
   const {city, lat, long, currentWeather, currentDisplay} = props
-  let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
-  
-  return (
-    <div className="current-weather-display" style={{display:currentDisplay}}> 
+  if (currentWeather !== undefined){
+    let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
+    return (
+      <div className="current-weather-display" style={{display:currentDisplay}}> 
       <div className="current-title">Current weather:</div>
       <div className="current-main">
         <div className="current-temp">{currentWeather.temp}°C</div>
         <div className="current-weather">
-          <div className="current-icon">{currentWeatherIcon}</div>
-          
+          <div className="current-icon">{currentWeatherIcon}</div>      
           <div className="current-description">{currentWeather.description}</div>
           <div className="current-humidity">Humidity: {currentWeather.humidity}%</div>
           <div className="current-pressure">Pressure: {currentWeather.pressure}hPa</div>
@@ -25,10 +24,15 @@ function CurrentWeatherDisplay(props) {
         <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
         <div className="current-city">City: {city}</div>
       </div>
-  
-
     </div>
-  )
+    )
+  } else {
+    return (
+      <div className="current-weather-display" style={{display:currentDisplay}}> 
+      </div>)
+  }
+
+
 }
 
 export default CurrentWeatherDisplay
