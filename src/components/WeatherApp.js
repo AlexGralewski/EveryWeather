@@ -22,9 +22,9 @@ class WeatherApp extends React.Component {
       returnButtonDisplay: "none"
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleLatLongSubmit = this.handleLatLongSubmit.bind(this)
-    this.handleCitySubmit = this.handleCitySubmit.bind(this)
-    this.handlePositionSubmit = this.handlePositionSubmit.bind(this)
+    this.handleLatLongCurrentSubmit = this.handleLatLongCurrentSubmit.bind(this)
+    this.handleCityCurrentSubmit = this.handleCityCurrentSubmit.bind(this)
+    this.handlePositionCurrentSubmit = this.handlePositionCurrentSubmit.bind(this)
     this.handleReturnButton = this.handleReturnButton.bind(this)
   }
 
@@ -36,7 +36,7 @@ class WeatherApp extends React.Component {
     })
   }
 
-  handleLatLongSubmit(event) {
+  handleLatLongCurrentSubmit(event) {
     event.preventDefault()
     //URL string for weather API
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
@@ -49,18 +49,18 @@ class WeatherApp extends React.Component {
         this.setState({
           weatherData: res
         }, 
-        this.handleLatLongSubmit2,
+        this.handleLatLongCurrentSubmit2,
         )
       })
       .catch(error => {
         console.log(error)
       })}
     
-  handleLatLongSubmit2() {
+  handleLatLongCurrentSubmit2() {
     //URL string for reverse location API
     let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + (this.state.lat % 180) + "+" + (this.state.long % 180) + "&key="  + this.state.locationApiKey  
 
-    console.log(locationApiUrl)
+    console.log(this.state.weatherData.daily[0])
 
     //fetch location API
     fetch(locationApiUrl)
@@ -107,7 +107,7 @@ class WeatherApp extends React.Component {
   }
 
 
-  handleCitySubmit(event) {
+  handleCityCurrentSubmit(event) {
     event.preventDefault()
 
     //URL string for forward location API
@@ -117,20 +117,20 @@ class WeatherApp extends React.Component {
       .then(response => response.json())
       .then(res => {this.setState({
         locationData: res
-      }, this.handleCitySubmit2)})
+      }, this.handleCityCurrentSubmit2)})
 
   }
 
-  handleCitySubmit2() {
+  handleCityCurrentSubmit2() {
     this.setState({
       lat: this.state.locationData.results[0].geometry.lat,
       long: this.state.locationData.results[0].geometry.lng,
       city: this.state.locationData.results[0].components.city,
       country: this.state.locationData.results[0].components.country
-    }, this.handleCitySubmit3)
+    }, this.handleCityCurrentSubmit3)
   }
 
-  handleCitySubmit3() {
+  handleCityCurrentSubmit3() {
     //URL string for weather API
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
     console.log(weatherApiUrl)
@@ -154,7 +154,7 @@ class WeatherApp extends React.Component {
 
 
   //
-  handlePositionSubmit() {
+  handlePositionCurrentSubmit() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: Math.round(position.coords.latitude * 1000) / 1000,
@@ -162,11 +162,11 @@ class WeatherApp extends React.Component {
         formsDisplay: "none",
         currentDisplay: "block",
         returnButtonDisplay: "flex"
-      }, this.handlePositionSubmit2)
+      }, this.handlePositionCurrentSubmit2)
     })
   }
 
-  handlePositionSubmit2() {
+  handlePositionCurrentSubmit2() {
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 90) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
 
     fetch(weatherApiUrl)
@@ -183,6 +183,9 @@ class WeatherApp extends React.Component {
 
   handleReturnButton(event) {
     this.setState({
+      lat: 0,
+      long: 0,
+      city: "",
       formsDisplay: "flex",
       currentDisplay: "none",
       returnButtonDisplay: "none"
@@ -191,7 +194,7 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    const {city, lat, long, weatherData, locationData, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather} = this.state
+    const {city, lat, long, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather} = this.state
    
     /*assigning location parameters
     if (locationData !== undefined) {
@@ -208,36 +211,39 @@ class WeatherApp extends React.Component {
         </div>
         <div className="forms" style={{display:formsDisplay}}>
           <div className="lat-long-form">
-            <form onSubmit={this.handleLatLongSubmit}>
+            <form>
               <label>
-                Enter latitude:<br />
-                <input 
-                  type="number"
-                  step="0.001"
-                  name="lat"
-                  value={lat}
-                  onChange={this.handleChange}
-                  required/> 
+                Enter latitude:
               </label>
+              <input 
+                type="number"
+                step="0.001"
+                name="lat"
+                value={lat}
+                onChange={this.handleChange}
+                required/> 
               <label>
-                Enter longitude: <br />
-                <input 
-                  type="number"
-                  step="0.001"
-                  name="long"
-                  value={long}
-                  onChange={this.handleChange}
-                  required/> 
+                Enter longitude:
               </label>
-              <button>Get current weather</button>
+              <input 
+                type="number"
+                step="0.001"
+                name="long"
+                value={long}
+                onChange={this.handleChange}
+                required/> 
+              <div className="submit-buttons">
+                <button onClick={this.handleLatLongCurrentSubmit}>Get current weather</button>
+                <button onClick={this.handleLatLongForecastSubmit}>Get seven day forecast</button>
+              </div>
             </form>
           </div>
           <h1 className="or">OR</h1>
           <div className="city-form">
-            <form onSubmit={this.handleCitySubmit}>
-            <label>
-              Enter a name of a city:
-            </label>
+            <form>
+              <label>
+                Enter a name of a city:
+              </label>
               <div className="city-country-inputs">
                 <input 
                   type="text"
@@ -255,12 +261,18 @@ class WeatherApp extends React.Component {
                   <option value="england">England</option>
                 </select>
               </div>
-            <button>Get current weather</button>
+              <div className="submit-buttons">
+                <button onClick={this.handleCityCurrentSubmit}>Get current weather</button>
+                <button onClick={this.handleCityForecastSubmit}>Get seven day forecast</button>
+              </div>
           </form>
           </div>
           <h1 className="or">OR</h1>
           <div className="this-location-form">
-            <button onClick={this.handlePositionSubmit}>Get current weather for your position</button>          
+            <div className="submit-buttons">
+              <button onClick={this.handlePositionCurrentSubmit}>Get current weather for your position</button>          
+              <button onClick={this.handlePositionForecastSubmit}>Get current weather for your position</button>          
+            </div>
           </div>
         </div>
 
