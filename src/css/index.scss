@@ -73,10 +73,10 @@ code {
     }
     
     input, select {
-      width: 100%;
+      width: 50%;
       background-color: $dark2;
       color: inherit;
-      padding: 1rem;
+      padding: 1rem 1rem 1rem 2rem;
       margin: 1rem;
       border-radius: 0.5rem;
       border: none;
@@ -89,6 +89,14 @@ code {
       color: $dark1;
     }
 
+    .current-weather-button {
+      background: none;
+      border: 0.1rem $bright3 solid;
+    }
+
+    .current-weather-button:hover {
+      background-color: $bright3;
+    }
 
     .city-form {
       .city-country-inputs {
@@ -107,67 +115,72 @@ code {
       }
     }
     
+    .position-form {
+      display: flex;
+      flex-direction: column;
+    }
+
     .or {
       font-size: 2rem;
       letter-spacing: 0.1rem;
     }
   }
-}
   
-//Styles for current weather display section
-.current-weather-display {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  background-color: $dark1;
-  color: $bright1;
-  width: 40%;
-  border-radius: 1rem;
-  
-  
-  .current-title {
+  //Styles for current weather display section
+  .current-weather-display {
     display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    letter-spacing: 0.2rem;
-  }
-  
-  .current-temp {
-    font-size: 9rem;
-  }
-  
-  .current-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 1rem;
-    .current-weather {
-      .current-description{
+    flex-direction: column;
+    padding: 1rem 0;
+    background-color: $dark1;
+    color: $bright1;
+    width: 40%;
+    border-radius: 1rem;
+    
+    
+    .current-title {
+      display: flex;
+      justify-content: center;
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
+    }
+    
+    .current-temp {
+      font-size: 9rem;
+    }
+    
+    .current-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 1rem;
+      .current-weather {
+        .current-description{
+          text-transform: capitalize;
+        }
+        
+        .current-icon {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    
+    .current-place {
+      display: flex;
+      justify-content: space-around;
+      
+      .current-city {
         text-transform: capitalize;
       }
-      
-      .current-icon {
-        display: flex;
-        justify-content: center;
-      }
-    }
-  }
-
-  .current-place {
-    display: flex;
-    justify-content: space-around;
-
-    .current-city {
-      text-transform: capitalize;
     }
   }
 }
-
-button {
-  background-color: $bright3;
-  color: $bright1;
-  font-size: 0.8rem;
-  font-weight: 600;
+  
+  button {
+    background-color: $bright3;
+    color: $bright1;
+    font-size: 0.8rem;
+    font-weight: 600;
   letter-spacing: 0.05rem;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
@@ -227,8 +240,8 @@ footer {
 
 //Responsiveness
 @media screen and (max-width: 1500px) {
-  .weather-app > .forms, .current-weather-display {
-    width: 70%; 
+  .forms, .current-weather-display {
+    width: 100%; 
   }
 }
 

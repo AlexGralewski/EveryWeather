@@ -73,10 +73,10 @@ code {
 }
 
 .weather-app .forms input, .weather-app .forms select {
-  width: 100%;
+  width: 50%;
   background-color: #029084;
   color: inherit;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
   margin: 1rem;
   border-radius: 0.5rem;
   border: none;
@@ -86,6 +86,15 @@ code {
 .weather-app .forms input:hover, .weather-app .forms select:hover {
   background-color: #b3f7cd;
   color: #11565f;
+}
+
+.weather-app .forms .current-weather-button {
+  background: none;
+  border: 0.1rem #d8535e solid;
+}
+
+.weather-app .forms .current-weather-button:hover {
+  background-color: #d8535e;
 }
 
 .weather-app .forms .city-form .city-country-inputs {
@@ -109,12 +118,22 @@ code {
   width: 30%;
 }
 
+.weather-app .forms .position-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .weather-app .forms .or {
   font-size: 2rem;
   letter-spacing: 0.1rem;
 }
 
-.current-weather-display {
+.weather-app .current-weather-display {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -129,7 +148,7 @@ code {
   border-radius: 1rem;
 }
 
-.current-weather-display .current-title {
+.weather-app .current-weather-display .current-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,11 +159,11 @@ code {
   letter-spacing: 0.2rem;
 }
 
-.current-weather-display .current-temp {
+.weather-app .current-weather-display .current-temp {
   font-size: 9rem;
 }
 
-.current-weather-display .current-main {
+.weather-app .current-weather-display .current-main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,11 +175,11 @@ code {
   margin: 1rem;
 }
 
-.current-weather-display .current-main .current-weather .current-description {
+.weather-app .current-weather-display .current-main .current-weather .current-description {
   text-transform: capitalize;
 }
 
-.current-weather-display .current-main .current-weather .current-icon {
+.weather-app .current-weather-display .current-main .current-weather .current-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -169,7 +188,7 @@ code {
           justify-content: center;
 }
 
-.current-weather-display .current-place {
+.weather-app .current-weather-display .current-place {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,7 +196,7 @@ code {
       justify-content: space-around;
 }
 
-.current-weather-display .current-place .current-city {
+.weather-app .current-weather-display .current-place .current-city {
   text-transform: capitalize;
 }
 
@@ -256,8 +275,8 @@ footer i {
 }
 
 @media screen and (max-width: 1500px) {
-  .weather-app > .forms, .current-weather-display {
-    width: 70%;
+  .forms, .current-weather-display {
+    width: 100%;
   }
 }
 
