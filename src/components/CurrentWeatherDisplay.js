@@ -1,11 +1,12 @@
 import React from "react"
-import getWeatherIcon from "../data/weatherIcons"
+import getWeatherIcon from "../methods/weatherIcons"
 
 
 function CurrentWeatherDisplay(props) {
   const {city, lat, long, currentWeather, currentDisplay} = props
   if (currentWeather !== undefined){
     let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
+
     return (
       <div className="current-weather-display" style={{display:currentDisplay}}> 
       <div className="current-title">Current weather:</div>

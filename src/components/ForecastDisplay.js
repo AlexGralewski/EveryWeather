@@ -1,17 +1,23 @@
 import React from "react"
+import ForecastDay from "./ForecastDay"
 
 function ForecastDisplay(props) {
-  let forecast = 
-  return (
-    <div className="forecast-display">
-      <div className="forecast-display-item">
-        <div className="forecast-day"></div>
-        <div className="forecast-temp"></div>
-        <div className="forecast-icon"></div>
-        <div className="forecast-humidity"></div>
+  const {city, lat, long, forecastDisplay, forecastWeather} = props
+  if (forecastWeather !== undefined) {
+
+    const display = forecastWeather.map(day => <ForecastDay key={day.index} temp={day.temp} weather={day.weather} iconId={day.iconId} humidity={day.humidity}/>)
+    return (
+      <div className="forecast-weather-display" style={{display:forecastDisplay}}>
+        {display}
       </div>
-    </div>
   )
+  } else {
+    return (
+      <div className="forecast-weather-display" style={{display:forecastDisplay}}> 
+    </div>
+    )
+  }
 }
+
 
 export default ForecastDisplay
