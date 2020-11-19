@@ -2,13 +2,32 @@ import React from "react"
 import ForecastDay from "./ForecastDay"
 
 function ForecastDisplay(props) {
-  const {city, lat, long, forecastDisplay, forecastWeather} = props
+  const {city, country, lat, long, forecastDisplay, forecastWeather} = props
+  const today = (new Date()).getDay()
+  
   if (forecastWeather !== undefined) {
-
-    const display = forecastWeather.map(day => <ForecastDay key={day.index} temp={day.temp} weather={day.weather} iconId={day.iconId} humidity={day.humidity}/>)
+    const display = forecastWeather.map(day => 
+      <ForecastDay 
+        key={day.dayIndex} 
+        day={day.dayIndex} 
+        temp={day.temp} 
+        weather={day.weather} 
+        iconId={day.iconId} 
+        humidity={day.humidity} 
+        today = {today}
+        />)
     return (
       <div className="forecast-weather-display" style={{display:forecastDisplay}}>
-        {display}
+        <div className="forecast-display-title">
+          Seven Day Forecast
+        </div>
+        <div className="forecast-results">
+          {display}
+        </div>
+        <div className="place">
+          <div className="place-lat-long">Latitude: {lat}, Longitude: {long}</div>
+          <div className="place-city"><i class="fas fa-map-marker-alt"></i> {city}, {country}</div>
+        </div>
       </div>
   )
   } else {

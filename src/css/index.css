@@ -188,7 +188,7 @@ code {
           justify-content: center;
 }
 
-.weather-app .current-weather-display .current-place {
+.weather-app .place {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,7 +196,7 @@ code {
       justify-content: space-around;
 }
 
-.weather-app .current-weather-display .current-place .current-city {
+.weather-app .place .place-city {
   text-transform: capitalize;
 }
 
@@ -204,11 +204,79 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 1rem 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem;
   background-color: #11565f;
   color: #FCFCFC;
-  width: 40%;
   border-radius: 1rem;
+}
+
+.weather-app .forecast-weather-display .forecast-display-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+}
+
+.weather-app .forecast-weather-display .forecast-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item {
+  background-color: #029084;
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-day {
+  font-size: 1.5rem;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-temp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-temp .forecast-temp-day, .weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-temp .forecast-temp-night {
+  padding: 0 0.5rem;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-temp .forecast-temp-day {
+  color: #f0ebd3;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-temp .forecast-temp-night {
+  color: #dfdfdfd0;
+}
+
+.weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-humidity {
+  color: #81c5e0;
 }
 
 button {

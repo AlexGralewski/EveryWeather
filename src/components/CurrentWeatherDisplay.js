@@ -3,7 +3,7 @@ import getWeatherIcon from "../methods/weatherIcons"
 
 
 function CurrentWeatherDisplay(props) {
-  const {city, lat, long, currentWeather, currentDisplay} = props
+  const {city, country, lat, long, currentWeather, currentDisplay} = props
   if (currentWeather !== undefined){
     let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
 
@@ -21,9 +21,9 @@ function CurrentWeatherDisplay(props) {
           <div className="current-sunset">Sunset: {currentWeather.sunset}</div>
         </div>
       </div>
-      <div className="current-place">
-        <div className="current-lat-long">Latitude: {lat}, Longitude: {long}</div>
-        <div className="current-city">City: {city}</div>
+      <div className="place">
+        <div className="place-lat-long">Latitude: {lat}, Longitude: {long}</div>
+        <div className="place-city"><i class="fas fa-map-marker-alt"></i> {city}, {country}</div>
       </div>
     </div>
     )

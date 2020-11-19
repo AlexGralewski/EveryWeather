@@ -29,6 +29,8 @@ class WeatherApp extends React.Component {
     this.handlePositionCurrentSubmit = this.handlePositionCurrentSubmit.bind(this)
     this.handleReturnButton = this.handleReturnButton.bind(this)
     this.handleLatLongForecastSubmit = this.handleLatLongForecastSubmit.bind(this)
+    this.handleCityForecastSubmit = this.handleCityForecastSubmit.bind(this)
+    this.handlePositionForecastSubmit = this.handlePositionForecastSubmit.bind(this)
   }
 
   //Handles change of all inputs in forms section.
@@ -56,8 +58,8 @@ class WeatherApp extends React.Component {
         this.handleLatLongCurrentSubmit2,
         )
       })
-      .catch(error => {
-        console.log(error)
+      .catch(err => {
+        console.log(err)
       })}
     
   //Second part of latitude andlongitude form (current weather). Fetches data from OpenCageData API.
@@ -123,8 +125,8 @@ class WeatherApp extends React.Component {
         }, this.assignCurrentWeatherParameters 
         )
       })
-      .catch(error => {
-        console.log(error)
+      .catch(err => {
+        console.log(err)
       })
   }
 
@@ -184,7 +186,7 @@ class WeatherApp extends React.Component {
 
   }
 
-  //Handles submit of latitude and longitude form (current weather). Fetches data from OpenWeatherMap API.
+  //Handles submit of latitude and longitude form (forecast weather). Fetches data from OpenWeatherMap API.
   handleLatLongForecastSubmit(event) {
     event.preventDefault()
     //URL string for weather API
@@ -205,12 +207,10 @@ class WeatherApp extends React.Component {
         console.log(error)
       })}
     
-  //Second part of latitude andlongitude form (current weather). Fetches data from OpenCageData API.
+  //Second part of latitude andlongitude form (forecast weather). Fetches data from OpenCageData API.
   handleLatLongForecastSubmit2() {
     //URL string for reverse location API
     let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + (this.state.lat % 180) + "+" + (this.state.long % 180) + "&key="  + this.state.locationApiKey  
-
-    console.log(this.state.weatherData.daily)
 
     //fetch location API
     fetch(locationApiUrl)
@@ -228,27 +228,98 @@ class WeatherApp extends React.Component {
     
   }
 
-  //Last part of every form (seven day weather). Assigns current parameters pulled from API to this.state.currentWeather object. Changes view from forms to result display.
+  //Handles submit of city form (forecast weather). Fetches data from OpenCageData API.
+  handleCityForecastSubmit(event) {
+    event.preventDefault()
+
+    //URL string for forward location API
+    let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
+    console.log(locationApiUrl)
+    fetch(locationApiUrl)
+      .then(response => response.json())
+      .then(res => {this.setState({
+        locationData: res
+      }, this.handleCityForecastSubmit2)})
+
+  }
+
+  //Second part of city form (forecast weather). Sets latitude and longitude parameters of city entered in form input.  
+  handleCityForecastSubmit2() {
+    this.setState({
+      lat: this.state.locationData.results[0].geometry.lat,
+      long: this.state.locationData.results[0].geometry.lng,
+      city: this.state.locationData.results[0].components.city,
+      country: this.state.locationData.results[0].components.country
+    }, this.handleCityForecastSubmit3)
+  }
+
+  //Third part of city form (forecast weather). Fetches data from OpenWeatherMap API.
+  handleCityForecastSubmit3() {
+    //URL string for weather API
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
+    console.log(weatherApiUrl)
+    
+    //fetch weather API
+    fetch(weatherApiUrl)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({
+          weatherData: res,
+        }, this.assignForecastParameters 
+        )
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  //Handles submit of position form (forecast weather). Sets latitude and longitude based on forecast position of user.
+  handlePositionForecastSubmit() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: Math.round(position.coords.latitude * 1000) / 1000,
+        long: Math.round(position.coords.longitude *1000) / 1000
+      }, this.handlePositionForecastSubmit2)
+    })
+  }
+
+  //Second part of position form (forecast weather)
+  handlePositionForecastSubmit2() {
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 90) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
+
+    fetch(weatherApiUrl)
+      .then(response => response.json())
+      .then(res => {
+        this.setState({
+          weatherData: res
+        }, this.assignForecastParameters)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+    console.log(weatherApiUrl)
+  }
+
+  //Last part of every form (forecast weather). Assigns forecast parameters pulled from API to this.state.forecastWeather object. Changes view from forms to result display.
   assignForecastParameters() {
     const {weatherData} = this.state
-    let fWeather = weatherData.daily.map(day => {
-      return({
+    let fWeather = []
+    
+    weatherData.daily.forEach(function(day,index) {
+      fWeather.push({
+        dayIndex: index,
         temp: day.temp,
         weather: day.weather[0].description,
         iconId: day.weather[0].icon,
-        humidity: day.humidity,
+        humidity: day.humidity
       })
     })
-    console.log(fWeather)
+
     this.setState({
-      forecastWeather: fWeather
-    })
-    
-      
-    this.setState({
-      currentWeather: fWeather,
+      forecastWeather: fWeather,
       formsDisplay: "none",
-      forecastDisplay: "block",
+      forecastDisplay: "flex",
       returnButtonDisplay: "flex"
     })
 
@@ -269,15 +340,8 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    const {city, lat, long, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay} = this.state
+    const {city, country, lat, long, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay} = this.state
    
-    /*assigning location parameters
-    if (locationData !== undefined) {
-
-      console.log(locationData.results[0].components.city)
-      console.log(locationData.results[0].components.country)
-    } */
-
     return (
       <div className="weather-app">
         <div className="background-text">
@@ -351,6 +415,7 @@ class WeatherApp extends React.Component {
 
         <CurrentWeatherDisplay 
           city={city}
+          country={country}
           lat={lat}
           long={long}
           currentDisplay = {currentDisplay}
@@ -358,6 +423,7 @@ class WeatherApp extends React.Component {
           />
         <ForecastDisplay 
           city={city}
+          country = {country}
           lat={lat}
           long= {long}
           forecastDisplay = {forecastDisplay}
@@ -369,7 +435,7 @@ class WeatherApp extends React.Component {
           onClick={this.handleReturnButton} 
           style={{display:returnButtonDisplay}} 
           className="return-button">
-            <i className="fas fa-arrow-left"></i><p>Return</p>
+            <i className="fas fa-arrow-left"></i><span>Return</span>
         </button>
       </div>
     )

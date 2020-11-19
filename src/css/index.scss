@@ -165,27 +165,69 @@ code {
       }
     }
     
-    .current-place {
-      display: flex;
-      justify-content: space-around;
-      
-      .current-city {
-        text-transform: capitalize;
-      }
+  }
+  .place {
+    display: flex;
+    justify-content: space-around;
+    
+    .place-city {
+      text-transform: capitalize;
     }
   }
 
+  
   .forecast-weather-display {
     display: flex;
-    padding: 1rem 0;
+    flex-direction: column;
+    padding: 1rem;
     background-color: $dark1;
     color: $bright1;
-    width: 40%;
+
     border-radius: 1rem;
     
-    
+    .forecast-display-title {
+      display: flex;
+      justify-content: center;
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
+    }
 
-    
+    .forecast-results {
+      display: flex;
+
+      .forecast-display-item {
+        background-color: $dark2;
+        padding: 2rem;
+        margin: 1rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        .forecast-day {
+          font-size: 1.5rem;
+        }
+
+        .forecast-temp {
+          display: flex;
+          justify-content: space-around;
+          .forecast-temp-day, .forecast-temp-night {
+            padding: 0 0.5rem;
+          }
+          .forecast-temp-day {
+            color: #f0ebd3;
+          }
+          .forecast-temp-night {
+            color: #dfdfdfd0;
+          }
+        }
+
+        .forecast-humidity {
+          color: #81c5e0;
+        }
+      }
+    }   
   }
 }
   
