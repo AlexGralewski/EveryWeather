@@ -45,8 +45,7 @@ class WeatherApp extends React.Component {
   handleLatLongCurrentSubmit(event) {
     event.preventDefault()
     //URL string for weather API
-    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
-    console.log(weatherApiUrl)
+    let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey
     
     //fetch weather API
     fetch(weatherApiUrl)
@@ -60,14 +59,15 @@ class WeatherApp extends React.Component {
       })
       .catch(err => {
         console.log(err)
-      })}
+      })
+    }
     
   //Second part of latitude andlongitude form (current weather). Fetches data from OpenCageData API.
   handleLatLongCurrentSubmit2() {
     //URL string for reverse location API
     let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + (this.state.lat % 180) + "+" + (this.state.long % 180) + "&key="  + this.state.locationApiKey  
 
-    console.log(this.state.weatherData.daily[0])
+    console.log(locationApiUrl)
 
     //fetch location API
     fetch(locationApiUrl)
@@ -76,7 +76,7 @@ class WeatherApp extends React.Component {
       this.setState({
         locationData: res
       },
-      this.assignCurrentWeatherParameters
+      this.handleLatLongCurrentSubmit3
       )
     })
     .catch(err => {
@@ -85,18 +85,43 @@ class WeatherApp extends React.Component {
     
   }
   
+  //Third part of latitude and longitude form (current weather). Sets city and country, if possible for entered coords.
+  handleLatLongCurrentSubmit3() {
+    let city, country
+
+    if (this.state.locationData.results[0].components.city !== undefined) {
+      city = this.state.locationData.results[0].components.city
+      country = this.state.locationData.results[0].components.country
+    } else {
+      city = ""
+      country = ""
+    }
+    
+    this.setState({
+      city: city,
+      country: country
+    }, this.assignCurrentWeatherParameters
+    )
+  }
+
   //Handles submit of city form (current weather). Fetches data from OpenCageData API.
   handleCityCurrentSubmit(event) {
     event.preventDefault()
 
+    let locationApiUrl
     //URL string for forward location API
-    let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
-    console.log(locationApiUrl)
+
+    if (this.state.country === ""){
+      locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
+
+    } else {
+      locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "%2C" + this.state.country + "&key=" + this.state.locationApiKey 
+    }
     fetch(locationApiUrl)
-      .then(response => response.json())
-      .then(res => {this.setState({
-        locationData: res
-      }, this.handleCityCurrentSubmit2)})
+    .then(response => response.json())
+    .then(res => {this.setState({
+      locationData: res
+    }, this.handleCityCurrentSubmit2)})
 
   }
 
@@ -104,9 +129,7 @@ class WeatherApp extends React.Component {
   handleCityCurrentSubmit2() {
     this.setState({
       lat: this.state.locationData.results[0].geometry.lat,
-      long: this.state.locationData.results[0].geometry.lng,
-      city: this.state.locationData.results[0].components.city,
-      country: this.state.locationData.results[0].components.country
+      long: this.state.locationData.results[0].geometry.lng
     }, this.handleCityCurrentSubmit3)
   }
 
@@ -176,7 +199,8 @@ class WeatherApp extends React.Component {
     cWeather.humidity = weatherData.current.humidity
     cWeather.wind = [weatherData.current.wind_deg, weatherData.current.wind_speed]
   
-      
+
+
     this.setState({
       currentWeather: cWeather,
       formsDisplay: "none",
@@ -207,7 +231,7 @@ class WeatherApp extends React.Component {
         console.log(error)
       })}
     
-  //Second part of latitude andlongitude form (forecast weather). Fetches data from OpenCageData API.
+  //Second part of latitude and longitude form (forecast weather). Fetches data from OpenCageData API.
   handleLatLongForecastSubmit2() {
     //URL string for reverse location API
     let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + (this.state.lat % 180) + "+" + (this.state.long % 180) + "&key="  + this.state.locationApiKey  
@@ -219,7 +243,7 @@ class WeatherApp extends React.Component {
       this.setState({
         locationData: res
       },
-      this.assignForecastParameters
+      this.handleLatLongForecastSubmit3
       )
     })
     .catch(err => {
@@ -228,18 +252,44 @@ class WeatherApp extends React.Component {
     
   }
 
+  //Third part of latitude and longitude form (forecast weather). Sets city and country, if possible for entered coords.
+  handleLatLongForecastSubmit3() {
+    let city, country
+
+    if (this.state.locationData.results[0].components.city !== undefined) {
+      city = this.state.locationData.results[0].components.city
+      country = this.state.locationData.results[0].components.country
+    } else {
+      city = ""
+      country = ""
+    }
+    
+    this.setState({
+      city: city,
+      country: country
+    }, this.assignForecastParameters
+    )
+  }
+
   //Handles submit of city form (forecast weather). Fetches data from OpenCageData API.
   handleCityForecastSubmit(event) {
     event.preventDefault()
+    console.log(this.state.country)
 
+    let locationApiUrl
     //URL string for forward location API
-    let locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
-    console.log(locationApiUrl)
+
+    if (this.state.country === ""){
+      locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "&key=" + this.state.locationApiKey
+
+    } else {
+      locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "%2C" + this.state.country + "&key=" + this.state.locationApiKey 
+    }
     fetch(locationApiUrl)
-      .then(response => response.json())
-      .then(res => {this.setState({
-        locationData: res
-      }, this.handleCityForecastSubmit2)})
+    .then(response => response.json())
+    .then(res => {this.setState({
+      locationData: res
+    }, this.handleCityForecastSubmit2)})
 
   }
 
@@ -248,8 +298,6 @@ class WeatherApp extends React.Component {
     this.setState({
       lat: this.state.locationData.results[0].geometry.lat,
       long: this.state.locationData.results[0].geometry.lng,
-      city: this.state.locationData.results[0].components.city,
-      country: this.state.locationData.results[0].components.country
     }, this.handleCityForecastSubmit3)
   }
 
@@ -331,6 +379,7 @@ class WeatherApp extends React.Component {
       lat: 0,
       long: 0,
       city: "",
+      country: "",
       formsDisplay: "flex",
       currentDisplay: "none",
       forecastDisplay: "none",
@@ -349,6 +398,62 @@ class WeatherApp extends React.Component {
           <p>Weather</p>
         </div>
         <div className="forms" style={{display:formsDisplay}}>
+          <div className="forms-title">Weather App</div>
+          <div className="position-form">
+            <div className="submit-buttons">
+              <button onClick={this.handlePositionCurrentSubmit} className="current-weather-button">Get current weather for your position</button>          
+              <button onClick={this.handlePositionForecastSubmit} className="forecast-weather-button">Get seven day forecast for your position</button>          
+            </div>
+          </div>
+          <h1 className="or">OR</h1>
+          <div className="city-form">
+            <form>
+              <label>
+                Enter a name of a city:
+              </label>
+              <div className="city-country-inputs">
+                <div className = "city-input">
+                <input 
+                  type="text"                  
+                  name="city"
+                  value = {city}
+                  onChange={this.handleChange}
+                  placeholder = "City"
+                  required/> 
+                </div>
+                <div className = "country-input">
+                  <input 
+                    type="text" 
+                    list="country" 
+                    value={this.state.country}
+                    name="country"
+                    onChange = {this.handleChange}
+                    placeholder = "Country*"
+                    />
+                  <datalist id="country">
+                    <option value="">Country*</option>
+                    <option>Australia</option>
+                    <option>Brazil</option>
+                    <option>China</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                    <option>Japan</option>
+                    <option>Poland</option>
+                    <option>Russia</option>
+                    <option>Spain</option>
+                    <option>United Kingdom</option>
+                    <option>United States</option>
+                  </datalist>
+                </div>
+              </div>
+              <p>*You may specify a country to help narrow the results,<br /> though it's not required.</p>
+              <div className="submit-buttons">
+                <button onClick={this.handleCityCurrentSubmit} className="current-weather-button">Get current weather</button>
+                <button onClick={this.handleCityForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
+              </div>
+          </form>
+          </div>
+          <h1 className="or">OR</h1>
           <div className="lat-long-form">
             <form>
               <label>
@@ -376,40 +481,6 @@ class WeatherApp extends React.Component {
                 <button onClick={this.handleLatLongForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
               </div>
             </form>
-          </div>
-          <h1 className="or">OR</h1>
-          <div className="city-form">
-            <form>
-              <label>
-                Enter a name of a city:
-              </label>
-              <div className="city-country-inputs">
-                <input 
-                  type="text"
-                  name="city"
-                  value = {city}
-                  onChange={this.handleChange}
-                  required/> 
-                <select
-                  value={this.state.country}
-                  name="country"
-                  onChange = {this.handleChange}
-                  >
-                  <option value="">Country</option>
-                  <option value="poland">Poland</option>
-                  <option value="england">England</option>
-                </select>
-              </div>
-              <div className="submit-buttons">
-                <button onClick={this.handleCityCurrentSubmit} className="current-weather-button">Get current weather</button>
-                <button onClick={this.handleCityForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
-              </div>
-          </form>
-          </div>
-          <h1 className="or">OR</h1>
-          <div className="position-form">
-            <button onClick={this.handlePositionCurrentSubmit} className="current-weather-button">Get current weather for your position</button>          
-            <button onClick={this.handlePositionForecastSubmit} className="forecast-weather-button">Get seven day forecast for your position</button>          
           </div>
         </div>
 

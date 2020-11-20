@@ -5,6 +5,11 @@ function ForecastDisplay(props) {
   const {city, country, lat, long, forecastDisplay, forecastWeather} = props
   const today = (new Date()).getDay()
   
+  let place
+  if (city !== "") {
+    place = <div className="place-city"><i className="fas fa-map-marker-alt"></i> {city}, {country}</div>
+  }
+
   if (forecastWeather !== undefined) {
     const display = forecastWeather.map(day => 
       <ForecastDay 
@@ -26,7 +31,7 @@ function ForecastDisplay(props) {
         </div>
         <div className="place">
           <div className="place-lat-long">Latitude: {lat}, Longitude: {long}</div>
-          <div className="place-city"><i class="fas fa-map-marker-alt"></i> {city}, {country}</div>
+          {place}
         </div>
       </div>
   )

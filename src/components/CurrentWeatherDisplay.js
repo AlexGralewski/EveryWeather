@@ -7,6 +7,11 @@ function CurrentWeatherDisplay(props) {
   if (currentWeather !== undefined){
     let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
 
+  let place
+  if (city !== "") {
+    place = <div className="place-city"><i className="fas fa-map-marker-alt"></i> {city}, {country}</div>
+  }
+
     return (
       <div className="current-weather-display" style={{display:currentDisplay}}> 
       <div className="current-title">Current weather:</div>
@@ -23,7 +28,7 @@ function CurrentWeatherDisplay(props) {
       </div>
       <div className="place">
         <div className="place-lat-long">Latitude: {lat}, Longitude: {long}</div>
-        <div className="place-city"><i class="fas fa-map-marker-alt"></i> {city}, {country}</div>
+        {place}
       </div>
     </div>
     )

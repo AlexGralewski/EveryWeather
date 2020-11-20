@@ -57,7 +57,7 @@ code {
 
   //Styles for forms section
   .forms {
-    padding: 4rem 1rem;
+    padding: 2rem;
     margin: 1rem;
     width: 30%;
     background-color: $dark1;
@@ -67,64 +67,92 @@ code {
     -moz-box-shadow: 10px 10px 40px 6px $dark1;
     box-shadow: 10px 10px 40px 6px $dark1;
     
-    label {
-      font-size: 1.5rem;
-      font-weight: 200;
-    }
     
-    input, select {
-      width: 50%;
-      background-color: $dark2;
-      color: inherit;
-      padding: 1rem 1rem 1rem 2rem;
-      margin: 1rem;
-      border-radius: 0.5rem;
-      border: none;
-      font-size: 1rem;
+    
+    form {
+      margin: 0.5rem;
+
+      label {
+        font-size: 1.5rem;
+        font-weight: 200;
+        margin: 0.5rem
+      }
+
+      input, select {
+        background-color: $dark2;
+        color: inherit;
+        padding: 1rem 1rem 1rem 2rem;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        font-size: 1rem;        
+      }
+
+      input:hover, select:hover {
+        background-color: $bright2;
+        color: $dark1;
+      }
+    }
+
+    .submit-buttons {
+      display: flex;
+      flex-direction: column;
+      margin: 0.3rem;
+      .current-weather-button {
+        background: none;
+        border: 0.1rem $bright3 solid;
+      }
       
+      .current-weather-button:hover {
+        background-color: $bright3;
+      }
     }
     
-    input:hover, select:hover {
-      background-color: $bright2;
-      color: $dark1;
+    .forms-title {
+      font-size: 3rem;
+      padding: 1rem;
     }
 
-    .current-weather-button {
-      background: none;
-      border: 0.1rem $bright3 solid;
+    .lat-long-form {
+      input {
+        width: 60%;
+      }
     }
-
-    .current-weather-button:hover {
-      background-color: $bright3;
-    }
-
+    
     .city-form {
+      p {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: #e9f3edcc;
+      }
       .city-country-inputs {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        input {
-          width: 50%;
-          margin: 1rem 0.5rem;
-        }
-        select {
-          padding: 0 0 0 1rem;
-          margin: 1rem 0.5rem;
-          height: 3rem;
-          width: 30%;
+
+        input::placeholder {
+          color: $bright1;
+          opacity: 50%;
+        }        
+        input:hover {
+          input::placeholder {
+            color: $bright3;
+          }
         }
       }
     }
     
-    .position-form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .or {
-      font-size: 2rem;
-      letter-spacing: 0.1rem;
-    }
+  .position-form {
+    display: flex;
+    flex-direction: column;
   }
+
+  .or {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }}
   
   //Styles for current weather display section
   .current-weather-display {
@@ -166,6 +194,7 @@ code {
     }
     
   }
+
   .place {
     display: flex;
     justify-content: space-around;
@@ -232,13 +261,13 @@ code {
 }
   
   button {
-    background-color: $bright3;
-    color: $bright1;
-    font-size: 0.8rem;
-    font-weight: 600;
+  background-color: $bright3;
+  color: $bright1;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.05rem;
   padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  margin: 0.3rem;
   border: none; 
   border-radius: 0.5rem;
   p {
@@ -295,11 +324,23 @@ footer {
 
 //Responsiveness
 
-@media screen and (max-width: 1500px) {
-  .forms, .current-weather-display {
-    width: 100%; 
+@media screen and (max-width: 1200px) {
+  .weather-app .forms {
+    width: 50%; 
   }
 }
+
+@media screen and (max-width: 992px) {
+  .weather-app .forms {
+    width: 70%; 
+  }
+}
+@media screen and (max-width: 768px) {
+  .weather-app .forms {
+    width: 75%; 
+  }
+}
+
 
 
 @media screen and (max-height: 800px) {

@@ -57,7 +57,7 @@ code {
 }
 
 .weather-app .forms {
-  padding: 4rem 1rem;
+  padding: 2rem;
   margin: 1rem;
   width: 30%;
   background-color: #11565f;
@@ -67,55 +67,117 @@ code {
   box-shadow: 10px 10px 40px 6px #11565f;
 }
 
-.weather-app .forms label {
-  font-size: 1.5rem;
-  font-weight: 200;
+.weather-app .forms form {
+  margin: 0.5rem;
 }
 
-.weather-app .forms input, .weather-app .forms select {
-  width: 50%;
+.weather-app .forms form label {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin: 0.5rem;
+}
+
+.weather-app .forms form input, .weather-app .forms form select {
   background-color: #029084;
   color: inherit;
   padding: 1rem 1rem 1rem 2rem;
-  margin: 1rem;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   border: none;
   font-size: 1rem;
 }
 
-.weather-app .forms input:hover, .weather-app .forms select:hover {
+.weather-app .forms form input:hover, .weather-app .forms form select:hover {
   background-color: #b3f7cd;
   color: #11565f;
 }
 
-.weather-app .forms .current-weather-button {
+.weather-app .forms .submit-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0.3rem;
+}
+
+.weather-app .forms .submit-buttons .current-weather-button {
   background: none;
   border: 0.1rem #d8535e solid;
 }
 
-.weather-app .forms .current-weather-button:hover {
+.weather-app .forms .submit-buttons .current-weather-button:hover {
   background-color: #d8535e;
+}
+
+.weather-app .forms .forms-title {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.weather-app .forms .lat-long-form input {
+  width: 60%;
+}
+
+.weather-app .forms .city-form p {
+  margin: 0;
+  padding: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.7rem;
+  color: #e9f3edcc;
 }
 
 .weather-app .forms .city-form .city-country-inputs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.weather-app .forms .city-form .city-country-inputs input {
-  width: 50%;
-  margin: 1rem 0.5rem;
+.weather-app .forms .city-form .city-country-inputs input::-webkit-input-placeholder {
+  color: #FCFCFC;
+  opacity: 50%;
 }
 
-.weather-app .forms .city-form .city-country-inputs select {
-  padding: 0 0 0 1rem;
-  margin: 1rem 0.5rem;
-  height: 3rem;
-  width: 30%;
+.weather-app .forms .city-form .city-country-inputs input:-ms-input-placeholder {
+  color: #FCFCFC;
+  opacity: 50%;
+}
+
+.weather-app .forms .city-form .city-country-inputs input::-ms-input-placeholder {
+  color: #FCFCFC;
+  opacity: 50%;
+}
+
+.weather-app .forms .city-form .city-country-inputs input::placeholder {
+  color: #FCFCFC;
+  opacity: 50%;
+}
+
+.weather-app .forms .city-form .city-country-inputs input:hover input::-webkit-input-placeholder {
+  color: #d8535e;
+}
+
+.weather-app .forms .city-form .city-country-inputs input:hover input:-ms-input-placeholder {
+  color: #d8535e;
+}
+
+.weather-app .forms .city-form .city-country-inputs input:hover input::-ms-input-placeholder {
+  color: #d8535e;
+}
+
+.weather-app .forms .city-form .city-country-inputs input:hover input::placeholder {
+  color: #d8535e;
 }
 
 .weather-app .forms .position-form {
@@ -286,7 +348,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.05rem;
   padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  margin: 0.3rem;
   border: none;
   border-radius: 0.5rem;
 }
@@ -353,9 +415,21 @@ footer i {
   margin: 0.5rem;
 }
 
-@media screen and (max-width: 1500px) {
-  .forms, .current-weather-display {
-    width: 100%;
+@media screen and (max-width: 1200px) {
+  .weather-app .forms {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .weather-app .forms {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .weather-app .forms {
+    width: 75%;
   }
 }
 
