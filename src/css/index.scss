@@ -94,6 +94,10 @@ code {
       }
     }
 
+    .position-form {
+      margin: 1rem;
+    }
+
     .submit-buttons {
       display: flex;
       flex-direction: column;
@@ -110,7 +114,8 @@ code {
     
     .forms-title {
       font-size: 3rem;
-      padding: 1rem;
+      padding: 1rem 1rem 0 1rem;
+      text-align: center;
     }
 
     .lat-long-form {
@@ -152,6 +157,7 @@ code {
   .or {
     font-size: 2rem;
     letter-spacing: 0.1rem;
+    margin: 0;
   }}
   
   //Styles for current weather display section
@@ -317,7 +323,7 @@ footer {
     color: $bright1;
   }
   i {
-    margin: 0.5rem;
+    margin: 1rem;
   }
 }
 
@@ -326,13 +332,21 @@ footer {
 
 @media screen and (max-width: 1200px) {
   .weather-app .forms {
-    width: 50%; 
+    width: 60%; 
+  }
+
+  .weather-app > .current-weather-display {
+    width: 60%;
   }
 }
 
 @media screen and (max-width: 992px) {
   .weather-app .forms {
     width: 70%; 
+  }
+
+  .weather-app > .current-weather-display {
+    width: 80%;
   }
 }
 @media screen and (max-width: 768px) {

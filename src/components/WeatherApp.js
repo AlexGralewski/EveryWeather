@@ -117,6 +117,8 @@ class WeatherApp extends React.Component {
     } else {
       locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "%2C" + this.state.country + "&key=" + this.state.locationApiKey 
     }
+
+    console.log(locationApiUrl)
     fetch(locationApiUrl)
     .then(response => response.json())
     .then(res => {this.setState({
@@ -127,15 +129,65 @@ class WeatherApp extends React.Component {
 
   //Second part of city form (current weather). Sets latitude and longitude parameters of city entered in form input.  
   handleCityCurrentSubmit2() {
-    this.setState({
-      lat: this.state.locationData.results[0].geometry.lat,
-      long: this.state.locationData.results[0].geometry.lng
-    }, this.handleCityCurrentSubmit3)
+    console.log(this.locationData)
+    
+    if (this.state.locationData.results === []) {
+      alert("No results")
+      this.setState({
+        city: "",
+        country: ""
+      })
+    
+    } else {
+      console.log(this.state.locationData.results)
+      let cityList = []
+
+      this.state.locationData.results.forEach((place, placeIndex) => {
+        console.log(place, placeIndex)
+        if (place.components._category === "place" && (place.components._type === "city" || place.components._type === "town" || place.components._type === "village")) {
+          if (place.confidence < 7) {
+            cityList.push(place)
+          } else if (place.components.city !== undefined) {
+            if (place.components.city.toLowerCase() === this.state.city.toLowerCase()) {
+              cityList.push(place)
+            }
+          } else if (place.components.town !== undefined) {
+            if (place.components.town.toLowerCase() === this.state.city.toLowerCase()) {
+              cityList.push(place)
+            }
+          } else if (place.components.village !== undefined) {
+            if (place.components.village.toLowerCase() === this.state.city.toLowerCase()) {
+              cityList.push(place)
+            }
+          }
+        }
+      })
+      console.log("City list", cityList)
+
+      if (cityList.length === 1) {
+        this.setState({
+          lat: this.state.locationData.results[0].geometry.lat,
+          long: this.state.locationData.results[0].geometry.lng,
+          country: this.state.locationData.results[0].components.country
+        }, this.handleCityCurrentSubmit3)
+      } else {
+        this.setState({
+          locationData: cityList
+        }, this.handleMoreThanOneCity)
+      }
+    }
+  }
+   
+  handleMoreThanOneCity() {
+    this.state.locationData.forEach(city => {
+      
+    })
   }
 
   //Third part of city form (current weather). Fetches data from OpenWeatherMap API.
   handleCityCurrentSubmit3() {
     //URL string for weather API
+
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
     console.log(weatherApiUrl)
     
@@ -229,7 +281,8 @@ class WeatherApp extends React.Component {
       })
       .catch(error => {
         console.log(error)
-      })}
+      })
+  }
     
   //Second part of latitude and longitude form (forecast weather). Fetches data from OpenCageData API.
   handleLatLongForecastSubmit2() {
@@ -354,7 +407,7 @@ class WeatherApp extends React.Component {
     const {weatherData} = this.state
     let fWeather = []
     
-    weatherData.daily.forEach(function(day,index) {
+    weatherData.daily.forEach((day,index) => {
       fWeather.push({
         dayIndex: index,
         temp: day.temp,
@@ -392,57 +445,61 @@ class WeatherApp extends React.Component {
     const {city, country, lat, long, currentDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay} = this.state
    
     return (
-      <div className="weather-app">
-        <div className="background-text">
-          Get Your
+      <div className = "weather-app">
+        <div className = "background-text">
+          Everywhere
           <p>Weather</p>
         </div>
-        <div className="forms" style={{display:formsDisplay}}>
-          <div className="forms-title">Weather App</div>
-          <div className="position-form">
-            <div className="submit-buttons">
-              <button onClick={this.handlePositionCurrentSubmit} className="current-weather-button">Get current weather for your position</button>          
-              <button onClick={this.handlePositionForecastSubmit} className="forecast-weather-button">Get seven day forecast for your position</button>          
+        <div className = "forms" style = {{display:formsDisplay}}>
+          <div className = "forms-title">Every Weather</div>
+          <div className = "forms-desc">Get weather for anyplace!</div>
+          <div className = "position-form">
+            <div className = "submit-buttons">
+              <button onClick = {this.handlePositionCurrentSubmit} className = "current-weather-button">Get current weather for your position</button>          
+              <button onClick = {this.handlePositionForecastSubmit} className = "forecast-weather-button">Get seven day forecast for your position</button>          
             </div>
           </div>
-          <h1 className="or">OR</h1>
-          <div className="city-form">
+          <h1 className = "or">OR</h1>
+          <div className = "city-form">
             <form>
               <label>
                 Enter a name of a city:
               </label>
-              <div className="city-country-inputs">
+              <div className = "city-country-inputs">
                 <div className = "city-input">
                 <input 
                   type="text"                  
                   name="city"
                   value = {city}
-                  onChange={this.handleChange}
+                  onChange = {this.handleChange}
                   placeholder = "City"
                   required/> 
                 </div>
                 <div className = "country-input">
                   <input 
-                    type="text" 
-                    list="country" 
-                    value={this.state.country}
-                    name="country"
+                    type = "text" 
+                    list = "country" 
+                    value = {this.state.country}
+                    name = "country"
                     onChange = {this.handleChange}
                     placeholder = "Country*"
                     />
-                  <datalist id="country">
-                    <option value="">Country*</option>
+                  <datalist id = "country">
+                    <option value = "">Country*</option>
                     <option>Australia</option>
                     <option>Brazil</option>
                     <option>China</option>
                     <option>France</option>
                     <option>Germany</option>
+                    <option>Ireland</option>
                     <option>Japan</option>
                     <option>Poland</option>
+                    <option>Portugal</option>
                     <option>Russia</option>
                     <option>Spain</option>
+                    <option>Sweden</option>
                     <option>United Kingdom</option>
-                    <option>United States</option>
+                    <option>United%20States</option>
                   </datalist>
                 </div>
               </div>
@@ -460,53 +517,53 @@ class WeatherApp extends React.Component {
                 Enter latitude:
               </label>
               <input 
-                type="number"
-                step="0.001"
-                name="lat"
-                value={lat}
-                onChange={this.handleChange}
+                type = "number"
+                step = "0.001"
+                name = "lat"
+                value = {lat}
+                onChange = {this.handleChange}
                 required/> 
               <label>
                 Enter longitude:
               </label>
               <input 
-                type="number"
-                step="0.001"
-                name="long"
-                value={long}
-                onChange={this.handleChange}
+                type = "number"
+                step = "0.001"
+                name = "long"
+                value = {long}
+                onChange = {this.handleChange}
                 required/> 
               <div className="submit-buttons">
-                <button onClick={this.handleLatLongCurrentSubmit} className="current-weather-button">Get current weather</button>
-                <button onClick={this.handleLatLongForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
+                <button onClick = {this.handleLatLongCurrentSubmit} className="current-weather-button">Get current weather</button>
+                <button onClick = {this.handleLatLongForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
               </div>
             </form>
           </div>
         </div>
 
         <CurrentWeatherDisplay 
-          city={city}
-          country={country}
-          lat={lat}
-          long={long}
+          city = {city}
+          country = {country}
+          lat = {lat}
+          long = {long}
           currentDisplay = {currentDisplay}
           currentWeather = {currentWeather}
           />
         <ForecastDisplay 
-          city={city}
+          city = {city}
           country = {country}
-          lat={lat}
-          long= {long}
+          lat = {lat}
+          long = {long}
           forecastDisplay = {forecastDisplay}
           forecastWeather = {forecastWeather}
           />
         
 
         <button 
-          onClick={this.handleReturnButton} 
-          style={{display:returnButtonDisplay}} 
-          className="return-button">
-            <i className="fas fa-arrow-left"></i><span>Return</span>
+          onClick = {this.handleReturnButton} 
+          style = {{display:returnButtonDisplay}} 
+          className = "return-button">
+            <i className = "fas fa-arrow-left"></i><span>Return</span>
         </button>
       </div>
     )
