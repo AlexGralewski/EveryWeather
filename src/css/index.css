@@ -268,6 +268,65 @@ code {
   text-transform: capitalize;
 }
 
+.weather-app .city-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem;
+  margin: 1rem;
+  width: 30%;
+  background-color: #11565f;
+  color: #FCFCFC;
+  border-radius: 1rem;
+  -webkit-box-shadow: 10px 150x 40px 6px #11565f;
+  box-shadow: 10px 10px 40px 6px #11565f;
+}
+
+.weather-app .city-list .city-list-item {
+  background-color: #029084;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather-app .city-list .city-list-item .city-name {
+  font-size: 3rem;
+}
+
+.weather-app .city-list .city-list-item .city-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather-app .city-list .city-list-item button {
+  margin: 0.5rem;
+}
+
 .weather-app .forecast-weather-display {
   display: -webkit-box;
   display: -ms-flexbox;

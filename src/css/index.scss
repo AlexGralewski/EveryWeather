@@ -210,7 +210,45 @@ code {
     }
   }
 
-  
+  .city-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2rem;
+    margin: 1rem;
+    width: 30%;
+    background-color: $dark1;
+    color: $bright1;
+    border-radius: 1rem;
+    -webkit-box-shadow: 10px 150x 40px 6px $dark1;
+    -moz-box-shadow: 10px 10px 40px 6px $dark1;
+    box-shadow: 10px 10px 40px 6px $dark1;
+
+    .city-list-item {
+      background-color: $dark2;
+      border-radius: 1rem;
+      margin: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .city-name {
+        font-size: 3rem;
+      }
+
+      .city-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        margin: 0.5rem;
+      }
+    }
+  }
+
   .forecast-weather-display {
     display: flex;
     flex-direction: column;
