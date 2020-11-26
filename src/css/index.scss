@@ -217,7 +217,7 @@ code {
 
     padding: 2rem;
     margin: 1rem;
-    width: 30%;
+    width: 40%;
     background-color: $dark1;
     color: $bright1;
     border-radius: 1rem;
@@ -225,28 +225,51 @@ code {
     -moz-box-shadow: 10px 10px 40px 6px $dark1;
     box-shadow: 10px 10px 40px 6px $dark1;
 
-    .city-list-item {
-      background-color: $dark2;
-      border-radius: 1rem;
-      margin: 1rem;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .city-name {
-        font-size: 3rem;
-      }
+    .city-list-title {
+      font-size: 2rem;
+      text-align: center;
+    }
 
-      .city-details {
+    .city-list-items {
+      display: flex;
+      flex-direction: row;
+        
+      .city-list-item {
+        background-color: $dark2;
+        border-radius: 1rem;
+        margin: 1rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
+        justify-content: center;
+        .city-name {
+          font-size: 3.5rem;
+          font-weight: 200;
+          line-height: 100%;
+          text-align: center;
+          padding: 0.5rem;
+        }
 
-      button {
-        margin: 0.5rem;
+        .city-details {
+          display: flex;
+          text-align: center;
+
+          font-weight: 500;
+        }
+
+        .city-coords {
+          padding: 0.5rem;
+          font-size: 0.9rem;
+          text-align: center;
+          justify-content: space-around;
+          font-style: italic;
+        }
+        button {
+          margin: 0.5rem;
+        }
       }
-    }
+  }
   }
 
   .forecast-weather-display {
@@ -332,15 +355,15 @@ button:active {
 
 .return-button {
   position: absolute;
-  display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
   height: 3rem;
   top: 2%;
   left: 2%;
-  padding: 1rem;
-  p {
-    margin: 1rem 0
+  padding: 1.5rem 1rem;
+  span {
+    margin: 0 0.2rem
   }
 }
 

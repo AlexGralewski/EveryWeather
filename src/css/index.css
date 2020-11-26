@@ -281,7 +281,7 @@ code {
           align-items: center;
   padding: 2rem;
   margin: 1rem;
-  width: 30%;
+  width: 40%;
   background-color: #11565f;
   color: #FCFCFC;
   border-radius: 1rem;
@@ -289,7 +289,22 @@ code {
   box-shadow: 10px 10px 40px 6px #11565f;
 }
 
-.weather-app .city-list .city-list-item {
+.weather-app .city-list .city-list-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.weather-app .city-list .city-list-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.weather-app .city-list .city-list-items .city-list-item {
   background-color: #029084;
   border-radius: 1rem;
   margin: 1rem;
@@ -304,26 +319,37 @@ code {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.weather-app .city-list .city-list-item .city-name {
-  font-size: 3rem;
+.weather-app .city-list .city-list-items .city-list-item .city-name {
+  font-size: 3.5rem;
+  font-weight: 200;
+  line-height: 100%;
+  text-align: center;
+  padding: 0.5rem;
 }
 
-.weather-app .city-list .city-list-item .city-details {
+.weather-app .city-list .city-list-items .city-list-item .city-details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  text-align: center;
+  font-weight: 500;
 }
 
-.weather-app .city-list .city-list-item button {
+.weather-app .city-list .city-list-items .city-list-item .city-coords {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-style: italic;
+}
+
+.weather-app .city-list .city-list-items .city-list-item button {
   margin: 0.5rem;
 }
 
@@ -435,23 +461,21 @@ button:active {
 
 .return-button {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 1rem;
   height: 3rem;
   top: 2%;
   left: 2%;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 
-.return-button p {
-  margin: 1rem 0;
+.return-button span {
+  margin: 0 0.2rem;
 }
 
 footer {
