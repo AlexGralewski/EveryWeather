@@ -68,7 +68,6 @@ code {
     box-shadow: 10px 10px 40px 6px $dark1;
     
     
-    
     form {
       margin: 0.5rem;
 
@@ -213,11 +212,11 @@ code {
   .city-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
 
     padding: 2rem;
     margin: 1rem;
-    width: 40%;
+    width: 60%;
     background-color: $dark1;
     color: $bright1;
     border-radius: 1rem;
@@ -232,9 +231,13 @@ code {
 
     .city-list-items {
       display: flex;
-      flex-direction: row;
-        
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
       .city-list-item {
+        height: 18rem;
+        width: 18rem;
         background-color: $dark2;
         border-radius: 1rem;
         margin: 1rem;
@@ -327,7 +330,7 @@ code {
   }
 }
   
-  button {
+button {
   background-color: $bright3;
   color: $bright1;
   font-size: 0.8rem;

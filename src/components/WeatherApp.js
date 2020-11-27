@@ -19,7 +19,7 @@ class WeatherApp extends React.Component {
       forecastWeather: undefined,
       locationApiKey: "44f5f3ce977746e7ab89ddeae84b48d3", //API key for openCageData
       locationData: undefined, //data pulled from location API
-      cityList: <div></div>,
+      cityList: <div className="city-list-items"></div>,
       chosenCityIndex: "",
       formsDisplay: "flex", //determines if forms section is visible
       currentWeatherDisplay: "none", //determines if current weather section is visible
@@ -238,7 +238,7 @@ class WeatherApp extends React.Component {
     })
 
     this.setState({
-      cityList: <div>{cities}</div>
+      cityList: <div className="city-list-items">{cities}</div>
     })
   }
 
@@ -518,7 +518,7 @@ class WeatherApp extends React.Component {
     })
 
     this.setState({
-      cityList: <div>{cities}</div>
+      cityList: <div className="city-list-items">{cities}</div>
     })
   }
 
@@ -739,9 +739,7 @@ class WeatherApp extends React.Component {
         
         <div className="city-list" style = {{display:cityListDisplay}}>
           <div className = "city-list-title">Which place did you have in mind?</div>
-          <div className = "city-list-items">
-            {cityList}
-          </div>
+          {cityList}
         </div>
 
         <button 
