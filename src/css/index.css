@@ -364,6 +364,7 @@ code {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 50%;
   padding: 1rem;
   background-color: #11565f;
   color: #FCFCFC;
@@ -371,12 +372,7 @@ code {
 }
 
 .weather-app .forecast-weather-display .forecast-display-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  text-align: center;
   font-size: 2rem;
   letter-spacing: 0.2rem;
 }
@@ -385,6 +381,11 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .weather-app .forecast-weather-display .forecast-results .forecast-display-item {
@@ -405,6 +406,8 @@ code {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 10rem;
+  width: 8rem;
 }
 
 .weather-app .forecast-weather-display .forecast-results .forecast-display-item .forecast-day {

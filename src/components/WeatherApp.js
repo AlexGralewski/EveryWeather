@@ -305,7 +305,9 @@ class WeatherApp extends React.Component {
     let cWeather = {}
 
     //sets current temperature
-    cWeather.temp = Math.round(weatherData.current.temp - 273.15)
+    cWeather.temp = {
+      actual: Math.round(weatherData.current.temp - 273.15), 
+      feels_like: Math.round(weatherData.current.feels_like - 273.15)}
     //sets current sunrise and sunset
     cWeather.sunrise = timestampToTime(weatherData.current.sunrise)
     cWeather.sunset = timestampToTime(weatherData.current.sunset)
@@ -315,6 +317,9 @@ class WeatherApp extends React.Component {
     cWeather.pressure = weatherData.current.pressure
     cWeather.humidity = weatherData.current.humidity
     cWeather.wind = [weatherData.current.wind_deg, weatherData.current.wind_speed]
+    cWeather.clouds = weatherData.current.clouds
+    cWeather.uvi = weatherData.current.uvi
+    cWeather.visibility = weatherData.current.visibility
 
     this.setState({
       currentWeather: cWeather,
@@ -399,12 +404,13 @@ class WeatherApp extends React.Component {
     } else {
       locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "%2C" + this.state.country + "&key=" + this.state.locationApiKey 
     }
-
     fetch(locationApiUrl)
     .then(response => response.json())
     .then(res => {this.setState({
       locationData: res
     }, this.handleCityForecastSubmit2)})
+
+    
   }
 
   //Second part of the city form submit (forecast). Creates a list of places that match the city entered in the city form. If there are no matches it displays an alert, if there is one match it goes to assignCurrentWeatherParameters function, if there is more than one match it goes to cityListDisplayForCurrentWeather.

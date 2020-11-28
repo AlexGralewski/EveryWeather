@@ -6,6 +6,13 @@ function ForecastDay(props) {
   const {day, temp, weather, iconId, humidity, today} = props
   let weatherIcon = getWeatherIcon(iconId)
 
+  let whichDay
+  if (day === 0) {
+    whichDay = "Today"
+  } else {
+    whichDay = dayOfTheWeek((today + day) % 7)
+  }
+
   let humidityIcon 
   if (humidity === 0) {
     humidityIcon = <i className="fas fa-tint-slash"></i>
@@ -14,7 +21,7 @@ function ForecastDay(props) {
   }
   return(
     <div className = "forecast-display-item">
-        <div className = "forecast-day">{dayOfTheWeek((today + day) % 7)}</div>
+        <div className = "forecast-day">{whichDay}</div>
         <div className = "forecast-icon">{weatherIcon}</div>
         <div className = "forecast-weather">{weather}</div>
         <div className = "forecast-temp">
