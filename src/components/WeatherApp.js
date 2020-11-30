@@ -305,9 +305,9 @@ class WeatherApp extends React.Component {
     let cWeather = {}
 
     //sets current temperature
-    cWeather.temp = {
-      actual: Math.round(weatherData.current.temp - 273.15), 
-      feels_like: Math.round(weatherData.current.feels_like - 273.15)}
+    cWeather.temp = Math.round((weatherData.current.temp - 273.15)*10) /10
+    cWeather.feels_like = Math.round((weatherData.current.feels_like - 273.15)*10) /10
+
     //sets current sunrise and sunset
     cWeather.sunrise = timestampToTime(weatherData.current.sunrise)
     cWeather.sunset = timestampToTime(weatherData.current.sunset)
@@ -316,10 +316,10 @@ class WeatherApp extends React.Component {
     cWeather.iconId = weatherData.current.weather[0].icon
     cWeather.pressure = weatherData.current.pressure
     cWeather.humidity = weatherData.current.humidity
-    cWeather.wind = [weatherData.current.wind_deg, weatherData.current.wind_speed]
+    cWeather.wind = [Math.round(weatherData.current.wind_deg - 273.15), weatherData.current.wind_speed]
     cWeather.clouds = weatherData.current.clouds
     cWeather.uvi = weatherData.current.uvi
-    cWeather.visibility = weatherData.current.visibility
+    cWeather.visibility = weatherData.current.visibility / 1000
 
     this.setState({
       currentWeather: cWeather,
@@ -631,10 +631,7 @@ class WeatherApp extends React.Component {
    
     return (
       <div className = "weather-app">
-        <div className = "background-text">
-          Everywhere
-          <p>Weather</p>
-        </div>
+
         <div className = "forms" style = {{display:formsDisplay}}>
           <div className = "forms-title">EveryWeather</div>
           <div className = "forms-desc">Get weather data for any place!</div>
@@ -648,7 +645,7 @@ class WeatherApp extends React.Component {
           <div className = "city-form">
             <form>
               <label>
-                Enter a name of a city:
+                Search by the name of a place:
               </label>
               <div className = "city-country-inputs">
                 <div className = "city-input">
@@ -688,7 +685,7 @@ class WeatherApp extends React.Component {
                   </datalist>
                 </div>
               </div>
-              <p>*You may specify a country to help narrow the results,<br /> though it's not required.</p>
+              <p>*You may specify a country to help narrow the results, though it's not required.</p>
               <div className="submit-buttons">
                 <button onClick={this.handleCityCurrentWeatherSubmit} className="current-weather-button">Get current weather</button>
                 <button onClick={this.handleCityForecastSubmit} className="forecast-weather-button">Get seven day forecast</button>
@@ -696,6 +693,7 @@ class WeatherApp extends React.Component {
           </form>
           </div>
           <h1 className="or">OR</h1>
+          
           <div className="lat-long-form">
             <form>
               <label>

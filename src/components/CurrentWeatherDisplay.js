@@ -13,19 +13,56 @@ function CurrentWeatherDisplay(props) {
   }
 
     return (
-      <div className = "current-weather-display" style = {{display:currentDisplay}}> 
-      <div className = "current-title">Current weather:</div>
-      <div className = "current-main">
-        <div className = "current-temp">{currentWeather.temp}°C</div>
-        <div className = "current-weather">
-          <div className = "current-icon">{currentWeatherIcon}</div>      
-          <div className = "current-description">{currentWeather.description}</div>
-          <div className = "current-humidity">Humidity: {currentWeather.humidity}%</div>
-          <div className = "current-pressure">Pressure: {currentWeather.pressure}hPa</div>
-          <div className = "current-sunrise">Sunrise: {currentWeather.sunrise}</div>
-          <div className = "current-sunset">Sunset: {currentWeather.sunset}</div>
+      <div className = "cw-display" style = {{display:currentDisplay}}> 
+      <div className = "cw-title">Current weather:</div>
+        <div className = "cw-main">
+          <div className = "cw-representation">
+            <div className = "cw-icon">{currentWeatherIcon}</div>      
+            <div className = "cw-description">{currentWeather.description}</div>
+          </div>
+          <div className = "cw-temp">
+            <div className = "cw-temp-actual">{currentWeather.temp}°C</div>
+            <div className = "cw-temp-feels-like">Feels like: <span className="feels-like-value">{currentWeather.feels_like}°C</span></div>
+          </div>
         </div>
-      </div>
+        <div className = "cw-details">
+          <div className = "cw-humidity cw-detail-box">
+            <div className = "cw-detail-box-title">Humidity</div> 
+            <div className = "cw-detail-box-value">{currentWeather.humidity}<span className = "unit">%</span></div> 
+          </div>
+          <div className = "cw-clouds cw-detail-box">
+            <div className = "cw-detail-box-title">Clouds</div>
+            <div className = "cw-detail-box-value">{currentWeather.clouds}<span className = "unit">%</span></div>
+          </div>
+          <div className = "cw-uvi cw-detail-box">
+            <div className = "cw-detail-box-title">UVI</div>
+            <div className = "cw-detail-box-value">{currentWeather.uvi}</div>
+          </div>
+          <div className = "cw-visibility cw-detail-box">
+            <div className = "cw-detail-box-title">Visibility</div>
+            <div className = "cw-detail-box-value">{currentWeather.visibility}<span className = "unit">km</span></div>
+          </div>
+          <div className = "cw-wind cw-detail-box">
+            <div className = "cw-detail-box-title">Wind</div>
+            <div className = "cw-detail-box-value wind-value">
+              <div className = "wind-speed">{currentWeather.wind[1]}<span className = "unit">m/s</span></div> 
+              <div className = "wind-deg">{currentWeather.wind[0]}<span className = "unit">°C</span></div> 
+            </div>
+          </div>
+          <div className = "cw-pressure cw-detail-box">
+            <div className = "cw-detail-box-title">Pressure</div>
+            <div className = "cw-detail-box-value">{currentWeather.pressure}<span className = "unit">hPa</span></div>
+          </div>
+          <div className = "cw-sunrise cw-detail-box">
+            <div className = "cw-detail-box-title">Sunrise</div>
+            <div className = "cw-detail-box-value">{currentWeather.sunrise}</div>
+          </div>
+          <div className = "cw-sunset cw-detail-box">
+            <div className = "cw-detail-box-title">Sunset</div>
+            <div className = "cw-detail-box-value">{currentWeather.sunset}</div>
+          </div>
+        </div>
+      
       <div className = "place">
         <div className = "place-lat-long">Latitude: {lat}, Longitude: {long}</div>
         {place}
@@ -34,7 +71,7 @@ function CurrentWeatherDisplay(props) {
     )
   } else {
     return (
-      <div className = "current-weather-display" style={{display:currentDisplay}}> 
+      <div className = "cw-display" style={{display:currentDisplay}}> 
       </div>)
   }
 

@@ -20,15 +20,19 @@ function ForecastDay(props) {
     humidityIcon = <i className="fas fa-tint"></i>
   }
   return(
-    <div className = "forecast-display-item">
-        <div className = "forecast-day">{whichDay}</div>
-        <div className = "forecast-icon">{weatherIcon}</div>
-        <div className = "forecast-weather">{weather}</div>
-        <div className = "forecast-temp">
-          <div className = "forecast-temp-day">{Math.round((temp.day - 273.15))}°C</div>
-          <div className = "forecast-temp-night">{Math.round(temp.night - 273.15)}°C</div>
+    <div className = "fw-display-item">
+      <div className = "fw-day">{whichDay}</div>
+      <div className = "fw-representation">
+        <div className = "fw-icon">{weatherIcon}</div>
+        <div className = "fw-description">{weather}</div>
+      </div>    
+      <div className = "fw-details">
+        <div className = "fw-temp">
+          <div className = "fw-temp-day"><i class="far fa-sun"></i> {Math.round((temp.day - 273.15))}°C</div>
+          <div className = "fw-temp-night"><i class="far fa-moon"></i> {Math.round(temp.night - 273.15)}°C</div>
         </div>
-        <div className = "forecast-humidity">{humidityIcon} {humidity}%</div>
+        <div className = "fw-humidity">{humidityIcon} {humidity}%</div>
+      </div>
     </div>
   )
 }

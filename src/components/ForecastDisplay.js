@@ -22,11 +22,11 @@ function ForecastDisplay(props) {
         today = {today}
         />)
     return (
-      <div className = "forecast-weather-display" style = {{display:forecastDisplay}}>
-        <div className = "forecast-display-title">
+      <div className = "fw-display" style = {{display:forecastDisplay}}>
+        <div className = "fw-display-title">
           Seven Day Forecast
         </div>
-        <div className = "forecast-results">
+        <div className = "fw-results">
           {display}
         </div>
         <div className = "place">
@@ -37,7 +37,7 @@ function ForecastDisplay(props) {
   )
   } else {
     return (
-      <div className = "forecast-weather-display" style = {{display:forecastDisplay}}> 
+      <div className = "fw-weather-display" style = {{display:forecastDisplay}}> 
     </div>
     )
   }
