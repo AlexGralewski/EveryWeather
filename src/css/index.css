@@ -3,10 +3,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #b3f7cd;
-  background: #b3f7cd;
-  background: -webkit-gradient(linear, left top, right top, from(#b3f7cd), to(#0dcff6));
-  background: linear-gradient(90deg, #b3f7cd 0%, #0dcff6 100%);
   overflow-x: hidden;
 }
 
@@ -35,6 +31,7 @@ code {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   min-height: 93vh;
+  background-size: cover;
 }
 
 .weather-app .background-text {
@@ -61,11 +58,11 @@ code {
   margin: 1rem;
   max-width: 50rem;
   width: 30%;
-  background-color: #11565f;
+  background-color: #162c21c9;
   color: #FCFCFC;
   border-radius: 1rem;
-  -webkit-box-shadow: 10px 150x 40px 6px #11565f;
-  box-shadow: 10px 10px 40px 6px #11565f;
+  -webkit-box-shadow: 0px 0px 156px 20px rgba(0, 0, 0, 0.67);
+  box-shadow: 0px 0px 156px 20px rgba(0, 0, 0, 0.67);
 }
 
 .weather-app .forms form {
@@ -79,7 +76,7 @@ code {
 }
 
 .weather-app .forms form input, .weather-app .forms form select {
-  background-color: #029084;
+  background-color: #dde7e4;
   color: inherit;
   padding: 1rem 1rem 1rem 2rem;
   margin: 0.5rem;
@@ -89,8 +86,8 @@ code {
 }
 
 .weather-app .forms form input:hover, .weather-app .forms form select:hover {
-  background-color: #b3f7cd;
-  color: #11565f;
+  background-color: #80a18d;
+  color: #162c21;
 }
 
 .weather-app .forms .position-form {
@@ -110,11 +107,11 @@ code {
 
 .weather-app .forms .submit-buttons .current-weather-button {
   background: none;
-  border: 0.1rem #d8535e solid;
+  border: 0.1rem #467a5c solid;
 }
 
 .weather-app .forms .submit-buttons .current-weather-button:hover {
-  background-color: #d8535e;
+  background-color: #467a5c;
 }
 
 .weather-app .forms .forms-title {
@@ -151,39 +148,39 @@ code {
 }
 
 .weather-app .forms .city-form .city-country-inputs input::-webkit-input-placeholder {
-  color: #FCFCFC;
+  color: black;
   opacity: 50%;
 }
 
 .weather-app .forms .city-form .city-country-inputs input:-ms-input-placeholder {
-  color: #FCFCFC;
+  color: black;
   opacity: 50%;
 }
 
 .weather-app .forms .city-form .city-country-inputs input::-ms-input-placeholder {
-  color: #FCFCFC;
+  color: black;
   opacity: 50%;
 }
 
 .weather-app .forms .city-form .city-country-inputs input::placeholder {
-  color: #FCFCFC;
+  color: black;
   opacity: 50%;
 }
 
 .weather-app .forms .city-form .city-country-inputs input:hover input::-webkit-input-placeholder {
-  color: #d8535e;
+  color: #dde7e4;
 }
 
 .weather-app .forms .city-form .city-country-inputs input:hover input:-ms-input-placeholder {
-  color: #d8535e;
+  color: #dde7e4;
 }
 
 .weather-app .forms .city-form .city-country-inputs input:hover input::-ms-input-placeholder {
-  color: #d8535e;
+  color: #dde7e4;
 }
 
 .weather-app .forms .city-form .city-country-inputs input:hover input::placeholder {
-  color: #d8535e;
+  color: #dde7e4;
 }
 
 .weather-app .forms .position-form {
@@ -214,7 +211,7 @@ code {
   width: 70%;
   padding: 2rem;
   margin: 1rem;
-  background-color: #11565f;
+  background-color: #162c21c9;
   color: #FCFCFC;
   border-radius: 1rem;
 }
@@ -298,7 +295,8 @@ code {
 }
 
 .weather-app .cw-display .cw-details .cw-detail-box {
-  background-color: #029084;
+  background-color: #dde7e4;
+  color: #467a5c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -336,16 +334,12 @@ code {
   font-size: 1rem;
 }
 
-.weather-app .cw-display .cw-details .cw-detail-box .cw-detail-box-value .wind-value {
-  font-size: 2.5rem;
-}
-
 .weather-app .cw-display .cw-details .cw-detail-box .wind-value {
   text-align: center;
 }
 
 .weather-app .cw-display .cw-details .cw-detail-box .wind-value .wind-deg, .weather-app .cw-display .cw-details .cw-detail-box .wind-value .wind-speed {
-  font-size: 3rem;
+  font-size: 2.7rem;
 }
 
 .weather-app .place {
@@ -371,11 +365,11 @@ code {
   padding: 2rem;
   margin: 1rem;
   width: 60%;
-  background-color: #11565f;
+  background-color: #162c21c9;
   color: #FCFCFC;
   border-radius: 1rem;
-  -webkit-box-shadow: 10px 150x 40px 6px #11565f;
-  box-shadow: 10px 10px 40px 6px #11565f;
+  -webkit-box-shadow: 10px 150x 40px 6px #162c21;
+  box-shadow: 10px 10px 40px 6px #162c21;
 }
 
 .weather-app .city-list .city-list-title {
@@ -400,7 +394,8 @@ code {
 .weather-app .city-list .city-list-items .city-list-item {
   height: 18rem;
   width: 18rem;
-  background-color: #029084;
+  background-color: #dde7e4;
+  color: #467a5c;
   border-radius: 1rem;
   margin: 1rem;
   padding: 1rem;
@@ -460,7 +455,7 @@ code {
   width: 50%;
   padding: 2rem;
   margin: 1rem;
-  background-color: #11565f;
+  background-color: #162c21c9;
   color: #FCFCFC;
   border-radius: 1rem;
 }
@@ -480,7 +475,8 @@ code {
 }
 
 .weather-app .fw-display .fw-results .fw-display-item {
-  background-color: #029084;
+  background-color: #dde7e4;
+  color: #467a5c;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -572,13 +568,13 @@ code {
 }
 
 .weather-app .fw-display .fw-results::-webkit-scrollbar-thumb {
-  background-color: #11565f;
-  border: 1px solid #029084;
+  background-color: #162c21;
+  border: 1px solid #dde7e4;
   border-radius: 1rem;
 }
 
 button {
-  background-color: #d8535e;
+  background-color: #467a5c;
   color: #FCFCFC;
   font-size: 0.8rem;
   font-weight: 600;
@@ -635,7 +631,7 @@ footer {
   width: 100%;
   height: 7vh;
   font-size: 1.2rem;
-  background-color: #029084;
+  background-color: #162c21;
   color: #FCFCFC;
   display: flex;
 }

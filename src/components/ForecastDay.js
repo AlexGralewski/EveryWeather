@@ -1,5 +1,5 @@
 import React from "react"
-import getWeatherIcon from "../methods/weatherIcons"
+import getWeatherIcon from "../methods/getWeatherIcon"
 import dayOfTheWeek from "../methods/dayOfTheWeek"
 
 function ForecastDay(props) {

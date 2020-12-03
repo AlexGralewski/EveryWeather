@@ -1,6 +1,6 @@
 import React from "react"
-import getWeatherIcon from "../methods/weatherIcons"
-
+import getWeatherIcon from "../methods/getWeatherIcon"
+import windDirection from "../methods/windDirection"
 
 function CurrentWeatherDisplay(props) {
   const {city, country, lat, long, currentWeather, currentDisplay} = props
@@ -46,7 +46,7 @@ function CurrentWeatherDisplay(props) {
             <div className = "cw-detail-box-title">Wind</div>
             <div className = "cw-detail-box-value wind-value">
               <div className = "wind-speed">{currentWeather.wind[1]}<span className = "unit">m/s</span></div> 
-              <div className = "wind-deg">{currentWeather.wind[0]}<span className = "unit">°C</span></div> 
+              <div className = "wind-deg">{currentWeather.wind[0]}°({windDirection(currentWeather.wind[0])})<span className = "unit"></span></div> 
             </div>
           </div>
           <div className = "cw-pressure cw-detail-box">

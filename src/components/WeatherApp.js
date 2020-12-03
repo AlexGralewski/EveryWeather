@@ -2,6 +2,8 @@ import React from "react"
 import timestampToTime from "../methods/timestampToTime"
 import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
 import ForecastDisplay from "./ForecastDisplay"
+import startingBackgroundImage from "../images/starting-bg.jpg"
+import getBackgroundImage from "../methods/getBackgroundImage"
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -25,7 +27,8 @@ class WeatherApp extends React.Component {
       currentWeatherDisplay: "none", //determines if current weather section is visible
       forecastDisplay: "none", //determines if forecast section is visible
       returnButtonDisplay: "none", //determines if return button is visible
-      cityListDisplay: "none" //determines if city list section is visible
+      cityListDisplay: "none", //determines if city list section is visible
+      backgroundImage: startingBackgroundImage
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCoordsCurrentWeatherSubmit = this.handleCoordsCurrentWeatherSubmit.bind(this)
@@ -316,17 +319,19 @@ class WeatherApp extends React.Component {
     cWeather.iconId = weatherData.current.weather[0].icon
     cWeather.pressure = weatherData.current.pressure
     cWeather.humidity = weatherData.current.humidity
-    cWeather.wind = [Math.round(weatherData.current.wind_deg - 273.15), weatherData.current.wind_speed]
+    cWeather.wind = [Math.round(weatherData.current.wind_deg), weatherData.current.wind_speed]
     cWeather.clouds = weatherData.current.clouds
     cWeather.uvi = weatherData.current.uvi
     cWeather.visibility = weatherData.current.visibility / 1000
+
 
     this.setState({
       currentWeather: cWeather,
       formsDisplay: "none",
       currentWeatherDisplay: "flex",
       returnButtonDisplay: "flex",
-      cityListDisplay: "none"
+      cityListDisplay: "none",
+      backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon)
     })
 
   }
@@ -621,16 +626,17 @@ class WeatherApp extends React.Component {
       currentWeatherDisplay: "none",
       forecastDisplay: "none",
       returnButtonDisplay: "none",
-      cityListDisplay: "none"
+      cityListDisplay: "none",
+      backgroundImage: startingBackgroundImage
     })
     event.preventDefault()
   }
 
   render() {
-    const {city, country, lat, long, currentWeatherDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay, cityListDisplay, cityList} = this.state
+    const {city, country, lat, long, currentWeatherDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay, cityListDisplay, cityList, backgroundImage} = this.state
    
     return (
-      <div className = "weather-app">
+      <div className = "weather-app" style={{backgroundImage:`url(${backgroundImage})`}}>
 
         <div className = "forms" style = {{display:formsDisplay}}>
           <div className = "forms-title">EveryWeather</div>
