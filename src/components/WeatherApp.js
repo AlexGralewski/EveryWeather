@@ -123,10 +123,11 @@ class WeatherApp extends React.Component {
       locationApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=" + this.state.city + "%2C" + this.state.country + "&key=" + this.state.locationApiKey 
     }
 
+    
     fetch(locationApiUrl)
-    .then(response => response.json())
-    .then(res => {this.setState({
-      locationData: res
+      .then(response => response.json())
+      .then(res => {this.setState({
+        locationData: res
     }, this.handleCityCurrentWeatherSubmit2)})
   }
 
@@ -134,6 +135,7 @@ class WeatherApp extends React.Component {
   handleCityCurrentWeatherSubmit2() {    
     let cityList = []
 
+    console.log(this.locationData)
     this.state.locationData.results.forEach((place, placeIndex) => {
       if (place.components._category === "place") {
         if (place.confidence < 7) {

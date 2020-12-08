@@ -28,8 +28,8 @@ function ForecastDay(props) {
       </div>    
       <div className = "fw-details">
         <div className = "fw-temp">
-          <div className = "fw-temp-day"><i class="far fa-sun"></i> {Math.round((temp.day - 273.15))}°C</div>
-          <div className = "fw-temp-night"><i class="far fa-moon"></i> {Math.round(temp.night - 273.15)}°C</div>
+          <div className = "fw-temp-day"><i className="far fa-sun"></i> {Math.round((temp.day - 273.15))}°C</div>
+          <div className = "fw-temp-night"><i className="far fa-moon"></i> {Math.round(temp.night - 273.15)}°C</div>
         </div>
         <div className = "fw-humidity">{humidityIcon} {humidity}%</div>
       </div>
