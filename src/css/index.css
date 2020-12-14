@@ -56,8 +56,7 @@ code {
 }
 
 .weather-app .forms form input, .weather-app .forms form select {
-  background-color: #dde7e4;
-  color: inherit;
+  background-color: #eeecd6;
   padding: 2rem 2rem 2rem 4rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -66,7 +65,7 @@ code {
 }
 
 .weather-app .forms form input:hover, .weather-app .forms form select:hover {
-  background-color: #80a18d;
+  background-color: #FCFCFC;
   color: #162c21;
 }
 
@@ -87,11 +86,11 @@ code {
 
 .weather-app .forms .submit-buttons .current-weather-button {
   background: none;
-  border: 0.1rem #467a5c solid;
+  border: 0.2rem #b11335 solid;
 }
 
 .weather-app .forms .submit-buttons .current-weather-button:hover {
-  background-color: #467a5c;
+  background-color: #b11335;
 }
 
 .weather-app .forms .forms-title {
@@ -129,42 +128,6 @@ code {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.weather-app .forms .city-form .city-country-inputs input::-webkit-input-placeholder {
-  color: black;
-  opacity: 50%;
-}
-
-.weather-app .forms .city-form .city-country-inputs input:-ms-input-placeholder {
-  color: black;
-  opacity: 50%;
-}
-
-.weather-app .forms .city-form .city-country-inputs input::-ms-input-placeholder {
-  color: black;
-  opacity: 50%;
-}
-
-.weather-app .forms .city-form .city-country-inputs input::placeholder {
-  color: black;
-  opacity: 50%;
-}
-
-.weather-app .forms .city-form .city-country-inputs input:hover input::-webkit-input-placeholder {
-  color: #dde7e4;
-}
-
-.weather-app .forms .city-form .city-country-inputs input:hover input:-ms-input-placeholder {
-  color: #dde7e4;
-}
-
-.weather-app .forms .city-form .city-country-inputs input:hover input::-ms-input-placeholder {
-  color: #dde7e4;
-}
-
-.weather-app .forms .city-form .city-country-inputs input:hover input::placeholder {
-  color: #dde7e4;
 }
 
 .weather-app .forms .position-form {
@@ -278,8 +241,8 @@ code {
 }
 
 .weather-app .cw-display .cw-details .cw-detail-box {
-  background-color: #dde7e4;
-  color: #467a5c;
+  background-color: #ffffffe8;
+  color: #162c21;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,7 +254,7 @@ code {
       -ms-flex-align: center;
           align-items: center;
   height: 25rem;
-  width: 18rem;
+  width: 19rem;
   margin: 1.2rem;
   padding: 2rem;
   border-radius: 2rem;
@@ -322,7 +285,7 @@ code {
 }
 
 .weather-app .cw-display .cw-details .cw-detail-box .wind-value .wind-deg, .weather-app .cw-display .cw-details .cw-detail-box .wind-value .wind-speed {
-  font-size: 2.7rem;
+  font-size: 5rem;
 }
 
 .weather-app .place {
@@ -332,6 +295,7 @@ code {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   font-size: 2rem;
+  font-style: italic;
 }
 
 .weather-app .place .place-city {
@@ -346,9 +310,9 @@ code {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 2rem;
-  margin: 1rem;
-  width: 60%;
+  padding: 1rem;
+  margin: 2rem;
+  max-width: 70%;
   background-color: #162c21c9;
   color: #FCFCFC;
   border-radius: 1rem;
@@ -357,8 +321,15 @@ code {
 }
 
 .weather-app .city-list .city-list-title {
-  font-size: 2rem;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4rem;
+  letter-spacing: 0.2rem;
+  margin: 2rem;
 }
 
 .weather-app .city-list .city-list-items {
@@ -373,16 +344,17 @@ code {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 2rem;
 }
 
 .weather-app .city-list .city-list-items .city-list-item {
-  height: 18rem;
-  width: 18rem;
-  background-color: #dde7e4;
-  color: #467a5c;
-  border-radius: 1rem;
-  margin: 1rem;
-  padding: 1rem;
+  height: 30rem;
+  width: 28rem;
+  background-color: #ffffffe8;
+  color: #b11335;
+  border-radius: 2rem;
+  margin: 1.5rem 1.5rem;
+  padding: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -399,24 +371,34 @@ code {
 }
 
 .weather-app .city-list .city-list-items .city-list-item .city-name {
-  font-size: 3.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40%;
+  font-size: 6rem;
   font-weight: 200;
   line-height: 100%;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0.5rem;
 }
 
 .weather-app .city-list .city-list-items .city-list-item .city-details {
+  height: 18%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   text-align: center;
+  font-size: 2rem;
   font-weight: 500;
 }
 
 .weather-app .city-list .city-list-items .city-list-item .city-coords {
+  height: 20%;
   padding: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 2rem;
   text-align: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
@@ -424,7 +406,7 @@ code {
 }
 
 .weather-app .city-list .city-list-items .city-list-item button {
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .weather-app .fw-display {
@@ -440,7 +422,7 @@ code {
   margin: 1rem;
   background-color: #162c21c9;
   color: #FCFCFC;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 
 .weather-app .fw-display .fw-display-title {
@@ -471,7 +453,7 @@ code {
       -ms-flex-align: center;
           align-items: center;
   min-width: 50rem;
-  margin: 0.5rem;
+  margin: 1rem;
   padding: 2rem;
   border: 2px #FCFCFC solid;
   border-radius: 1rem;
@@ -492,7 +474,7 @@ code {
 }
 
 .weather-app .fw-display .fw-results .fw-display-item .fw-representation .fw-icon {
-  height: 50%;
+  height: 45%;
 }
 
 .weather-app .fw-display .fw-results .fw-display-item .fw-representation .fw-description {
@@ -506,6 +488,9 @@ code {
   font-weight: 200;
   line-height: 100%;
   text-transform: capitalize;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .weather-app .fw-display .fw-results .fw-display-item .fw-details {
@@ -546,7 +531,7 @@ code {
 }
 
 .weather-app .fw-display .fw-results::-webkit-scrollbar {
-  width: 10em;
+  width: 10rem;
 }
 
 .weather-app .fw-display .fw-results::-webkit-scrollbar-track {
@@ -557,12 +542,12 @@ code {
 
 .weather-app .fw-display .fw-results::-webkit-scrollbar-thumb {
   background-color: #162c21;
-  border: 1px solid #dde7e4;
+  border: 1px solid #ffffffe8;
   border-radius: 1rem;
 }
 
 button {
-  background-color: #467a5c;
+  background-color: #b11335;
   color: #FCFCFC;
   font-size: 2rem;
   font-weight: 600;
@@ -582,7 +567,7 @@ button:hover {
 }
 
 button:active {
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   background: #F45B69;
   -webkit-box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
           box-shadow: inset 10px 10px 20px #cf4d59,  inset -10px -10px 20px #ff6979;
@@ -596,11 +581,11 @@ button:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 1rem;
+  font-size: 2rem;
   height: 3rem;
   top: 2%;
   left: 2%;
-  padding: 1.5rem 1rem;
+  padding: 3rem 2rem;
 }
 
 .return-button span {
@@ -638,7 +623,7 @@ footer i {
     padding: 4rem;
     margin: 2rem;
     width: 30%;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
   }
   .weather-app .forms form label {
     font-size: 2rem;
@@ -671,13 +656,12 @@ footer i {
   }
   .weather-app .cw-display {
     max-width: 60rem;
-    width: 70%;
     padding: 2rem;
     margin: 1rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
   }
   .weather-app .cw-display .cw-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     letter-spacing: 0.2rem;
   }
   .weather-app .cw-display .cw-main {
@@ -731,7 +715,7 @@ footer i {
     padding: 2rem;
     margin: 1rem;
     width: 60%;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
   }
   .weather-app .city-list .city-list-title {
     font-size: 2rem;
@@ -745,11 +729,11 @@ footer i {
   }
   .weather-app .city-list .city-list-items .city-list-item .city-name {
     font-size: 3.5rem;
-    line-height: 100%;
     padding: 0.5rem;
   }
   .weather-app .city-list .city-list-items .city-list-item .city-details {
     font-weight: 500;
+    font-size: 1.2rem;
   }
   .weather-app .city-list .city-list-items .city-list-item .city-coords {
     padding: 0.5rem;
@@ -757,57 +741,45 @@ footer i {
   }
   .weather-app .city-list .city-list-items .city-list-item button {
     margin: 0.5rem;
-  }
-  .weather-app .fw-display {
-    max-width: 60rem;
-    width: 50%;
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: 1rem;
-  }
-  .weather-app .fw-display .fw-display-title {
-    font-size: 2rem;
-    margin: 0 0 1rem 0;
-    letter-spacing: 0.2rem;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item {
-    min-width: 10rem;
-    margin: 0.5rem;
-    padding: 1rem;
-    border-radius: 1rem;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-day {
-    font-size: 1.5rem;
-    height: 3rem;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-representation {
-    height: 10rem;
     font-size: 1rem;
   }
+  .weather-app .fw-display {
+    width: 80%;
+    padding: 3rem;
+    margin: 0.6rem;
+    border-radius: 1.5rem;
+  }
+  .weather-app .fw-display .fw-display-title {
+    font-size: 4rem;
+    letter-spacing: 0.15rem;
+  }
+  .weather-app .fw-display .fw-results {
+    margin: 3rem 0;
+  }
+  .weather-app .fw-display .fw-results .fw-display-item {
+    min-width: 30rem;
+    margin: 0.6rem;
+    padding: 1.5rem;
+    border: 1.5px #FCFCFC solid;
+    border-radius: 0.6rem;
+  }
+  .weather-app .fw-display .fw-results .fw-display-item .fw-day {
+    font-size: 4rem;
+    height: 8rem;
+  }
+  .weather-app .fw-display .fw-results .fw-display-item .fw-representation {
+    height: 25rem;
+    font-size: 2.5rem;
+  }
   .weather-app .fw-display .fw-results .fw-display-item .fw-representation .fw-description {
-    height: 5rem;
-    font-size: 2rem;
-    font-weight: 200;
-    line-height: 100%;
+    font-size: 5rem;
   }
   .weather-app .fw-display .fw-results .fw-display-item .fw-details {
-    height: 4rem;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-temp {
-    height: 50%;
+    height: 10rem;
+    font-size: 2.5rem;
   }
   .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-temp .fw-temp-day, .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-temp .fw-temp-night {
     padding: 0 0.5rem;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-temp .fw-temp-day {
-    color: #dfdfdf;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-temp .fw-temp-night {
-    color: #dfdfdfd0;
-  }
-  .weather-app .fw-display .fw-results .fw-display-item .fw-details .fw-humidity {
-    height: 50%;
-    color: #a9cad6;
   }
   .weather-app .fw-display .fw-results::-webkit-scrollbar {
     width: 1em;
@@ -819,8 +791,11 @@ footer i {
   }
   .weather-app .fw-display .fw-results::-webkit-scrollbar-thumb {
     background-color: #162c21;
-    border: 1px solid #dde7e4;
+    border: 1px solid #ffffffe8;
     border-radius: 1rem;
+  }
+  .weather-app .place {
+    font-size: 1.5rem;
   }
   button {
     font-size: 1.3rem;
@@ -831,6 +806,10 @@ footer i {
   }
   button p {
     margin: 0 1rem;
+  }
+  .return-button {
+    font-size: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 }
 

@@ -1,11 +1,11 @@
 //color scheme
 $bright1: #FCFCFC;
-$bright2: #80a18d;
-$bright3: #dde7e4;
+$bright2: #eeecd6;
+$bright3: #ffffffe8;
 $bright4: rgb(75, 200, 224);
 $dark1: #162c21;
 $dark1_1: #162c21c9; //'dark1' with lowered opacity
-$dark2: #467a5c;
+$dark2: #b11335;
 
 
 body {
@@ -60,8 +60,7 @@ code {
       }
 
       input, select {
-        background-color: $bright3;
-        color: inherit;
+        background-color: $bright2;
         padding: 2rem 2rem 2rem 4rem;
         margin: 1rem;
         border-radius: 1rem;
@@ -70,7 +69,7 @@ code {
       }
 
       input:hover, select:hover {
-        background-color: $bright2;
+        background-color: $bright1;
         color: $dark1;
       }
     }
@@ -85,7 +84,7 @@ code {
       margin: 0.5rem;
       .current-weather-button {
         background: none;
-        border: 0.1rem $dark2 solid;
+        border: 0.2rem $dark2 solid;
       }
       
       .current-weather-button:hover {
@@ -120,17 +119,7 @@ code {
       .city-country-inputs {
         display: flex;
         flex-direction: column;
-        align-items: center;
-
-        input::placeholder {
-          color: black;
-          opacity: 50%;
-        }        
-        input:hover {
-          input::placeholder {
-            color: $bright3;
-          }
-        }
+        align-items: center; 
       }
     }
     
@@ -211,12 +200,12 @@ code {
       margin: 2rem;
       .cw-detail-box {
         background-color: $bright3;
-        color: $dark2;
+        color: $dark1;
         display: flex;
         flex-direction: column;
         align-items: center;
         height: 25rem;
-        width: 18rem;
+        width: 19rem;
         margin: 1.2rem;
         padding: 2rem;
         border-radius: 2rem;
@@ -238,7 +227,7 @@ code {
         .wind-value {
           text-align: center;
           .wind-deg, .wind-speed {
-            font-size: 2.7rem;
+            font-size: 5rem;
           }
 
         }
@@ -253,6 +242,7 @@ code {
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
+    font-style: italic;
     .place-city {
       text-transform: capitalize;
     }
@@ -263,9 +253,9 @@ code {
     flex-direction: column;
 
 
-    padding: 2rem;
-    margin: 1rem;
-    width: 60%;
+    padding: 1rem;
+    margin: 2rem;
+    max-width: 70%;
     background-color: $dark1_1;
     color: $bright1;
     border-radius: 1rem;
@@ -274,8 +264,11 @@ code {
     box-shadow: 10px 10px 40px 6px $dark1;
 
     .city-list-title {
-      font-size: 2rem;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      font-size: 4rem;
+      letter-spacing: 0.2rem;
+      margin: 2rem;
     }
 
     .city-list-items {
@@ -283,43 +276,48 @@ code {
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-
+      margin: 2rem;
       .city-list-item {
-        height: 18rem;
-        width: 18rem;
+        height: 30rem;
+        width: 28rem;
         background-color: $bright3;
         color: $dark2;
-        border-radius: 1rem;
-        margin: 1rem;
-        padding: 1rem;
+        border-radius: 2rem;
+        margin: 1.5rem 1.5rem;
+        padding: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         .city-name {
-          font-size: 3.5rem;
+          display: flex;
+          height:40%;
+          font-size: 6rem;
           font-weight: 200;
           line-height: 100%;
           text-align: center;
+          align-items: center;
           padding: 0.5rem;
         }
 
         .city-details {
+          height: 18%;
           display: flex;
           text-align: center;
-
+          font-size: 2rem;
           font-weight: 500;
         }
 
         .city-coords {
+          height: 20%;
           padding: 0.5rem;
-          font-size: 0.9rem;
+          font-size: 2rem;
           text-align: center;
           justify-content: space-around;
           font-style: italic;
         }
         button {
-          margin: 0.5rem;
+          margin: 1rem;
         }
       }
   }
@@ -333,7 +331,7 @@ code {
     margin: 1rem;
     background-color: $dark1_1;
     color: $bright1;
-    border-radius: 1rem;
+    border-radius: 2rem;
     
     .fw-display-title {
       text-align: center;
@@ -350,10 +348,10 @@ code {
         background: none;
         color: $bright1;
         display: flex;
-        flex-direction: column;
+        flex-direction: column;  
         align-items: center;
         min-width: 50rem;
-        margin: 0.5rem;
+        margin: 1rem;
         padding: 2rem;
         border: 2px $bright1 solid;
         border-radius: 1rem;
@@ -368,7 +366,7 @@ code {
           align-items: center;
           font-size: 4rem;
           .fw-icon {
-            height: 50%;
+            height: 45%;
           }
           .fw-description {
             padding: 1rem;
@@ -379,6 +377,7 @@ code {
             font-weight: 200;
             line-height: 100%;
             text-transform: capitalize;
+            align-items: center;
           }
         }
 
@@ -411,7 +410,7 @@ code {
     }   
 
     .fw-results::-webkit-scrollbar {
-      width: 10em;      
+      width: 10rem;      
     }
      
     .fw-results::-webkit-scrollbar-track {
@@ -449,7 +448,7 @@ button:hover {
 }
 
 button:active {
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   background: #F45B69;
   box-shadow: inset 10px 10px 20px #cf4d59, 
   inset -10px -10px 20px #ff6979;
@@ -459,11 +458,11 @@ button:active {
   position: absolute;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 2rem;
   height: 3rem;
   top: 2%;
   left: 2%;
-  padding: 1.5rem 1rem;
+  padding: 3rem 2rem;
   span {
     margin: 0 0.2rem
   }
@@ -498,7 +497,7 @@ footer {
       padding: 4rem;
       margin: 2rem;
       width: 30%;
-      border-radius: 1rem;
+      border-radius: 1.5rem;
 
       form {
         label {
@@ -544,13 +543,12 @@ footer {
    
     .cw-display {
       max-width: 60rem;
-      width: 70%;
       padding: 2rem;
       margin: 1rem;
-      border-radius: 1rem;
+      border-radius: 1.5rem;
          
       .cw-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
         letter-spacing: 0.2rem;
       }
       
@@ -618,7 +616,7 @@ footer {
       padding: 2rem;
       margin: 1rem;
       width: 60%;
-      border-radius: 1rem;
+      border-radius: 1.5rem;
   
       .city-list-title {
         font-size: 2rem;
@@ -633,12 +631,12 @@ footer {
           padding: 1rem;
           .city-name {
             font-size: 3.5rem;
-            line-height: 100%;
             padding: 0.5rem;
           }
   
           .city-details {
             font-weight: 500;
+            font-size: 1.2rem;
           }
   
           .city-coords {
@@ -647,64 +645,52 @@ footer {
           }
           button {
             margin: 0.5rem;
+            font-size: 1rem;
           }
         }
     }
     }
     
     .fw-display {
-      max-width: 60rem;
-      width: 50%;
-      padding: 2rem;
-      margin: 1rem;
-      border-radius: 1rem;
+      width: 80%;
+      padding: 3rem;
+      margin: 0.6rem;
+      border-radius: 1.5rem;
       
       .fw-display-title {
-        font-size: 2rem;
-        margin:  0 0 1rem 0;
-        letter-spacing: 0.2rem;
+        font-size: 4rem;
+        letter-spacing: 0.15rem;
       }
 
       .fw-results {
+        margin: 3rem 0;
+
         .fw-display-item {
-          min-width: 10rem;
-          margin: 0.5rem;
-          padding: 1rem;
-          border-radius: 1rem;
+          min-width: 30rem;
+          margin: 0.6rem;
+          padding: 1.5rem;
+          border: 1.5px $bright1 solid;
+          border-radius: 0.6rem;
           .fw-day {
-            font-size: 1.5rem;
-            height: 3rem
+            font-size: 4rem;
+            height: 8rem
           }
           
           .fw-representation {
-            height: 10rem;
-            font-size: 1rem;
+            height: 25rem;
+            font-size: 2.5rem;
             .fw-description {
-              height: 5rem;
-              font-size: 2rem;
-              font-weight: 200;
-              line-height: 100%;
+              font-size: 5rem;
             }
           }
 
           .fw-details {
-            height: 4rem;
+            height: 10rem;
+            font-size: 2.5rem;
             .fw-temp {
-              height: 50%;
               .fw-temp-day, .fw-temp-night {
                 padding: 0 0.5rem;
               }
-              .fw-temp-day {
-                color: #dfdfdf;
-              }
-              .fw-temp-night {
-                color: #dfdfdfd0;
-              }
-            }
-            
-            .fw-humidity {
-              height: 50%;
-              color: #a9cad6;
             }
           }
         }
@@ -725,6 +711,10 @@ footer {
         border-radius: 1rem;      
       }
     }
+
+    .place {
+      font-size: 1.5rem;
+    }
   }
 
   button {
@@ -736,6 +726,12 @@ footer {
     p {
       margin: 0 1rem;
     }
+  }
+
+  .return-button {
+    font-size: 1.5rem;
+    padding: 2rem 1.5rem;
+  
   }
 
 }
