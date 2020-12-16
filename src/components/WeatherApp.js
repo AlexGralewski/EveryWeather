@@ -612,7 +612,8 @@ class WeatherApp extends React.Component {
       formsDisplay: "none",
       forecastDisplay: "flex",
       returnButtonDisplay: "flex",
-      cityListDisplay: "none"
+      cityListDisplay: "none",
+      backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon)
     })
 
   }
@@ -639,7 +640,13 @@ class WeatherApp extends React.Component {
    
     return (
       <div className = "weather-app" style={{backgroundImage:`url(${backgroundImage})`}}>
-
+        <button 
+          onClick = {this.handleReturnButton} 
+          style = {{display:returnButtonDisplay}} 
+          className = "return-button">
+            <span className="return-icon"><i className = "fas fa-arrow-left"></i></span>
+            <span className = "return-text">Return</span>
+        </button>
         <div className = "forms" style = {{display:formsDisplay}}>
           <div className = "forms-title">EveryWeather</div>
           <div className = "forms-desc">Get weather data for any place!</div>
@@ -754,13 +761,7 @@ class WeatherApp extends React.Component {
           {cityList}
         </div>
 
-        <button 
-          onClick = {this.handleReturnButton} 
-          style = {{display:returnButtonDisplay}} 
-          className = "return-button">
-            <span className="return-icon"><i className = "fas fa-arrow-left"></i></span>
-            <span className = "return-text">Return</span>
-        </button>
+        
       </div>
     )
   }

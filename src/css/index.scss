@@ -33,11 +33,9 @@ code {
 
 
 .weather-app {
-  flex-direction: row;
-  justify-content: space-around;
   min-height: 96vh;
   background-size: cover;
-
+  justify-content: center;
   //Styles for forms section
   .forms {
     padding: 2rem;
@@ -199,8 +197,9 @@ code {
       text-align: center;
       margin: 2rem;
       .cw-detail-box {
-        background-color: $bright3;
-        color: $dark1;
+        background: none;
+        color: $bright1;
+        border: 0.2rem solid $bright1;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -239,6 +238,7 @@ code {
   }
 
   .place {
+    margin: 0 0 1rem 0;
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
@@ -251,8 +251,6 @@ code {
   .city-list {
     display: flex;
     flex-direction: column;
-
-
     padding: 1rem;
     margin: 2rem;
     max-width: 70%;
@@ -283,7 +281,7 @@ code {
         background-color: $bright3;
         color: $dark2;
         border-radius: 2rem;
-        margin: 1.5rem 1.5rem;
+        margin: 1rem;
         padding: 2rem;
         display: flex;
         flex-direction: column;
@@ -291,7 +289,7 @@ code {
         justify-content: center;
         .city-name {
           display: flex;
-          height:40%;
+          min-height:40%;
           font-size: 6rem;
           font-weight: 200;
           line-height: 100%;
@@ -301,7 +299,7 @@ code {
         }
 
         .city-details {
-          height: 18%;
+          height: 20%;
           display: flex;
           text-align: center;
           font-size: 2rem;
@@ -317,6 +315,7 @@ code {
           font-style: italic;
         }
         button {
+          height: auto;
           margin: 1rem;
         }
       }
@@ -448,10 +447,9 @@ button:hover {
 }
 
 button:active {
-  border-radius: 1rem;
-  background: #F45B69;
-  box-shadow: inset 10px 10px 20px #cf4d59, 
-  inset -10px -10px 20px #ff6979;
+  background:  #b11335;
+  box-shadow: inset 10px 10px 20px  #b11335, 
+  inset -10px -10px 20px  #b11335;
 }
 
 .return-button {
@@ -491,7 +489,7 @@ footer {
 
 
 //Responsiveness
-@media screen and (max-width: 2561px) {
+@media screen and (max-width: 2600px) {
   .weather-app{  
     .forms {
       padding: 1.5rem;
@@ -538,7 +536,7 @@ footer {
     }}
    
     .cw-display {
-      max-width: 60rem;
+      max-width: 65rem;
       padding: 2rem;
       margin: 1rem;
       border-radius: 1.5rem;
@@ -730,9 +728,7 @@ footer {
 
 }
 
-
-
-@media screen and (max-width: 1921px) {
+@media screen and (max-width: 2000px) {
   .weather-app{  
     .forms {
       padding: 1rem;
@@ -776,6 +772,10 @@ footer {
       .or {
         font-size: 1.5rem;
       }
+
+      .position-form {
+        margin: 0.6rem;
+      }
     }
    
     .cw-display {
@@ -813,6 +813,7 @@ footer {
       .cw-details {
         margin: 3rem;
         .cw-detail-box {
+          border: 0.1rem solid $bright1;
           height: 12rem;
           width: 7rem;
           margin: 0.5rem;
@@ -850,7 +851,9 @@ footer {
       border-radius: 1rem;
   
       .city-list-title {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+        margin: 1rem;
       }
   
       .city-list-items {
@@ -965,112 +968,112 @@ footer {
   }
 
 }
-
-
-
 
 @media screen and (max-width: 1367px) {
   .weather-app{  
     .forms {
-      padding: 1rem;
+      padding: 0.5rem 2rem;
       margin: 1rem;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
 
       form {
+        margin: 0;
         label {
-          font-size: 1.5rem;
+          font-size: 1rem;
         }
 
         input, select {
-          padding: 0.9rem 0.9rem 0.9rem 1.8rem;
-          margin: 0.5rem;
-          border-radius: 0.5rem;
-          font-size: 1rem;        
+          padding: 0.7rem 0.7rem 0.7rem 1.4rem;
+          margin: 0.3rem;
+          border-radius: 0.3rem;
+          font-size: 0.7rem;        
         }
       }
 
 
       .submit-buttons {
         .current-weather-button {
-          border: 0.15rem $dark2 solid;
+          border: 0.1rem $dark2 solid;
         }
       }
       
       .forms-title {
-        font-size: 3rem;
-        padding: 0.5rem 0.5rem 0 0.5rem;
+        font-size: 2rem;
+        padding: 0.3rem;
       }
 
       .forms-desc {
-        font-size: 1rem;
+        font-size: 0.7rem;
       }
     
       .city-form {
         p {
-          font-size: 0.7rem;
+          font-size: 0.5rem;
+          padding: 0 2rem;
         }
       }     
       .or {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+      }
+
+      .position-form {
+        margin: 0.3rem;
       }
     }
    
     .cw-display {
-      padding: 1rem;
+      padding: 0.5rem;
       margin: 1rem;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       max-width: 45rem;
       .cw-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
         letter-spacing: 0.1rem;
       }
       
       .cw-main {
-        margin: 1rem;
+        margin: 0.5rem;
         .cw-representation {
           font-size: 2.2rem;
-          margin: 0.5rem;    
+          margin: 0.3rem;    
         }   
   
         .cw-temp {
-          margin: 0.5rem;
+          margin: 0.3rem;
           .cw-temp-actual {
-            font-size: 7.5rem;
-            line-height: 100%;
+            font-size: 7rem;
           }
           .cw-temp-feels-like {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             .feels-like-value {
-              font-size: 3rem;
+              font-size: 2.5rem;
             }
           }
         }
       }
   
       .cw-details {
-        margin: 3rem;
+        margin: 1rem;
         .cw-detail-box {
-          height: 12rem;
+          height: 9rem;
           width: 7rem;
-          margin: 0.5rem;
+          margin: 0.4rem;
           padding: 0.75rem;
-          border-radius: 0.5rem;
+          border-radius: 0.3rem;
           .cw-detail-box-title {
-            font-size: 1.2rem;
-            padding: 0.75rem;
+            font-size: 1.1rem;
+            padding: 0.6rem;
           }
           .cw-detail-box-value {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             .unit {
               font-size: 0.75rem;
-  
-            }
-  
-            
+            }    
           }
+
           .wind-value {
             .wind-deg, .wind-speed {
-              font-size: 2rem;
+              font-size: 1.6rem;
             }
   
           }
@@ -1082,76 +1085,79 @@ footer {
     }
   
     .city-list {
-      padding: 1.5rem;
-      margin: 0.75rem;
-      border-radius: 1rem;
+      padding: 0.5rem;
+      margin: 1rem;
+      border-radius: 0.5rem;
   
       .city-list-title {
         font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        margin:0.5rem;
       }
   
       .city-list-items {
+        margin: 0.5rem;
         .city-list-item {
-          height: 13rem;
-          width: 13rem;
-          border-radius: 0.75rem;
-          margin: 0.6rem;
+          height: 10rem;
+          width: 10rem;
+          border-radius: 0.6rem;
+          margin: 0.4rem;
           .city-name {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             padding: 0.5rem;
           }
   
           .city-details {
-            font-size: 1rem;
+            font-size: 0.7rem;
           }
   
           .city-coords {
             padding: 0.5rem;
-            font-size: 0.7rem;
+            font-size: 0.5rem;
           }
           button {
-            margin: 0.35rem;
-            font-size: 0.75rem;
+            margin: 0.3rem;
+            font-size: 0.6rem;
           }
         }
     }
     }
     
     .fw-display {
-      padding: 2rem;
-      margin: 0.6rem;
+      padding: 1rem;
+      margin: 1rem;
       border-radius: 1rem;
       
       .fw-display-title {
-        font-size: 3rem;
+        font-size: 2rem;
         letter-spacing: 0.1rem;
       }
 
       .fw-results {
-        margin: 2.5rem 0;
+        margin: 1.5rem 0;
 
         .fw-display-item {
-          min-width: 23rem;
+          min-width: 18rem;
           margin: 0.5rem;
           padding: 1.2rem;
           border: 1px $bright1 solid;
-          border-radius: 0.6rem;
+          border-radius: 0.4rem;
           .fw-day {
-            font-size: 3rem;
-            height: 6rem
+            font-size: 2.2rem;
+            height: 4rem
           }
           
           .fw-representation {
-            height: 18rem;
-            font-size: 2rem;
+            height: 15rem;
+            font-size: 1.5rem;
             .fw-description {
-              font-size: 3.3rem;
+              font-size: 2.7rem;
             }
           }
 
           .fw-details {
-            height: 7.5rem;
-            font-size: 1.8rem;
+            height: 5rem;
+            font-size: 1.2rem;
             .fw-temp {
               .fw-temp-day, .fw-temp-night {
                 padding: 0 0.5rem;
@@ -1178,34 +1184,54 @@ footer {
     }
 
     .place {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
   }
 
   button {
-    font-size: 0.9rem;
-    padding: 0.4rem 1rem;
-    margin: 0.3rem;
-    border-radius: 0.3rem;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    margin: 0.2rem;
+    border-radius: 0.35rem;
     p {
-      margin: 0 1rem;
+      margin: 0 0.7rem;
     }
   }
 
   .return-button {
-    font-size: 1.1rem;
-    padding: 1.5rem 1.1rem;
+    font-size: 0.8rem;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
   }
 
   footer {
-    font-size: 0.75rem;
+    font-size: 0.5rem;
   }
 }
 
 
-@media screen and (max-width: 992px) {
-
+@media screen and (max-width: 980px) {
+  .weather-app{  
+    .forms {
+      width: 60%;
+    }
+  }
+   
+    .cw-display {
+      margin: 5rem 0 2rem 0;
+      width: 70%;      
+    }
+  
+    .city-list {
+      margin: 5rem 0 2rem 0;
+    }
+    
+    .fw-display {
+      margin: 5rem 0 2rem 0;
+    }
 }
+
+
 @media screen and (max-width: 768px) {
   .weather-app .forms {
     width: 75%; 
