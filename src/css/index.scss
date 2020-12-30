@@ -4,7 +4,7 @@ $bright2: #dbf1e0;
 $bright3: #ffffffe8;
 $bright4: rgb(75, 200, 224);
 $dark1: #162c21;
-$dark1_1: #162c21c9; //'dark1' with lowered opacity
+$dark1_1: #162c21e8; //'dark1' with lowered opacity
 $dark2: #b11335;
 
 
@@ -33,7 +33,7 @@ code {
 
 
 .weather-app {
-  min-height: 96vh;
+  min-height: 100vh;
   background-size: cover;
   justify-content: center;
   //Styles for forms section
@@ -44,9 +44,9 @@ code {
     background-color: $dark1_1;
     color: $bright1;
     border-radius: 2rem;
-    -webkit-box-shadow: 0px 0px 156px 20px rgba(0,0,0,0.67);
-    -moz-box-shadow: 0px 0px 156px 20px rgba(0,0,0,0.67);
-    box-shadow: 0px 0px 156px 20px rgba(0,0,0,0.67);
+    -webkit-box-shadow: 0px 0px 156px 20px  #162c21;
+    -moz-box-shadow: 0px 0px 156px 20px  #162c21;
+    box-shadow: 0px 0px 156px 20px #162c21;
     
     form {
       margin: 0.5rem;

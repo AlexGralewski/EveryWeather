@@ -2,7 +2,7 @@ import React from "react"
 import timestampToTime from "../methods/timestampToTime"
 import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
 import ForecastDisplay from "./ForecastDisplay"
-import startingBackgroundImage from "../images/starting-bg.jpg"
+import startingBackgroundImage from "../methods/startingBackgroundImage"
 import getBackgroundImage from "../methods/getBackgroundImage"
 
 class WeatherApp extends React.Component {
@@ -28,7 +28,7 @@ class WeatherApp extends React.Component {
       forecastDisplay: "none", //determines if forecast section is visible
       returnButtonDisplay: "none", //determines if return button is visible
       cityListDisplay: "none", //determines if city list section is visible
-      backgroundImage: startingBackgroundImage
+      backgroundImage: startingBackgroundImage()
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCoordsCurrentWeatherSubmit = this.handleCoordsCurrentWeatherSubmit.bind(this)
@@ -630,7 +630,7 @@ class WeatherApp extends React.Component {
       forecastDisplay: "none",
       returnButtonDisplay: "none",
       cityListDisplay: "none",
-      backgroundImage: startingBackgroundImage
+      backgroundImage: startingBackgroundImage()
     })
     event.preventDefault()
   }
@@ -692,7 +692,6 @@ class WeatherApp extends React.Component {
                     <option>Poland</option>
                     <option>Russia</option>
                     <option>Spain</option>
-                    <option>Sweden</option>
                     <option>United Kingdom</option>
                     <option>United States</option>
                   </datalist>
