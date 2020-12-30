@@ -688,15 +688,13 @@ class WeatherApp extends React.Component {
                     <option>China</option>
                     <option>France</option>
                     <option>Germany</option>
-                    <option>Ireland</option>
                     <option>Japan</option>
                     <option>Poland</option>
-                    <option>Portugal</option>
                     <option>Russia</option>
                     <option>Spain</option>
                     <option>Sweden</option>
                     <option>United Kingdom</option>
-                    <option>United%20States</option>
+                    <option>United States</option>
                   </datalist>
                 </div>
               </div>

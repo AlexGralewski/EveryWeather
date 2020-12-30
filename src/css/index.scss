@@ -1,6 +1,6 @@
 //color scheme
 $bright1: #FCFCFC;
-$bright2: #eeecd6;
+$bright2: #dbf1e0;
 $bright3: #ffffffe8;
 $bright4: rgb(75, 200, 224);
 $dark1: #162c21;
@@ -1218,7 +1218,7 @@ footer {
   }
    
     .cw-display {
-      margin: 5rem 0 2rem 0;
+      margin-top: 5rem;
       width: 70%;      
     }
   
@@ -1240,14 +1240,3 @@ footer {
 
 
 
-@media screen and (max-height: 800px) {
-  footer {
-    height: 5vh;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  footer {
-    height: 15vh;
-  }
-}

@@ -53,7 +53,7 @@ code {
 }
 
 .weather-app .forms form input, .weather-app .forms form select {
-  background-color: #eeecd6;
+  background-color: #dbf1e0;
   padding: 2rem 2rem 2rem 4rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -1198,7 +1198,7 @@ footer i {
     width: 60%;
   }
   .cw-display {
-    margin: 5rem 0 2rem 0;
+    margin-top: 5rem;
     width: 70%;
   }
   .city-list {
@@ -1212,18 +1212,6 @@ footer i {
 @media screen and (max-width: 768px) {
   .weather-app .forms {
     width: 75%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  footer {
-    height: 5vh;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  footer {
-    height: 15vh;
   }
 }
 /*# sourceMappingURL=index.css.map */
