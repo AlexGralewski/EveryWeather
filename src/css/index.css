@@ -26,6 +26,7 @@ code {
 .weather-app {
   min-height: 100vh;
   background-size: cover;
+  background-attachment: fixed;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -326,6 +327,7 @@ code {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-align: center;
   font-size: 4rem;
   letter-spacing: 0.2rem;
   margin: 2rem;
@@ -435,6 +437,9 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow-x: scroll;
   margin: 4rem 0;
 }
@@ -1039,7 +1044,6 @@ footer i {
     padding: 0.5rem;
     margin: 1rem;
     border-radius: 0.5rem;
-    max-width: 45rem;
   }
   .weather-app .cw-display .cw-title {
     font-size: 1.5rem;
@@ -1197,14 +1201,14 @@ footer i {
   .weather-app .forms {
     width: 60%;
   }
-  .cw-display {
-    margin-top: 5rem;
-    width: 70%;
+  .weather-app .cw-display {
+    margin: 5rem 0 2rem 0;
+    width: 80%;
   }
-  .city-list {
+  .weather-app .city-list {
     margin: 5rem 0 2rem 0;
   }
-  .fw-display {
+  .weather-app .fw-display {
     margin: 5rem 0 2rem 0;
   }
 }
@@ -1212,6 +1216,29 @@ footer i {
 @media screen and (max-width: 768px) {
   .weather-app .forms {
     width: 75%;
+  }
+  .weather-app .cw-display {
+    width: 90%;
+  }
+  .weather-app .fw-display .fw-results {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-height: 70vh;
+    overflow-x: auto;
+  }
+  .weather-app .fw-display .fw-results .fw-display-item {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .weather-app .forms {
+    width: 75%;
+  }
+  .weather-app .cw-display {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=index.css.map */
