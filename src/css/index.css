@@ -1238,7 +1238,14 @@ footer i {
     width: 75%;
   }
   .weather-app .cw-display {
-    width: 100%;
+    width: 90%;
+  }
+  .weather-app .fw-display {
+    width: 90%;
+  }
+  .weather-app .fw-display .fw-results .fw-display-item {
+    min-width: none;
+    width: 5rem;
   }
 }
 /*# sourceMappingURL=index.css.map */

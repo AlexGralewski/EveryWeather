@@ -1266,7 +1266,16 @@ footer {
       width: 75%; 
     }
     .cw-display {
-      width: 100%;
+      width: 90%;
+    }
+    .fw-display {
+      width: 90%;
+      .fw-results {
+        .fw-display-item {
+          min-width: none;
+          width: 5rem;
+        }
+      }
     }
   }
 }
