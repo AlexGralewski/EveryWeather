@@ -79,8 +79,8 @@ code {
 
     .submit-buttons {
       display: flex;
-      flex-direction: column;
-      margin: 0.5rem;
+      
+      margin: 1rem;
       .current-weather-button {
         background: none;
         border: 0.2rem $dark2 solid;
@@ -103,7 +103,7 @@ code {
 
     .lat-long-form {
       input {
-        width: 60%;
+        width: 40%;
       }
     }
     

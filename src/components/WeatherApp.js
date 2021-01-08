@@ -651,10 +651,13 @@ class WeatherApp extends React.Component {
           <div className = "forms-title">EveryWeather</div>
           <div className = "forms-desc">Get weather data for any place!</div>
           <div className = "position-form">
-            <div className = "submit-buttons">
-              <button onClick = {this.handlePositionCurrentWeatherSubmit} className = "current-weather-button">Get current weather for your position</button>          
-              <button onClick = {this.handlePositionForecastSubmit} className = "forecast-weather-button">Get seven day forecast for your position</button>          
-            </div>
+            <form>
+              <label>Your current position</label>
+              <div className = "submit-buttons">
+                <button onClick = {this.handlePositionCurrentWeatherSubmit} className = "current-weather-button">Get current weather</button>          
+                <button onClick = {this.handlePositionForecastSubmit} className = "forecast-weather-button">Get seven day forecast</button>          
+              </div>
+            </form>
           </div>
           <h1 className = "or">OR</h1>
           <div className = "city-form">
