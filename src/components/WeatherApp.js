@@ -58,6 +58,11 @@ class WeatherApp extends React.Component {
   //Handles submit of coords form (current weather). Fetches data from OpenWeatherMap API.
   handleCoordsCurrentWeatherSubmit(event) {
     event.preventDefault()
+
+    this.setState({
+      loadingScreen: "block"
+    })
+
     //URL string for weather API
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey
     
@@ -122,6 +127,10 @@ class WeatherApp extends React.Component {
   handleCityCurrentWeatherSubmit(event) {
     event.preventDefault()
 
+    this.setState({
+      loadingScreen: "block"
+    })
+
     let locationApiUrl
     //URL string for forward location API
     if (this.state.country === ""){
@@ -184,13 +193,18 @@ class WeatherApp extends React.Component {
       alert("No results")
       this.setState({
         city: "",
-        country: ""
+        country: "",
+        loadingScreen: "none"
         })
     }
   }
    
   //Conditional (2.1) part of the city form submit (current weather). Creates a list of places that match the one entered in the form. 
   cityListDisplayForCurrentWeather() {
+    this.setState({
+      loadingScreen: "none"
+    })
+
     let cities = this.state.locationData.map((city, index) => {
     if (city.components.city !== undefined) {
       return(
@@ -250,7 +264,8 @@ class WeatherApp extends React.Component {
     })
 
     this.setState({
-      cityList: <div className="city-list-items">{cities}</div>
+      cityList: <div className="city-list-items">{cities}</div>,
+      
     })
   }
 
@@ -286,6 +301,11 @@ class WeatherApp extends React.Component {
   //Handles submit of position form (current weather). Sets latitude and longitude based on current position of user.
   handlePositionCurrentWeatherSubmit(event) {
     event.preventDefault()
+
+    this.setState({
+      loadingScreen: "block"
+    })
+
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: Math.round(position.coords.latitude * 1000) / 1000,
@@ -341,6 +361,7 @@ class WeatherApp extends React.Component {
       currentWeatherDisplay: "flex",
       returnButtonDisplay: "flex",
       cityListDisplay: "none",
+      loadingScreen: "none",
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon)
     })
 
@@ -349,6 +370,11 @@ class WeatherApp extends React.Component {
   //Handles submit of latitude and longitude form (forecast weather). Fetches data from OpenWeatherMap API.
   handleCoordsForecastSubmit(event) {
     event.preventDefault()
+
+    this.setState({
+      loadingScreen: "block"
+    })
+
     //URL string for weather API
     let weatherApiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + (this.state.lat % 180) + "&lon=" + (this.state.long % 180) + "&exclude=" + this.state.part + "&appid=" + this.state.weatherApiKey   
     console.log(weatherApiUrl)
@@ -412,6 +438,10 @@ class WeatherApp extends React.Component {
   handleCityForecastSubmit(event) {
     event.preventDefault()
 
+    this.setState({
+      loadingScreen: "block"
+    })
+
     let locationApiUrl
     //URL string for forward location API
     if (this.state.country === ""){
@@ -473,13 +503,18 @@ class WeatherApp extends React.Component {
       alert("No results")
       this.setState({
         city: "",
-        country: ""
+        country: "",
+        loadingScreen: "none"
         })
     }
   }
    
   //Conditional (2.1) part of the city form submit (forecast). Creates a list of places that match the one entered in the form. 
   cityListDisplayForForecast() {
+    this.setState({
+      loadingScreen: "none"
+    })
+    
     let cities = this.state.locationData.map((city, index) => {
     if (city.components.city !== undefined) {
       return(
@@ -576,6 +611,10 @@ class WeatherApp extends React.Component {
   handlePositionForecastSubmit(event) {
     event.preventDefault()
 
+    this.setState({
+      loadingScreen: "block"
+    })
+
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: Math.round(position.coords.latitude * 1000) / 1000,
@@ -623,6 +662,7 @@ class WeatherApp extends React.Component {
       forecastDisplay: "flex",
       returnButtonDisplay: "flex",
       cityListDisplay: "none",
+      loadingScreen: "none",
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon)
     })
 

@@ -32,6 +32,16 @@ code {
           justify-content: center;
 }
 
+.weather-app .loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 1;
+}
+
 .weather-app .forms {
   padding: 2rem;
   margin: 2rem;
