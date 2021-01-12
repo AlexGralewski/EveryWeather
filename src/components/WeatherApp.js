@@ -28,6 +28,7 @@ class WeatherApp extends React.Component {
       forecastDisplay: "none", //determines if forecast section is visible
       returnButtonDisplay: "none", //determines if return button is visible
       cityListDisplay: "none", //determines if city list section is visible
+      loadingScreen: "block",
       backgroundImage: startingBackgroundImage()
     }
     this.handleChange = this.handleChange.bind(this)
@@ -38,6 +39,12 @@ class WeatherApp extends React.Component {
     this.handleCoordsForecastSubmit = this.handleCoordsForecastSubmit.bind(this)
     this.handleCityForecastSubmit = this.handleCityForecastSubmit.bind(this)
     this.handlePositionForecastSubmit = this.handlePositionForecastSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({
+      loadingScreen: "none"
+    })
   }
 
   //Handles change of all inputs in forms section.
@@ -277,7 +284,8 @@ class WeatherApp extends React.Component {
   }
 
   //Handles submit of position form (current weather). Sets latitude and longitude based on current position of user.
-  handlePositionCurrentWeatherSubmit() {
+  handlePositionCurrentWeatherSubmit(event) {
+    event.preventDefault()
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: Math.round(position.coords.latitude * 1000) / 1000,
@@ -565,7 +573,9 @@ class WeatherApp extends React.Component {
   }
 
   //Handles submit of position form (forecast). Sets latitude and longitude based on forecast position of user.
-  handlePositionForecastSubmit() {
+  handlePositionForecastSubmit(event) {
+    event.preventDefault()
+
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: Math.round(position.coords.latitude * 1000) / 1000,
@@ -636,10 +646,15 @@ class WeatherApp extends React.Component {
   }
 
   render() {
-    const {city, country, lat, long, currentWeatherDisplay, formsDisplay, returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay, cityListDisplay, cityList, backgroundImage} = this.state
+    const {city, country, lat, long, currentWeatherDisplay, formsDisplay, 
+      returnButtonDisplay, currentWeather, forecastWeather, forecastDisplay, 
+      cityListDisplay, cityList, backgroundImage, loadingScreen} = this.state
    
-    return (
+    return ( 
       <div className = "weather-app" style={{backgroundImage:`url(${backgroundImage})`}}>
+        <div className="loading-screen" style={{display:loadingScreen}}> 
+        </div>
+        
         <button 
           onClick = {this.handleReturnButton} 
           style = {{display:returnButtonDisplay}} 
@@ -652,7 +667,7 @@ class WeatherApp extends React.Component {
           <div className = "forms-desc">Get weather data for any place!</div>
           <div className = "position-form">
             <form>
-              <label>Your current position</label>
+              <label>For your current position</label>
               <div className = "submit-buttons">
                 <button onClick = {this.handlePositionCurrentWeatherSubmit} className = "current-weather-button">Get current weather</button>          
                 <button onClick = {this.handlePositionForecastSubmit} className = "forecast-weather-button">Get seven day forecast</button>          
