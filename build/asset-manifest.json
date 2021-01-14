@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/weather-app/static/css/main.c5dd1edb.chunk.css",
-    "main.js": "/weather-app/static/js/main.63bacfac.chunk.js",
-    "main.js.map": "/weather-app/static/js/main.63bacfac.chunk.js.map",
+    "main.css": "/weather-app/static/css/main.026936eb.chunk.css",
+    "main.js": "/weather-app/static/js/main.c54ac894.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.c54ac894.chunk.js.map",
     "runtime-main.js": "/weather-app/static/js/runtime-main.e6f382d7.js",
     "runtime-main.js.map": "/weather-app/static/js/runtime-main.e6f382d7.js.map",
     "static/js/2.30c52222.chunk.js": "/weather-app/static/js/2.30c52222.chunk.js",
     "static/js/2.30c52222.chunk.js.map": "/weather-app/static/js/2.30c52222.chunk.js.map",
     "index.html": "/weather-app/index.html",
-    "precache-manifest.089b9d489e4122b3cd4098cc0ffd1fe6.js": "/weather-app/precache-manifest.089b9d489e4122b3cd4098cc0ffd1fe6.js",
+    "precache-manifest.77aaf42fca273e02bb74182f52c6b3e6.js": "/weather-app/precache-manifest.77aaf42fca273e02bb74182f52c6b3e6.js",
     "service-worker.js": "/weather-app/service-worker.js",
-    "static/css/main.c5dd1edb.chunk.css.map": "/weather-app/static/css/main.c5dd1edb.chunk.css.map",
+    "static/css/main.026936eb.chunk.css.map": "/weather-app/static/css/main.026936eb.chunk.css.map",
     "static/js/2.30c52222.chunk.js.LICENSE.txt": "/weather-app/static/js/2.30c52222.chunk.js.LICENSE.txt",
     "static/media/clear-day-bg.jpg": "/weather-app/static/media/clear-day-bg.e6e20999.jpg",
     "static/media/clear-night-bg.jpg": "/weather-app/static/media/clear-night-bg.41a70beb.jpg",
@@ -22,6 +22,7 @@
     "static/media/rain-night-bg.jpg": "/weather-app/static/media/rain-night-bg.e4271727.jpg",
     "static/media/smog-bg.jpg": "/weather-app/static/media/smog-bg.b69e0130.jpg",
     "static/media/snow-bg.jpg": "/weather-app/static/media/snow-bg.8b7e32f5.jpg",
+    "static/media/snowflake.svg": "/weather-app/static/media/snowflake.0f0243b4.svg",
     "static/media/starting-bg-fall.jpg": "/weather-app/static/media/starting-bg-fall.ae6d4977.jpg",
     "static/media/starting-bg-spring.jpg": "/weather-app/static/media/starting-bg-spring.139cfbfd.jpg",
     "static/media/starting-bg-summer.jpg": "/weather-app/static/media/starting-bg-summer.551cff50.jpg",
@@ -31,7 +32,7 @@
   "entrypoints": [
     "static/js/runtime-main.e6f382d7.js",
     "static/js/2.30c52222.chunk.js",
-    "static/css/main.c5dd1edb.chunk.css",
-    "static/js/main.63bacfac.chunk.js"
+    "static/css/main.026936eb.chunk.css",
+    "static/js/main.c54ac894.chunk.js"
   ]
 }

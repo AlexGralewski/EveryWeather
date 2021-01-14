@@ -1,5 +1,6 @@
 //color scheme
 $bright1: #FCFCFC;
+$bright1_1: #dfffeb91; //'bright1' with lowered opacity
 $bright2: #dbf1e0;
 $bright3: #ffffffe8;
 $bright4: rgb(75, 200, 224);
@@ -19,11 +20,6 @@ body {
   overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .weather-app, .forms, form, label {
   display: flex;
   flex-direction: column;
@@ -39,15 +35,40 @@ code {
   justify-content: center;
   //Styles for forms section
 
+  .starting-screen {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width:100vw;
+    background-color:$dark1;
+    color:white;
+  }
+
   .loading-screen {
     position: absolute;
-    top: 0;
-    left: 0;
-    height:100vh;
-    width:100vw;
-    background-color: black;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    height:30vh;
+    width:30vh;
+    background-color: rgba(39, 39, 39, 0.418);
+    border-radius: 10%;
+    color: white;
+    align-items: center;
+    justify-content: center;
     z-index: 1;
+    svg {
+      height: 60%;
+      animation: spin 2s linear infinite;
+
+    }
+    @keyframes spin {
+      100% {transform: rotate(360deg);}
+    }
   }
+
+  
 
   .forms {
     padding: 2rem;
@@ -55,7 +76,7 @@ code {
     width: 30%;
     background-color: $dark1_1;
     color: $bright1;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     -webkit-box-shadow: 0px 0px 156px 20px  #162c21;
     -moz-box-shadow: 0px 0px 156px 20px  #162c21;
     box-shadow: 0px 0px 156px 20px #162c21;
@@ -70,17 +91,17 @@ code {
       }
 
       input, select {
-        background-color: $bright2;
+        background-color: #244e3e8a;
+        border: 1px white solid;
         padding: 2rem 2rem 2rem 4rem;
         margin: 1rem;
         border-radius: 1rem;
-        border: none;
-        font-size: 2rem;        
+        font-size: 2rem;    
+        color: white;    
       }
 
       input:hover, select:hover {
-        background-color: $bright1;
-        color: $dark1;
+        background-color: $bright1_1;
       }
     }
 
@@ -130,6 +151,10 @@ code {
         display: flex;
         flex-direction: column;
         align-items: center; 
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.719);
       }
     }
     
@@ -450,7 +475,7 @@ button {
   padding: 1rem 2rem;
   margin: 0.6rem;
   border: none; 
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   p {
     margin: 0 1rem;
   }
@@ -508,7 +533,6 @@ footer {
     .forms {
       padding: 1.5rem;
       margin: 1.5rem;
-      border-radius: 1.5rem;
 
       form {
         label {
@@ -516,9 +540,9 @@ footer {
         }
 
         input, select {
-          padding: 1.2rem 1.2rem 1.2rem 2.4rem;
+          padding: 1.2rem;
           margin: 0.5rem;
-          border-radius: 0.7rem;
+          border-radius: 0.5rem;
           font-size: 1.2rem;        
         }
       }
@@ -724,7 +748,7 @@ footer {
     font-size: 1.3rem;
     padding: 0.5rem 1.3rem;
     margin: 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     p {
       margin: 0 1rem;
     }
