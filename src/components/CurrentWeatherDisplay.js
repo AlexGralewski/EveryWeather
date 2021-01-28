@@ -14,7 +14,7 @@ function CurrentWeatherDisplay(props) {
 
     return (
       <div className = "cw-display" style = {{display:currentDisplay}}> 
-      <div className = "cw-title">Current weather:</div>
+      <div className = "title">Current weather:</div>
         <div className = "cw-main">
           <div className = "cw-representation">
             <div className = "cw-icon">{currentWeatherIcon}</div>      

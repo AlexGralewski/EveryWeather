@@ -23,7 +23,7 @@ function ForecastDisplay(props) {
         />)
     return (
       <div className = "fw-display" style = {{display:forecastDisplay}}>
-        <div className = "fw-display-title">
+        <div className = "title">
           Seven Day Forecast
         </div>
         <div className = "fw-results">

@@ -838,7 +838,7 @@ class WeatherApp extends React.Component {
         />
 
         <div className="city-list" style={{ display: cityListDisplay }}>
-          <div className="city-list-title">Which place did you have in mind?</div>
+          <div className="title">Which place did you have in mind?</div>
           {cityList}
         </div>
 
