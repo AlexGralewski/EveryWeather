@@ -4,7 +4,8 @@ import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
 import ForecastDisplay from "./ForecastDisplay"
 import startingBackgroundImage from "../methods/startingBackgroundImage"
 import getBackgroundImage from "../methods/getBackgroundImage"
-import snowflake from "../assets/snowflake.svg"
+import Socials from "./Socials"
+
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -841,6 +842,8 @@ class WeatherApp extends React.Component {
           <div className="title">Which place did you have in mind?</div>
           {cityList}
         </div>
+
+        <Socials />
 
 
       </div>

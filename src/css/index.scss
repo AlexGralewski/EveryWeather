@@ -44,6 +44,7 @@ body {
     color:white;
     align-items: center;
     justify-content: center;
+    z-index: 2;
   }
 
   .loading-screen {
@@ -440,6 +441,52 @@ body {
       
     }
 
+  }
+
+  .socials {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1vmax;
+    right: 2%;
+    bottom: 5%;
+    color:white;
+    width: 10vmax;
+    height: 10vmax;
+    z-index: 1;
+    text-decoration: none;
+    a {
+      text-decoration: none;
+      color: white;
+      width: 5vmax;
+      height: 5vmax;
+    }
+    .social {
+      padding: 0;
+      transform: translate(0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3vmax;
+      height: 3vmax;
+      background: $dark1;
+      margin: 1vmax;
+      border-radius: 3vmax;
+      transition: 0.2s ease-out;
+    }
+    .social:hover{
+      width: 4vmax;
+      height: 4vmax;
+
+      background-color: $dark1_1;
+      font-size: 1.5vmax;
+
+    }
+    .linkedin {
+
+    }
   }
 }
   

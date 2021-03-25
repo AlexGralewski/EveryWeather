@@ -42,6 +42,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  z-index: 2;
 }
 
 .weather-app .loading-screen {
@@ -590,6 +591,67 @@ body {
   background-color: #162c21;
   border: 1px solid #ffffffe8;
   border-radius: 1rem;
+}
+
+.weather-app .socials {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 1vmax;
+  right: 2%;
+  bottom: 5%;
+  color: white;
+  width: 10vmax;
+  height: 10vmax;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.weather-app .socials a {
+  text-decoration: none;
+  color: white;
+  width: 5vmax;
+  height: 5vmax;
+}
+
+.weather-app .socials .social {
+  padding: 0;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 3vmax;
+  height: 3vmax;
+  background: #162c21;
+  margin: 1vmax;
+  border-radius: 3vmax;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.weather-app .socials .social:hover {
+  width: 4vmax;
+  height: 4vmax;
+  background-color: #162c21e8;
+  font-size: 1.5vmax;
 }
 
 button {
