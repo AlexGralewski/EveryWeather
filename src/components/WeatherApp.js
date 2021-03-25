@@ -4,7 +4,7 @@ import CurrentWeatherDisplay from "./CurrentWeatherDisplay"
 import ForecastDisplay from "./ForecastDisplay"
 import startingBackgroundImage from "../methods/startingBackgroundImage"
 import getBackgroundImage from "../methods/getBackgroundImage"
-import snowflake from "../images/snowflake.svg"
+import snowflake from "../assets/snowflake.svg"
 
 class WeatherApp extends React.Component {
   constructor() {

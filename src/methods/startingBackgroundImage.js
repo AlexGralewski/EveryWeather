@@ -1,7 +1,7 @@
-import startingImageWinter from "../images/starting-bg-winter.jpg"
-import startingImageSpring from "../images/starting-bg-spring.jpg"
-import startingImageSummer from "../images/starting-bg-summer.jpg"
-import startingImageFall from "../images/starting-bg-fall.jpg"
+import startingImageWinter from "../assets/starting-bg-winter.jpg"
+import startingImageSpring from "../assets/starting-bg-spring.jpg"
+import startingImageSummer from "../assets/starting-bg-summer.jpg"
+import startingImageFall from "../assets/starting-bg-fall.jpg"
 
 
 function startingBackgroundImage() {
