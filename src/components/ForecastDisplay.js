@@ -1,7 +1,7 @@
 import React from "react"
 import ForecastDay from "./ForecastDay"
 
-function ForecastDisplay(props) {
+const ForecastDisplay = (props) => {
   const {city, country, lat, long, forecastDisplay, forecastWeather} = props
   const today = (new Date()).getDay()
   

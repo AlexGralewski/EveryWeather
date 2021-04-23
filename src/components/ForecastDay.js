@@ -2,7 +2,7 @@ import React from "react"
 import getWeatherIcon from "../methods/getWeatherIcon"
 import dayOfTheWeek from "../methods/dayOfTheWeek"
 
-function ForecastDay(props) {
+const ForecastDay = (props)  =>{
   const {day, temp, weather, iconId, humidity, today} = props
   let weatherIcon = getWeatherIcon(iconId)
 

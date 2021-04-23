@@ -2,7 +2,7 @@ import React from "react"
 import getWeatherIcon from "../methods/getWeatherIcon"
 import windDirection from "../methods/windDirection"
 
-function CurrentWeatherDisplay(props) {
+const CurrentWeatherDisplay = (props) => {
   const {city, country, lat, long, currentWeather, currentDisplay} = props
   if (currentWeather !== undefined){
     let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
