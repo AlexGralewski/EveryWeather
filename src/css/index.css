@@ -29,13 +29,16 @@ body {
 }
 
 .weather-app .starting-screen {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vmax;
   background-color: #162c21;
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -43,6 +46,19 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 2;
+  -webkit-transition: 1s ease-in;
+  transition: 1s ease-in;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.weather-app .starting-screen h1 {
+  font-size: 10vmax;
+}
+
+.weather-app .starting-screen.active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .weather-app .loading-screen {
@@ -627,8 +643,8 @@ body {
 
 .weather-app .socials .social {
   padding: 0;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -668,6 +684,10 @@ button {
 
 button p {
   margin: 0 0.5vmax;
+}
+
+button:focus {
+  outline: none;
 }
 
 button:hover {

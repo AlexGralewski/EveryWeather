@@ -35,16 +35,25 @@ body {
   //Styles for forms section
 
   .starting-screen {
-    position: absolute;
+    h1 {
+      font-size: 10vmax;
+    }
+    position: fixed;
     top:0;
     left:0;
     height: 100vh;
     width:100vmax;
     background-color:$dark1;
     color:white;
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
+    transition: 1s ease-in;
+    transform: translateY(100%);
+  }
+  .starting-screen.active {
+    transform: translateY(0)
   }
 
   .loading-screen {
@@ -465,7 +474,7 @@ body {
     }
     .social {
       padding: 0;
-      transform: translate(0,0);
+      transform: translate(-50%,-50%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -484,9 +493,7 @@ body {
       font-size: 1.5vmax;
 
     }
-    .linkedin {
 
-    }
   }
 }
   
@@ -503,6 +510,10 @@ button {
   p {
     margin: 0 0.5vmax;
   }
+}
+
+button:focus {
+  outline: none;
 }
 
 button:hover {
