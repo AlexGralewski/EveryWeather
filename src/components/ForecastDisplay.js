@@ -38,7 +38,7 @@ const ForecastDisplay = (props) => {
   } else {
     return (
       <div className = "fw-weather-display" style = {{display:forecastDisplay}}> 
-    </div>
+      </div>
     )
   }
 }
