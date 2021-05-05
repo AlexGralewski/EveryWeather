@@ -1,8 +1,9 @@
 import React from "react"
 import ForecastDay from "./ForecastDay"
+import ReturnButton from "./ReturnButton"
 
 const ForecastDisplay = (props) => {
-  const {city, country, lat, long, forecastDisplay, forecastWeather} = props
+  const {city, country, lat, long, forecastDisplay, forecastWeather,handleReturnButton} = props
   const today = (new Date()).getDay()
   
   let place
@@ -23,6 +24,8 @@ const ForecastDisplay = (props) => {
         />)
     return (
       <div className = "fw-display" style = {{display:forecastDisplay}}>
+        <ReturnButton 
+          handleReturnButton={handleReturnButton}/>
         <div className = "title">
           Seven Day Forecast
         </div>

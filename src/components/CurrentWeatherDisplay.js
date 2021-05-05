@@ -1,9 +1,10 @@
 import React from "react"
 import getWeatherIcon from "../methods/getWeatherIcon"
 import windDirection from "../methods/windDirection"
+import ReturnButton from "./ReturnButton"
 
 const CurrentWeatherDisplay = (props) => {
-  const {city, country, lat, long, currentWeather, currentDisplay} = props
+  const {city, country, lat, long, currentWeather, currentDisplay,handleReturnButton} = props
   if (currentWeather !== undefined){
     let currentWeatherIcon = getWeatherIcon(currentWeather.iconId)
 
@@ -14,6 +15,8 @@ const CurrentWeatherDisplay = (props) => {
 
     return (
       <div className = "cw-display" style = {{display:currentDisplay}}> 
+      <ReturnButton 
+      handleReturnButton={handleReturnButton}/>
       <div className = "title">Current weather:</div>
         <div className = "cw-main">
           <div className = "cw-representation">
