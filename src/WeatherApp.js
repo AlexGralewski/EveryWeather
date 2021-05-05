@@ -9,6 +9,7 @@ import FormsDisplay from "./components/FormsDisplay"
 import ReturnButton from "./components/ReturnButton"
 import StartingScreen from "./components/StartingScreen"
 import Socials from "./components/Socials";
+import Header from "./components/Header"
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -31,10 +32,9 @@ class WeatherApp extends React.Component {
       formsDisplay: "flex", //determines if forms section is displayed
       currentWeatherDisplay: "none", //determines if current weather section is displayed
       forecastDisplay: "none", //determines if forecast section is displayed
-      returnButtonDisplay: "none", //determines if return button is displayed
       cityListDisplay: "none", //determines if city list section is displayed
       loadingScreen: "none",
-      startingScreen: true,
+      startingScreen: false,
       backgroundImage: startingBackgroundImage(),
     };
     this.handleChange = this.handleChange.bind(this);
@@ -252,7 +252,7 @@ class WeatherApp extends React.Component {
           locationData: cityList,
           cityListDisplay: "flex",
           formsDisplay: "none",
-          returnButtonDisplay: "flex",
+
         },
         this.cityListDisplayForCurrentWeather
       );
@@ -522,7 +522,7 @@ class WeatherApp extends React.Component {
       currentWeather: cWeather,
       formsDisplay: "none",
       currentWeatherDisplay: "flex",
-      returnButtonDisplay: "flex",
+
       cityListDisplay: "none",
       loadingScreen: "none",
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon),
@@ -705,7 +705,7 @@ class WeatherApp extends React.Component {
           locationData: cityList,
           cityListDisplay: "flex",
           formsDisplay: "none",
-          returnButtonDisplay: "flex",
+
         },
         this.cityListDisplayForForecast
       );
@@ -964,7 +964,6 @@ class WeatherApp extends React.Component {
       forecastWeather: fWeather,
       formsDisplay: "none",
       forecastDisplay: "flex",
-      returnButtonDisplay: "flex",
       cityListDisplay: "none",
       loadingScreen: "none",
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon),
@@ -981,7 +980,7 @@ class WeatherApp extends React.Component {
       formsDisplay: "flex",
       currentWeatherDisplay: "none",
       forecastDisplay: "none",
-      returnButtonDisplay: "none",
+
       cityListDisplay: "none",
       backgroundImage: startingBackgroundImage(),
     });
@@ -996,7 +995,6 @@ class WeatherApp extends React.Component {
       long,
       currentWeatherDisplay,
       formsDisplay,
-      returnButtonDisplay,
       currentWeather,
       forecastWeather,
       forecastDisplay,
@@ -1012,11 +1010,10 @@ class WeatherApp extends React.Component {
         className="weather-app"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
+
         <LoadingScreen  display={loadingScreen}/>
         <StartingScreen display={startingScreen} />
-        <ReturnButton 
-          handleReturnButton={this.handleReturnButton}
-          returnButtonDisplay={returnButtonDisplay} />
+        <Header />
         <FormsDisplay 
           formsDisplay={formsDisplay}
           city={city}
@@ -1038,6 +1035,7 @@ class WeatherApp extends React.Component {
           long={long}
           currentDisplay={currentWeatherDisplay}
           currentWeather={currentWeather}
+          handleReturnButton={this.handleReturnButton}
         />
         <ForecastDisplay
           city={city}
@@ -1046,6 +1044,7 @@ class WeatherApp extends React.Component {
           long={long}
           forecastDisplay={forecastDisplay}
           forecastWeather={forecastWeather}
+          handleReturnButton={this.handleReturnButton}
         />
         <div className="city-list" style={{ display: cityListDisplay }}>
           <div className="title">Which place did you have in mind?</div>
