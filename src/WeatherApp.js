@@ -1047,7 +1047,9 @@ class WeatherApp extends React.Component {
           handleReturnButton={this.handleReturnButton}
         />
         <div className="city-list" style={{ display: cityListDisplay }}>
-          <div className="title">Which place did you have in mind?</div>
+        
+          <div className="title">
+          Search returned multiple results. <br />Which place did you have in mind?</div>
           {cityList}
         </div>
         <Socials />
