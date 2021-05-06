@@ -11,7 +11,7 @@ const ReturnButton = (props) => {
       <span className="return-icon">
         <i class="fas fa-chevron-left"></i>
       </span>
-      <span className="return-text">Return</span>
+      <span className="return-text">Back</span>
     </button>
   );
 };

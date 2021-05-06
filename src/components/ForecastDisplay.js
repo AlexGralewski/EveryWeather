@@ -24,18 +24,23 @@ const ForecastDisplay = (props) => {
         />)
     return (
       <div className = "fw-display" style = {{display:forecastDisplay}}>
-        <ReturnButton 
-          handleReturnButton={handleReturnButton}/>
-        <div className = "title">
-          Seven Day Forecast
+        <div className="display-header">
+          <ReturnButton handleReturnButton={handleReturnButton} />
+          <div className="title">Seven day forecast</div>
         </div>
+        <div className = "place">
+        <span className="for">For:</span>
+        <span className = "place-lat-long">
+          <div>lat: {lat}</div>
+          <div>long: {long}</div>
+          </span>
+        <span> {place}</span>
+       
+      </div>
         <div className = "fw-results">
           {display}
         </div>
-        <div className = "place">
-          <div className = "place-lat-long">Latitude: {lat}, Longitude: {long}</div>
-          {place}
-        </div>
+
       </div>
   )
   } else {

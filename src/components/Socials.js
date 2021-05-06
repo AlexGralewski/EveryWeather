@@ -3,13 +3,11 @@ import React from "react"
 export default function Socials() {
   return(
     <div className="socials">
-      <a href="https://www.linkedin.com/in/aleksandergralewski/">
-
-      <div className="social linkedin"><i class="fab fa-linkedin-in"></i></div>
+      <a href="https://www.linkedin.com/in/aleksandergralewski/" className="social linkedin">
+        <i className="fab fa-linkedin-in"></i>
       </a>
-      <a href="https://github.com/AlexGralewski">
-
-      <div className="social github"><i class="fab fa-github"></i></div>
+      <a href="https://github.com/AlexGralewski" className="social github">
+        <i className="fab fa-github"></i>
       </a>
     </div>
   )
