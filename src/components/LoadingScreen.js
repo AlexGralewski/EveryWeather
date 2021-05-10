@@ -1,7 +1,7 @@
 import React from "react"
 
 const LoadingScreen = (props) => (
-  <div className="loading-screen" style={{ display: props.display }}>
+  <div className="loading-screen" style={{ display: props.display ? "flex" : "none" }}>
   {" "}
     <svg
       id="Layer_1"

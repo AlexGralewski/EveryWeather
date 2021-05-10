@@ -23,7 +23,7 @@ const ForecastDisplay = (props) => {
         today = {today}
         />)
     return (
-      <div className = "fw-display" style = {{display:forecastDisplay}}>
+      <div className = "fw-display" style = {{display:forecastDisplay ? "flex" : "none"}}>
         <div className="display-header">
           <ReturnButton handleReturnButton={handleReturnButton} />
           <div className="title">Seven day forecast</div>
@@ -45,7 +45,7 @@ const ForecastDisplay = (props) => {
   )
   } else {
     return (
-      <div className = "fw-weather-display" style = {{display:forecastDisplay}}> 
+      <div className = "fw-weather-display" style = {{display:forecastDisplay ? "flex" : "none"}}> 
       </div>
     )
   }

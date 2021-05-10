@@ -26,7 +26,7 @@ const CurrentWeatherDisplay = (props) => {
     }
 
     return (
-      <div className="cw-display" style={{ display: currentDisplay }}>
+      <div className="cw-display" style={{ display: currentDisplay  ? "flex" : "none"}}>
         <div className="display-header">
           <ReturnButton handleReturnButton={handleReturnButton} />
           <div className="title">Current weather</div>
@@ -115,7 +115,7 @@ const CurrentWeatherDisplay = (props) => {
     );
   } else {
     return (
-      <div className="cw-display" style={{ display: currentDisplay }}></div>
+      <div className="cw-display" style={{ display: currentDisplay  ? "flex" : "none"}}></div>
     );
   }
 };

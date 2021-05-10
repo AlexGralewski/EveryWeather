@@ -18,7 +18,7 @@ const FormsDisplay = (props) => {
   } = props;
   return (
     
-    <div className="forms" style={{ display: formsDisplay }}>
+    <div className="forms" style={{ display: formsDisplay  ? "flex" : "none"}}>
         <form className="position-form">
 
             <label>For your current position</label>
