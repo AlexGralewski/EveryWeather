@@ -56,6 +56,48 @@ header {
 
 }
 
+.alert {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index:10;
+
+  .alert-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.712);
+    z-index: 20;
+  }
+  .alert-message {
+    background-color: $dark1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-width: 300px;
+    width: 30%;
+    max-width: 500px;
+    min-height:200px;
+    padding: 20px;
+    z-index: 30;
+    button,h1 {
+      width: 80%;
+    }
+  }
+
+}
+
+
 .weather-app {
   min-height: 100vh;
   background-size: cover;
@@ -656,11 +698,17 @@ div::-webkit-scrollbar-thumb {
       transform: translateY(0);
       justify-content: space-around;
       align-items: center;
-      height: 400px;
+      height: 100px;
       left: 0;
-      width: 80%;
+      width: 300px;
       .social {
-        width: 10%;
+        width: 20px;
+        height: 20px;
+        font-size: 30px;
+      }
+      .social:hover {
+        width: 30px;
+        height: 30px;
       }
 
       .linkedin, .github {
