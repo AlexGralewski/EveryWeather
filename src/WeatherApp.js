@@ -10,6 +10,7 @@ import ReturnButton from "./components/ReturnButton"
 import StartingScreen from "./components/StartingScreen"
 import Socials from "./components/Socials";
 import Header from "./components/Header"
+import Alert from "./components/Alert"
 
 class WeatherApp extends React.Component {
   constructor() {
@@ -29,12 +30,13 @@ class WeatherApp extends React.Component {
       locationData: undefined, //data pulled from location API
       cityList: <div className="city-list-items"></div>,
       chosenCityIndex: "",
-      formsDisplay: "flex", //determines if forms section is displayed
-      currentWeatherDisplay: "none", //determines if current weather section is displayed
-      forecastDisplay: "none", //determines if forecast section is displayed
-      cityListDisplay: "none", //determines if city list section is displayed
-      loadingScreen: "none",
-      startingScreen: false,
+      formsDisplay: true, //determines if forms section is displayed
+      currentWeatherDisplay: false, //determines if current weather section is displayed
+      forecastDisplay: false, //determines if forecast section is displayed
+      cityListDisplay: false, //determines if city list section is displayed
+      alertDisplay: false,
+      loadingScreen: false,
+      startingScreen: true,
       backgroundImage: startingBackgroundImage(),
     };
     this.handleChange = this.handleChange.bind(this);
@@ -55,6 +57,7 @@ class WeatherApp extends React.Component {
     this.handlePositionForecastSubmit = this.handlePositionForecastSubmit.bind(
       this
     );
+    this.closeAlert = this.closeAlert.bind(this)
   }
 
   componentDidMount() {
@@ -65,7 +68,12 @@ class WeatherApp extends React.Component {
     }, 2000);
   }
 
-  //Handles change of all inputs in forms section.
+  closeAlert() {
+    this.setState({
+      alertDisplay: false
+    })
+  }
+
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
@@ -78,7 +86,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     //URL string for weather API
@@ -163,7 +171,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     let locationApiUrl;
@@ -250,18 +258,18 @@ class WeatherApp extends React.Component {
       this.setState(
         {
           locationData: cityList,
-          cityListDisplay: "flex",
-          formsDisplay: "none",
+          cityListDisplay: true,
+          formsDisplay: false,
 
         },
         this.cityListDisplayForCurrentWeather
       );
     } else {
-      alert("No results");
       this.setState({
         city: "",
         country: "",
-        loadingScreen: "none",
+        loadingScreen: false,
+        alertDisplay:true
       });
     }
   }
@@ -269,7 +277,7 @@ class WeatherApp extends React.Component {
   //Conditional (2.1) part of the city form submit (current weather). Creates a list of places that match the one entered in the form.
   cityListDisplayForCurrentWeather() {
     this.setState({
-      loadingScreen: "none",
+      loadingScreen: false,
     });
 
     let cities = this.state.locationData.map((city, index) => {
@@ -416,7 +424,6 @@ class WeatherApp extends React.Component {
 
   //Third part of the city form submit (current weather). Fetches data from OpenWeatherMap API. Goes to assignCurrentWeatherParameters function.
   fetchWeatherDataForCurrentWeather() {
-    //URL string for weather API
     let weatherApiUrl =
       "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       (this.state.lat % 180) +
@@ -428,7 +435,6 @@ class WeatherApp extends React.Component {
       this.state.weatherApiKey;
     console.log(weatherApiUrl);
 
-    //fetch weather API
     fetch(weatherApiUrl)
       .then((response) => response.json())
       .then((res) => {
@@ -449,7 +455,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -520,11 +526,11 @@ class WeatherApp extends React.Component {
 
     this.setState({
       currentWeather: cWeather,
-      formsDisplay: "none",
-      currentWeatherDisplay: "flex",
+      formsDisplay: false,
+      currentWeatherDisplay: true,
 
-      cityListDisplay: "none",
-      loadingScreen: "none",
+      cityListDisplay: false,
+      loadingScreen: false,
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon),
     });
   }
@@ -534,7 +540,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     //URL string for weather API
@@ -618,7 +624,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     let locationApiUrl;
@@ -703,18 +709,18 @@ class WeatherApp extends React.Component {
       this.setState(
         {
           locationData: cityList,
-          cityListDisplay: "flex",
-          formsDisplay: "none",
+          cityListDisplay: true,
+          formsDisplay: false,
 
         },
         this.cityListDisplayForForecast
       );
     } else {
-      alert("No results");
       this.setState({
         city: "",
         country: "",
-        loadingScreen: "none",
+        loadingScreen: false,
+        alertDisplay:true
       });
     }
   }
@@ -722,7 +728,7 @@ class WeatherApp extends React.Component {
   //Conditional (2.1) part of the city form submit (forecast). Creates a list of places that match the one entered in the form.
   cityListDisplayForForecast() {
     this.setState({
-      loadingScreen: "none",
+      loadingScreen: false,
     });
 
     let cities = this.state.locationData.map((city, index) => {
@@ -902,7 +908,7 @@ class WeatherApp extends React.Component {
     event.preventDefault();
 
     this.setState({
-      loadingScreen: "flex",
+      loadingScreen: true,
     });
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -962,10 +968,10 @@ class WeatherApp extends React.Component {
 
     this.setState({
       forecastWeather: fWeather,
-      formsDisplay: "none",
-      forecastDisplay: "flex",
-      cityListDisplay: "none",
-      loadingScreen: "none",
+      formsDisplay: false,
+      forecastDisplay: true,
+      cityListDisplay: false,
+      loadingScreen: false,
       backgroundImage: getBackgroundImage(weatherData.current.weather[0].icon),
     });
   }
@@ -977,11 +983,11 @@ class WeatherApp extends React.Component {
       long: 0,
       city: "",
       country: "",
-      formsDisplay: "flex",
-      currentWeatherDisplay: "none",
-      forecastDisplay: "none",
+      formsDisplay: true,
+      currentWeatherDisplay: false,
+      forecastDisplay: false,
 
-      cityListDisplay: "none",
+      cityListDisplay: false,
       backgroundImage: startingBackgroundImage(),
     });
     event.preventDefault();
@@ -999,6 +1005,7 @@ class WeatherApp extends React.Component {
       forecastWeather,
       forecastDisplay,
       cityListDisplay,
+      alertDisplay,
       cityList,
       backgroundImage,
       loadingScreen,
@@ -1028,6 +1035,7 @@ class WeatherApp extends React.Component {
           coordsCurrentSubmit={this.handleCoordsCurrentWeatherSubmit}
           coordsForecastSubmit={this.handleCoordsForecastSubmit}
         />
+        <Alert display={alertDisplay} closeAlert={this.closeAlert}/>
         <CurrentWeatherDisplay
           city={city}
           country={country}
@@ -1046,7 +1054,7 @@ class WeatherApp extends React.Component {
           forecastWeather={forecastWeather}
           handleReturnButton={this.handleReturnButton}
         />
-        <div className="city-list" style={{ display: cityListDisplay }}>
+        <div className="city-list" style={{ display: cityListDisplay ? "flex" : "none" }}>
         
           <div className="title">
           Search returned multiple results. <br />Which place did you have in mind?</div>
