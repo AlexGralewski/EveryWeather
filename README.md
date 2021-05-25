@@ -18,4 +18,4 @@ Types of results display:
 
 ### App preview
 
-alexgralewski.github.io/EveryWeather/
+https://alexgralewski.github.io/EveryWeather/
